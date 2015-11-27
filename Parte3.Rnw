@@ -1,0 +1,282 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Lilian Martínez}
+\title{Parte III Guias Practicas de R}
+\begin{document}
+
+\maketitle
+\newpage
+<<>>=
+#UNIDAD 5: Práctica 21 - Prueba de hipótesis estadísticas y prueba de normalidad.
+
+#  PRUEBAS DE NORMALIDAD DE UNA MUESTRA
+#A continuación procedemos a contrastar normalidad para los datos del IMC en 
+#los grupos de Control y de Pacientes
+
+# se digitan los datos del grupo de control 
+IMC_Control <- c(23.6, 22.7, 21.2, 21.7, 20.7, 22.0, 21.8, 24.2, 20.1, 21.3, 20.5, 21.1, 21.4, 22.2, 22.6, 20.4, 23.3, 24.8)
+par(mfrow=c(1,2))
+
+# se genera el histograma de la variables de interés 
+hist(IMC_Control,main="A",xlab="IMC (kg/m2)",ylab="Frecuencia") 
+
+# se genera el diagrama de caja de la variable de interés y se muestra en la misma ventana 
+boxplot(IMC_Control,main="B", lab="IMC (kg/m2)",ylim=c(20,25)) 
+
+# los commandos para contrastar normalidad son los siguientes 
+sw <- shapiro.test(IMC_Control) 
+sw 
+
+#La prueba de Kolmogorov
+ks <- ks.test(IMC_Control,"pnorm",mean=mean(IMC_Control),sd=sd(IMC_Control)) 
+ks
+
+# luego se digitan los datos para pacientes y se ejecutan las mismas instrucciones 
+IMC_Pacientes <- c(25.6, 22.7, 25.9, 24.3, 25.2, 29.6, 21.3, 25.5, 27.4, 22.3, 24.4, 23.7, 20.6, 22.8)
+
+# se genera el histograma de la variables de interés 
+hist(IMC_Pacientes,main="A",xlab="IMC (kg/m2)",ylab="Frecuencia") 
+
+# se genera el diagrama de caja de la variable de interés y se muestra en la misma ventana 
+boxplot(IMC_Pacientes,main="B", lab="IMC (kg/m2)",ylim=c(20,25)) 
+
+# los commandos para contrastar normalidad son los siguientes 
+sw <- shapiro.test(IMC_Pacientes) 
+sw
+
+#La prueba de Kolmogorov
+ks <- ks.test(IMC_Pacientes,"pnorm",mean=mean(IMC_Pacientes),sd=sd(IMC_Pacientes)) 
+ks
+
+#UNIDAD 5: Práctica 22 - Prueba de hipótesis estadísticas. Una población
+
+#1.PRUEBA DE HIPÓTESIS ACERCA DEL VALOR DE UNA PROPORCIÓN
+
+#Una muestra de 100 empleados que habían estado encontacto con sangre o derivados de ésta, fue 
+#examinada por presentar evidencia serológica de hepatitis B. Se encontró que 23 de ellos presentaron 
+#reacción positiva. ¿Puede concluirse a partir de estos datos que la proporción de los positivos es 
+#mayor que 0.15? Tome un nivel de significancia del 5%.
+
+# Construyendo una función en R para realizar la prueba de hipótesis. 
+Prueba.prop <- function(x, n, po, H1="Distinto", alfa=0.05) 
+{ 
+  op <- options(); 
+  options(digits=2) 
+  pe=x/n #calcula la proporción muestral 
+  SE <- sqrt((po * (1-po))/n) # calcula la varianza de la proporción muestral 
+  Zo <- (pe-po)/SE #calcula el estadístico de prueba 
+  # Si lower.tail = TRUE (por defecto), P[X <= x], en otro caso P[X > x] 
+  if (H1 == "Menor" || H1 == "Mayor") 
+  { 
+    Z <- qnorm(alfa, mean=0, sd=1, lower.tail = FALSE, log.p = FALSE) 
+    #calcula los valores críticos de la distribución N(0;1) en el caso de una prueba unilateral 
+    valores <- rbind(Prop_Estimada=pe, Prop_Hipotetica=po, Z_critico=Z,Estadistico= Zo) 
+  } 
+  else 
+  { 
+    Z <- qnorm(alfa/2, mean=0, sd=1, lower.tail = FALSE, log.p = FALSE) 
+    #calcula los valores críticos de la distribuciónN(0;1) en el caso de una prueba bilateral 
+    valores <- rbind(Prop_Estimada=pe, Prop_Hipotetica =po, Z_critico_menor=-Z, 
+                     Z_critico_mayor =Z, Zo) 
+  } # esto es para encontrar los valores críticos 
+  if (H1 == "Menor") 
+  { 
+    if (Zo < -Z) decision <- paste("Como Estadistico <", round(-Z,3), ", entonces rechazamos Ho") 
+    else decision <- paste("Como Estadistico>=", round(-Z,3), ", entonces aceptamos Ho") 
+  } 
+  if (H1 == "Mayor") 
+  { 
+    if (Zo > Z) decision <- paste("Como Estadistico >", round(Z,3), ", entonces rechazamos Ho") 
+    else decision <- paste("Como Estadistico <=", round(Z,3), ", entonces aceptamos Ho") 
+  } 
+  if (H1 == "Distinto") 
+  { 
+    if (Zo < -Z) decision <- paste("Como Estadistico <", round(-Z,3), ", entonces rechazamos Ho") 
+    if (Zo > Z) decision <- paste("Como Estadistico >", round(Z,3), ", entonces rechazamos Ho") 
+    else decision <- paste("Como Estadistico pertenece a [", round(-Z,3), ",", round(Z,3), "], 
+                           entonces aceptamos Ho") 
+  } # esto para llevar a cabo los contraste de hipótesis 
+  print(valores) 
+  print(decision) 
+  options(op) # restablece todas las opciones iniciales 
+} 
+
+Prueba.prop(23, 100, 0.15, H1="Menor", alfa=0.05) 
+Prueba.prop(23, 100, 0.15, H1="Mayor", alfa=0.05) 
+Prueba.prop(23, 100, 0.15, H1="Distinto", alfa=0.05)
+
+prop.test(x=23, n=100, p=0.15, alternative="less", conf.level=0.95) 
+prop.test(x=23, n=100, p=0.15, alternative="greater", conf.level=0.95) 
+prop.test(x=23, n=100, p=0.15, alternative="two.sided", conf.level=0.95)
+
+#PRUEBA DE HIPÓTESIS SOBRE UNA MEDIA, VARIANZA DESCONOCIDA. 
+#Los siguientes datos corresponden a la longitud medida en centímetros de 18 pedazos de cable 
+#sobrantes en cada rollo utilizado:  9.0 3.41 6.13  1.99  6.92  3.12  7.86  2.01  
+#5.98 4.15 6.87 1.97  4.01  3.56  8.04  3.24  5.05  7.37
+
+#Una solución podría ser la siguiente: 
+Datos = c(9.0,3.41,6.13,1.99,6.92,3.12,7.86,2.01,5.98,4.15,6.87,1.97,4.01,3.56,8.04,3.24,5.05,7.37) 
+
+# digitamos las observaciones 
+t.test(Datos,mu=4,alternative="greater")
+
+#UNIDAD 5: Práctica 23 - Prueba de hipótesis estadísticas. Dos poblaciones. 
+
+#PRUEBAS SOBRE DOS MUESTRAS INDEPENDIENTES
+#Volviendo al problema de la importancia del estadonutricional (introducido en la practica 21) en 
+#pacientes diabéticos (pacientes) y saludables (grupo control) con complicaciones. Los datos se 
+#muestran en los siguientes cuadros.
+
+#Las hipótesis a contrastar son:
+#H0:??1=??2
+#H1:??1?????2
+
+#En lenguaje R está implementada la prueba t, el siguiente código ejemplo la calcula para las dos 
+#muestras:
+
+# Primero digitamos las observaciones correspondientes a ambas muestras 
+IMC_Control <- c(23.6, 22.7, 21.2, 21.7, 20.7, 22.0, 21.8, 24.2, 20.1, 21.3, 20.5, 21.1, 21.4, 22.2, 22.6, 
+                 20.4, 23.3, 24.8)
+IMC_Pacientes <- c(25.6, 22.7, 25.9, 24.3, 25.2, 29.6, 21.3, 25.5, 27.4, 22.3, 24.4, 23.7, 20.6, 22.8)
+
+# Realizamos el contraste de igualdad de medias 
+t.test(IMC_Control, IMC_Pacientes, var.equal=TRUE, mu=0)
+
+#Se concluye entonces que existe diferencia significativa en el IMC para ambos grupos de pacientes, 
+#pues el p valor de la prueba resulta ser muy pequeño.
+
+#PRUEBAS SOBRE DOS MUESTRAS PAREADAS 
+#Se cuenta con los datos simulados (con fines didácticos), de las observaciones de la presión 
+#arterial sistólica (PAS) en un grupo de 10 pacientes antes y después de un tratamiento consistente en 
+#una dieta especial de bajosodio y medicamentos.
+
+#Las hipótesis a contrastar son:
+#H0:??1=??2
+#H1:??1?????2
+
+#El código en lenguaje R para calcular la prueba t para dos muestras apareadas es el siguiente: 
+PAS.antes <- c(160,155,180,140,150,130,190,192,170,165) 
+PAS.despues <- c(139,135,175,120,145,140,170,180,149,146)
+
+#verificando la normalidad 
+shapiro.test(PAS.antes) 
+shapiro.test(PAS.despues)
+
+ks.test(PAS.antes,"pnorm",mean=mean(PAS.antes),sd=sd(PAS.antes)) 
+ks.test(PAS.despues,"pnorm",mean=mean(PAS.despues),sd=sd(PAS.despues))
+
+#realizando la prueba t
+t.test(PAS.antes, PAS.despues, paired=TRUE, mu=0)
+#El valor del estadístico t es 4.0552, con gl = 9, P = 0.0029. Con estos resultados se rechaza  0 Hy por lo 
+#tanto se concluye que la PAS antes y después del tratamiento es distinta, es decir, el tratamiento ha 
+#sido efectivo.
+
+
+#PRUEBA DE HIPÓTESIS ACERCA DE LA VARIANZA DE DOS POBLACIONES 
+#El director de una sucursal de una compañía deseguros espera que dos de sus mejores agentes 
+#consigan formalizar por término medio el mismo número de pólizas mensuales.
+#Los datos indican las pólizas formalizadas en los últimos 5 meses por ambos agentes
+
+
+#introduciendo los datos 
+Agente_A <- c(12, 11, 18, 16, 13) 
+Agente_B <- c(14, 18, 18, 17, 16)
+# realizando el contraste de igualdad de varianzas 
+var.test(Agente_A, Agente_B)
+
+
+#UNIDAD 6: Práctica 24 - Análisis de Varianza (ANOVA). 
+#EJEMPLO 1. 
+#El Ministerio de Educación está interesado en implementar tres programas de estudio; con el objetivo 
+#de medir la habilidad de lectura en los alumnos. Para ello, se eligen alumnos del sexto grado de un 
+#Colegio de San Salvador, 27 alumnos fueron asignados al azar, a cada uno de los tres grupos. Se 
+#utilizó un programa diferente en cadagrupo, se llevó a cabo un examen al inicio y al final de la 
+#implementación de los programas, los valores obtenidos representan la diferencia que hay entre la 
+#nota del examen que se hizo al inicio y al finalde la implementación del programa.
+
+#Contraste a un nivel de significancia del 5% de que los tres métodos de lectura producen el mismo 
+#efecto en la habilidad de lectura de los alumnos. 
+
+# Se digitan las observaciones 
+notas <- c(20,18,18,23,22,17,15,13,21,15,20,13,12,16,17,21,15,13,12,15,18,20,18,17,10,24,16) 
+
+# Se crea un vector de datos en el cual se diferencia cada uno de los programas de estudio
+programas <- gl(n=3, k=9, labels=c("P1", "P2", "P3"))
+
+#Crea la matriz de datos que contendrá la información del experimento
+datos <- data.frame(notas = notas, programas = programas);datos
+
+#Aplicando el análisis de varianza 
+mod1 <- aov(notas ~ programas, data = datos)
+
+#Mostrando la tabla ANOVA 
+summary(mod1)
+
+
+#UNIDAD 6: Práctica 25 - Diseños por bloques
+
+#EJEMPLO 1. 
+#Se probaran 5 raciones respecto a sus diferencias en el engorde de novillos. Se dispone de 20 novillos 
+#para el experimento, que se distribuyen en 4 bloques (5 novillos por bloque) con base a sus pesos, al 
+#iniciar la prueba de engorde, los novillos más pesados se agruparon en un bloque, en otro se 
+#agruparon los 5 siguientes más pesados y así sucesivamente. Los 5 tratamientos (raciones) se 
+#asignaron al azar dentro de cada bloque.
+
+#Utilizando un nivel de significancia del 5%, contraste la hipótesis de que las cinco 
+#raciones de comida producen el mismo efecto de engorde en los novillos.
+
+# Definiendo el vector que contendrá el bloque al cual pertenecen los novillos.
+bloques <- gl(n=4, k=1, length=20);bloques
+
+# Se crea el vector que contendrá los tratamientos de los novillos (raciones de alimento)
+tratamientos <- gl(n=5, k=4);tratamientos
+
+# Se digitan los pesos de los novillos 
+peso <- c(0.9,1.4,1.4,2.3,3.6,3.2,4.5,4.1,0.5,0.9,0.5,0.9,3.6,3.6,3.2,3.6,1.8,1.8,0.9,1.4 );peso
+
+# Se registra en una hoja de datos los resultados del experimento
+datos2 <- data.frame(bloques = bloques, tratamientos = tratamientos, peso = peso);datos2
+
+# Se aplica el análisis de varianza 
+mod2 <- aov(peso ~ tratamientos + bloques, data = datos2) 
+
+# Se muestra la tabla ANOVA del experimento 
+summary(mod2)
+
+
+#UNIDAD 6: Práctica 26 - Diseños bifactoriales
+
+#EJEMPLO 1. 
+#Se llevó a cabo un estudio del efecto de la temperatura sobre el porcentaje de encogimiento
+#de telas teñidas, con dos réplicas para cada uno de cuatro tipos de tela en un diseño totalmente 
+#aleatorizado. Los datos son el porcentaje de encogimiento de dos réplicas de tela 
+#secadas a cuatro temperaturas.
+
+#Utilizando un nivel de significancia del 5%
+# Definiendo el vector que contendrá el factor A.
+FactorA <- gl(n=4, k=8, length=32);FactorA
+
+# Se crea el vector que contendrá los tratamientos de los novillos (raciones de alimento).
+FactorB<- gl(n=4, k=2,length=32);FactorB
+
+# Se digitan los pesos de los novillos 
+Porcentaje <- c(1.8, 2.1, 2.0, 2.1, 4.6, 5.0, 7.5, 7.9, 2.2, 2.4,4.2, 4.0, 5.4, 5.6, 
+9.8, 9.2, 2.8, 3.2, 4.4, 4.8, 8.7, 8.4, 13.2, 13.0, 3.2, 3.6, 3.3, 3.5, 5.7, 5.8, 
+10.9, 11.1);Porcentaje
+
+# Se registra en una hoja de datos los resultados del experimento 
+datos3 <- data.frame(FactorA = FactorA, FactorB = FactorB, Porcentaje=Porcentaje);datos3 
+
+# Se aplica el análisis de varianza 
+mod3 <- aov(Porcentaje ~ FactorA * FactorB, data = datos3) 
+
+# Se muestra la tabla ANOVA del experimento 
+summary(mod3)
+
+@
+
+
+\end{document}

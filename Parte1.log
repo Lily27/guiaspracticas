@@ -1,0 +1,1125 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.22)  26 NOV 2015 15:32
+entering extended mode
+**Parte1.tex
+(Parte1.tex
+LaTeX2e <2015/01/01> patch level 2
+Babel <3.9m> and hyphenation patterns for 69 languages loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 94.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 142.
+) (framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip43
+\fb@frw=\dimen105
+\fb@frh=\dimen106
+\FrameRule=\dimen107
+\FrameSep=\dimen108
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\alltt.sty"
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\latin1.def"
+File: latin1.def 2015/03/17 v1.2c Input encoding file
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip44
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks17
+\ex@=\dimen109
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen110
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen111
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks18
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks19
+\eqnshift@=\dimen112
+\alignsep@=\dimen113
+\tagshift@=\dimen114
+\tagwidth@=\dimen115
+\totwidth@=\dimen116
+\lineht@=\dimen117
+\@envbody=\toks20
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\upquote\upquote.sty"
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+) (Parte1.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count100
+\scratchdimen=\dimen118
+\scratchbox=\box28
+\nofMPsegments=\count101
+\nofMParguments=\count102
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count103
+\MPscratchDim=\dimen119
+\MPnumerator=\count104
+\makeMPintoPDFobject=\count105
+\everyMPtoPDFconversion=\toks23
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 60.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 60.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{C:/Users/Liry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Package color Info: Redefining color shadecolor on input line 63.
+
+Overfull \hbox (29.48286pt too wide) in paragraph at lines 68--68
+[][]\OT1/cmtt/m/it/10 #FORMA 1-Crear un vector numerico vaco y a~nadirle lue
+go sus elementos.[][] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 71.
+
+Overfull \hbox (55.73264pt too wide) in paragraph at lines 86--86
+[][]\OT1/cmtt/m/it/10 #FORMA 2-Crear un vector numerico asignandole todos sus
+ elementos o valores.[][] 
+ []
+
+
+Overfull \hbox (18.98296pt too wide) in paragraph at lines 132--132
+[][]\OT1/cmtt/m/it/10 #FORMA 5-Crear un vector numerico generando una sucesio
+n de valores. [][] 
+ []
+
+
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 165--165
+[]\OT1/cmtt/m/n/10 ##  [1] -3.0 -2.8 -2.6 -2.4 -2.2 -2.0 -1.8 -1.6 -1.4 -1.2 -1
+.0 -0.8 -0.6 -0.4[] 
+ []
+
+
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 165--165
+[]\OT1/cmtt/m/n/10 ## [15] -0.2  0.0  0.2  0.4  0.6  0.8  1.0  1.2  1.4  1.6  1
+.8  2.0  2.2  2.4[] 
+ []
+
+
+Overfull \hbox (11.99689pt too wide) in paragraph at lines 188--188
+[]\OT1/cmtt/m/n/10 ## Warning in 2 * x + z: longitud de objeto mayor no es mul
+tiplo de
+ []
+
+
+Overfull \hbox (55.73264pt too wide) in paragraph at lines 248--248
+[][]\OT1/cmtt/m/it/10 #FORMA 1-Crear un vector de caracteres vaco y a~nadirle
+ luego sus elementos.[][] 
+ []
+
+
+Overfull \hbox (29.48286pt too wide) in paragraph at lines 252--252
+[][]\OT1/cmtt/m/it/10 #FORMA 2-Crear un vector de caracteres asignandole todos
+ sus elementos.[][] 
+ []
+
+
+Overfull \hbox (13.733pt too wide) in paragraph at lines 261--261
+[][]\OT1/cmtt/m/it/10 #Ejemplo 2: Agregue el elemento "Ahuachapan" en la cuart
+a posicion. [][] 
+ []
+
+
+Overfull \hbox (218.48122pt too wide) in paragraph at lines 269--269
+[][]\OT1/cmtt/m/it/10 #FORMA 3-Crear un vector de caracteres dandole nombres a
+ los elementos para identificarlos mas facilmente. [][] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 272--272
+[][]\OT1/cmtt/m/n/10 names[][](codDeptos)[] []<-[] []c[][]([][]"Usulutan"[][],
+[] []"San Miguel"[][],[] []"Morazan"[][],[] []"La Union"[][])[][] 
+ []
+
+
+Overfull \hbox (13.733pt too wide) in paragraph at lines 288--288
+[][]\OT1/cmtt/m/it/10 #Ejemplo 2: Crear un vector con las etiquetas X1, Y2, ...
+ , X9, Y10 [][] 
+ []
+
+
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 294--294
+[]\OT1/cmtt/m/n/10 ##  [1] "X1"  "Y2"  "X3"  "Y4"  "X5"  "Y6"  "X7"  "Y8"  "X9"
+  "Y10"[] 
+ []
+
+
+Overfull \hbox (39.98277pt too wide) in paragraph at lines 298--298
+[][]\OT1/cmtt/m/it/10 #FORMA 1-Crear una matriz numerica vaca y a~nadirle lu
+ego sus elementos. [][] 
+ []
+
+
+Overfull \hbox (66.23254pt too wide) in paragraph at lines 313--313
+[][]\OT1/cmtt/m/it/10 #FORMA 2-Crear una matriz numerica asignandole todos su
+s elementos o valores. [][] 
+ []
+
+
+Overfull \hbox (1.49698pt too wide) in paragraph at lines 353--353
+[]\OT1/cmtt/m/n/10 ## [1] 0.3597401 0.9102380 0.3020148 0.5028854 0.5070357 0.6
+354945[] 
+ []
+
+
+Overfull \hbox (27.74675pt too wide) in paragraph at lines 532--532
+[][]\OT1/cmtt/m/n/10 nombres[] []<-[] []matrix[][]([][]c[][]([][]"Carlos"[][],[
+] []"Jose"[][],[] []"Ana"[][],[] []"Rene"[][],[] []"Mara"[][],[] []"Mario"[
+][]),[][] 
+ []
+
+
+Overfull \hbox (255.2309pt too wide) in paragraph at lines 632--632
+[][]\OT1/cmtt/m/it/10 #Practica 03 - Tipos de objetos: factores, listas y hoja
+s de datos, operadores y funciones que operan sobre ellos.[][] 
+ []
+
+
+Overfull \hbox (48.74657pt too wide) in paragraph at lines 668--668
+[][]\OT1/cmtt/m/n/10 lista1[][]<-[][]list[][]([][]padre[][]=[][]"Pedro"[][],[] 
+[]madre[][]=[][]"Mara"[][],[] []no.hijos[][]=[][]3[][],[] []edad.hijos[][]=[]
+[]c[][]([][]4[][],[][]7[][],[][]9[][]))[][] 
+ []
+
+
+Overfull \hbox (3.2331pt too wide) in paragraph at lines 775--775
+[][]\OT1/cmtt/m/it/10 #Ejemplo 9: Crear una matriz dando nombres a las filas y 
+columnas [][] 
+ []
+
+
+Overfull \hbox (55.73264pt too wide) in paragraph at lines 788--788
+[][]\OT1/cmtt/m/it/10 #Ejemplo 1: Creacion de un data frame teniendo como colu
+mnas tres vectores: [][] 
+ []
+
+
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 802--802
+[]\OT1/cmtt/m/n/10 ##  [1]  0.2812909+0.1872242i  0.5076552+0.8397858i  1.00671
+52+0.8415720i[] 
+ []
+
+
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 802--802
+[]\OT1/cmtt/m/n/10 ##  [4] -0.2706487+0.9415722i  0.3834390+0.6420772i  1.01473
+61+0.1468087i[] 
+ []
+
+
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 802--802
+[]\OT1/cmtt/m/n/10 ##  [7]  0.7741639+0.0323138i -0.4229943+0.2316601i  0.58174
+61+0.7160524i[] 
+ []
+
+
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 802--802
+[]\OT1/cmtt/m/n/10 ## [10]  1.7260241+0.1783340i -0.1399647+0.5533374i  1.32045
+74+0.2810097i[] 
+ []
+
+
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 802--802
+[]\OT1/cmtt/m/n/10 ## [13]  1.9052410+0.7503338i  1.3780097+0.0684782i  0.04747
+93+0.9109889i[] 
+ []
+
+
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 802--802
+[]\OT1/cmtt/m/n/10 ## [16] -0.2122710+0.7597308i  1.7548401+0.5396302i  1.60018
+64+0.4463336i[] 
+ []
+
+
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 811--811
+[]\OT1/cmtt/m/n/10 ##  [1] -0.41617703  1.01059198  0.61470031 -0.17979940  0.1
+0932679[] 
+ []
+
+
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 811--811
+[]\OT1/cmtt/m/n/10 ##  [6] -0.37896961 -0.62293985  1.20664229 -1.16390363 -0.7
+7037984[] 
+ []
+
+
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 811--811
+[]\OT1/cmtt/m/n/10 ## [11] -1.61239068  1.49925264  0.06317187 -1.19546125  0.1
+7817468[] 
+ []
+
+
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 811--811
+[]\OT1/cmtt/m/n/10 ## [16]  0.47729211  0.32177586  0.66147017  0.11282361  0.2
+9310450[] 
+ []
+
+
+Overfull \hbox (417.97948pt too wide) in paragraph at lines 824--824
+[][]\OT1/cmtt/m/it/10 #Define los nombres de las filas del data frame asignand
+oles un vector de 20 #elementos correspondientes a las 20 primeras letras del a
+becedario [][] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 880--880
+[]\OT1/cmtt/m/n/10 ##  [1] 2.449490 2.236068 2.000000 1.732051 1.414214 1.00000
+0 0.000000[] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 887--887
+[]\OT1/cmtt/m/n/10 ##  [1] 2.449490 2.236068 2.000000 1.732051 1.414214 1.00000
+0 0.000000[] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 896--896
+[]\OT1/cmtt/m/n/10 ##  [1] 2.449490 2.236068 2.000000 1.732051 1.414214 1.00000
+0 0.000000[] 
+ []
+
+
+Overfull \hbox (18.98296pt too wide) in paragraph at lines 898--898
+[][]\OT1/cmtt/m/it/10 #2. ESTRUCTURAS ITERATIVAS O DE REPETICI[]ON: FOR(), WHIL
+E() Y REPEAT()[][] 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 911
+.
+(C:/PROGRA~1/R/R-32~1.2/share/texmf/tex/latex\omscmtt.fd
+File: omscmtt.fd 
+)
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 911.
+
+Overfull \hbox (118.73209pt too wide) in paragraph at lines 922--922
+[][]\OT1/cmtt/m/it/10 #Ejemplo 2: Se quiere definir una funcion para calcular 
+la media de un vector de datos. [][] 
+ []
+
+
+Overfull \hbox (66.23254pt too wide) in paragraph at lines 951--951
+[][]\OT1/cmtt/m/it/10 #Ejemplo 3: Se quiere definir una funcion para graficar 
+la funcion seno de x. [][] 
+ []
+
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
+<figure/unnamed-chunk-1-1.pdf, id=52, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-1.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-1.pdf used on input line 964.
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 964--965
+[][] 
+ []
+
+[15]
+Overfull \hbox (176.48158pt too wide) in paragraph at lines 971--971
+[][]\OT1/cmtt/m/it/10 #Ejemplo 1: Crear un vector con el tipo de gaseosa y otro
+ con la muestra generada #aleatoriamente: [][] 
+ []
+
+
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 984--984
+[]\OT1/cmtt/m/n/10 ##  [1] "SC" "CC" "SC" "SC" "SC" "PC" "SC" "SC" "SC" "PC" "P
+C" "PC" "SC" "CC"[] 
+ []
+
+
+Overfull \hbox (24.23291pt too wide) in paragraph at lines 992--992
+[][]\OT1/cmtt/m/it/10 #Eliminar los objetos que existen enel espacio de trabajo
+ (Workspace) [][] 
+ []
+
+
+Overfull \hbox (74.99634pt too wide) in paragraph at lines 1007--1007
+[][]\OT1/cmtt/m/n/10 Consumo[] []<-[] []scan[][]([][]"Consumo.txt"[][],[] []wha
+t[][]=[] []character[][](),[] []na.strings[] []=[] []"NA"[][],[][]flush[][]=[][
+]FALSE[][])[][] 
+ []
+
+
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 1013--1013
+[]\OT1/cmtt/m/n/10 ##  [1] "SC" "CC" "SC" "SC" "SC" "PC" "SC" "SC" "SC" "PC" "P
+C" "PC" "SC" "CC"[] 
+ []
+
+
+Overfull \hbox (211.49515pt too wide) in paragraph at lines 1048--1048
+[][]\OT1/cmtt/m/n/10 barplot[][](frec,[] []main[][]=[][]"Grafico de barras"[][
+],[] []xlab[][]=[][]"Consumo"[][],[] []col[][]=[][]c[][]([][]"yellow"[][],[] []
+"pink"[][],[] []"red"[][]),[] []sub[][]=[][]"Agosto-2012"[][])[][] 
+ []
+
+[16 <./figure/unnamed-chunk-1-1.pdf>]
+<figure/unnamed-chunk-1-2.pdf, id=65, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-2.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-2.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-2.pdf used on input line 1051.
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1051--1052
+[][] 
+ []
+
+[17]
+Overfull \hbox (43.24667pt too wide) in paragraph at lines 1054--1054
+[][]\OT1/cmtt/m/n/10 barplot[][](prop,[] []main[][]=[][]"Grafico de barras"[][
+],[] []xlab[][]=[][]" Consumo\OMS/cmsy/m/n/10 n\OT1/cmtt/m/n/10 n"[][],[] []col
+[][]=[][]c[][]([][]"yellow"[][],[][] 
+ []
+
+<figure/unnamed-chunk-1-3.pdf, id=69, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-3.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-3.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-3.pdf used on input line 1058.
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1058--1059
+[][] 
+ []
+
+[18 <./figure/unnamed-chunk-1-2.pdf>]
+Overfull \hbox (48.74657pt too wide) in paragraph at lines 1061--1061
+[][]\OT1/cmtt/m/n/10 pie[][](frec,[] []main[][]=[][]"Grafico de pastel"[][],[]
+ []xlab[][]=[][]"Tipo de Consumo"[][],[] []col[][]=[][]c[][]([][]"yellow"[][],[
+][] 
+ []
+
+<figure/unnamed-chunk-1-4.pdf, id=79, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-4.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-4.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-4.pdf used on input line 1065.
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1065--1066
+[][] 
+ []
+
+[19 <./figure/unnamed-chunk-1-3.pdf>]
+Overfull \hbox (13.733pt too wide) in paragraph at lines 1067--1067
+[][]\OT1/cmtt/m/it/10 #Especificar nombres para las categoras y el color de l
+os sectores [][] 
+ []
+
+
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 1069--1069
+[][]\OT1/cmtt/m/n/10 pie[][](frec,[] []main[][]=[][]"Grafico de pastel"[][],[]
+ []xlab[][]=[][]" Consumo"[][],[] []radius[][]=[][]0.8[][],[] []col[][]=[][]c[]
+[]([][]"red"[][],[][] 
+ []
+
+<figure/unnamed-chunk-1-5.pdf, id=90, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-5.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-5.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-5.pdf used on input line 1073.
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1073--1074
+[][] 
+ []
+
+[20 <./figure/unnamed-chunk-1-4.pdf>]
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 1092--1092
+[][]\OT1/cmtt/m/n/10 pie[][](frec,[] []main[][]=[][]"Grafico de pastel"[][],[]
+ []labels[][]=etiq,[] []col[][]=[][]rainbow[][](n),[] []border[][]=[][]TRUE[][]
+)[][] 
+ []
+
+<figure/unnamed-chunk-1-6.pdf, id=100, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-6.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-6.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-6.pdf used on input line 1095.
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1095--1096
+[][] 
+ []
+
+[21 <./figure/unnamed-chunk-1-5.pdf>]
+Overfull \hbox (81.9824pt too wide) in paragraph at lines 1097--1097
+[][]\OT1/cmtt/m/it/10 #UNIDAD 2: Practica 07-Analisis estadstico de datos u
+nivariados discretos con R.[][] 
+ []
+
+
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 1117--1117
+[][]\OT1/cmtt/m/n/10 X[] []<-[] []scan[][]([][]"Hijos.txt"[][],[] []what[] []=[
+] []integer[][]([][]0[][]),[] []na.strings[] []=[] []"NA"[][],[] []flush[][]=[]
+[]FALSE[][])[][] 
+ []
+
+
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 1123--1123
+[]\OT1/cmtt/m/n/10 ## [1] "Consumo" "etiq"    "frec"    "Hijos"   "hoja"    "n"
+       "prop"[] 
+ []
+
+
+Overfull \hbox (39.98277pt too wide) in paragraph at lines 1125--1125
+[][]\OT1/cmtt/m/it/10 #Elaborar el grafico de puntos y diagrama de tallo-hojas
+ (stem-and-leaf) [][] 
+ []
+
+
+Overfull \hbox (11.99689pt too wide) in paragraph at lines 1126--1126
+[][]\OT1/cmtt/m/n/10 stripchart[][](Hijos,[] []method[][]=[][]"stack"[][],[] []
+vertical[][]=[][]FALSE[][],[] []col[][]=[][]"blue"[][],[] []pch[][]=[][]1[][],[
+][] 
+ []
+
+[22 <./figure/unnamed-chunk-1-6.pdf>]
+<figure/unnamed-chunk-1-7.pdf, id=119, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-7.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-7.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-7.pdf used on input line 1130.
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1130--1131
+[][] 
+ []
+
+
+Overfull \hbox (122.24593pt too wide) in paragraph at lines 1176--1176
+[][]\OT1/cmtt/m/n/10 tfre[] []<-[] []data.frame[][]([][]X[][]=tabla[][]$[][]X,[
+] []fab[][]=tabla[][]$[][]fab,[] []fre[][]=tabla[][]$[][]fre,[] []Fac[][]=tabla
+[][]$[][]Fac,[] []Far[][]=tabla[][]$[][]Far)[][] 
+ []
+
+
+Overfull \hbox (29.48286pt too wide) in paragraph at lines 1260--1260
+[][]\OT1/cmtt/m/it/10 #Elaborar los graficos que se le pueden aplicar a la var
+iable discreta [][] 
+ []
+
+
+Overfull \hbox (127.24594pt too wide) in paragraph at lines 1262--1262
+[][]\OT1/cmtt/m/n/10 barplot[][](tfre[[[][]2[][]]],[] []main[][]=[][]"Grafico 
+de barras"[][],[] []xlab[][]=[][]"X = Numero Hijos\OMS/cmsy/m/n/10 n\OT1/cmtt/
+m/n/10 n"[][],[] []ylab[][]=[][]"frecuencia"[][],[][] 
+ []
+
+
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 1263--1263
+[][]\OT1/cmtt/m/n/10 col[][]=[][]c[][]([][]"yellow"[][],[] []"blue"[][],[] []"w
+hite"[][],[] []"orange"[][],[] []"cyan"[][],[] []"red"[][]),[] []sub[][]=[][]"A
+gosto-2012"[][])[][] 
+ []
+
+[23 <./figure/unnamed-chunk-1-7.pdf>] [24]
+<figure/unnamed-chunk-1-8.pdf, id=132, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-8.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-8.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-8.pdf used on input line 1266.
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1266--1267
+[][] 
+ []
+
+[25]
+Overfull \hbox (53.99652pt too wide) in paragraph at lines 1270--1270
+[][]\OT1/cmtt/m/n/10 col[][]=[][]c[][]([][]"yellow"[][],[] []"blue"[][],[][]"wh
+ite"[][],[] []"orange"[][],[] []"cyan"[][],[] []"red"[][]),[] []sub[][]=[][]"Ag
+osto-2012"[][])[][] 
+ []
+
+<figure/unnamed-chunk-1-9.pdf, id=137, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-9.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-9.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-9.pdf used on input line 1273.
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1273--1274
+[][] 
+ []
+
+[26 <./figure/unnamed-chunk-1-8.pdf>]
+Overfull \hbox (1.49698pt too wide) in paragraph at lines 1280--1280
+[]\OT1/cmtt/m/n/10 ## Error in names(fab) = c("Cero", "Uno", "Dos", "Tres", "Cu
+atro",
+ []
+
+
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 1280--1280
+\OT1/cmtt/m/n/10 "Cinco"): el atributo 'names' [6] debe tener la misma longitud
+ que
+ []
+
+
+Overfull \hbox (53.99652pt too wide) in paragraph at lines 1282--1282
+[][]\OT1/cmtt/m/n/10 col[][]=[][]c[][]([][]"yellow"[][],[] []"blue"[][],[][]"wh
+ite"[][],[] []"orange"[][],[] []"cyan"[][],[] []"red"[][]),[] []sub[][]=[][]"Ag
+osto-2012"[][])[][] 
+ []
+
+<figure/unnamed-chunk-1-10.pdf, id=147, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-10.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-10.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-10.pdf used on input line 1285.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1285--1286
+[][] 
+ []
+
+[27 <./figure/unnamed-chunk-1-9.pdf>]
+Overfull \hbox (76.73245pt too wide) in paragraph at lines 1287--1287
+[][]\OT1/cmtt/m/it/10 # Grafico de cajas (box-plot) es la representacion gra
+fica de los cinco numeros [][] 
+ []
+
+<figure/unnamed-chunk-1-11.pdf, id=157, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-11.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-11.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-11.pdf used on input line 1292.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1292--1293
+[][] 
+ []
+
+[28 <./figure/unnamed-chunk-1-10.pdf>]
+<figure/unnamed-chunk-1-12.pdf, id=167, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-12.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-12.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-12.pdf used on input line 1299.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1299--1300
+[][] 
+ []
+
+[29 <./figure/unnamed-chunk-1-11.pdf>]
+Overfull \hbox (32.9967pt too wide) in paragraph at lines 1326--1326
+[][]\OT1/cmtt/m/n/10 X[] []<-[] []scan[][]([][]"Notas.txt"[][],[] []what[] []=[
+] []double[][]([][]0[][]),[] []na.strings[] []=[] []"NA"[][],[] []flush[][]=[][
+]FALSE[][])[][] 
+ []
+
+
+Overfull \hbox (11.99689pt too wide) in paragraph at lines 1334--1334
+[]\OT1/cmtt/m/n/10 ##  [1] "Consumo"  "cuasivar" "etiq"     "fab"      "Fac"   
+   "Far"[] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 1334--1334
+[]\OT1/cmtt/m/n/10 ##  [7] "fre"      "frec"     "Hijos"    "hoja"     "i"     
+   "media"[] 
+ []
+
+
+Overfull \hbox (32.9967pt too wide) in paragraph at lines 1334--1334
+[]\OT1/cmtt/m/n/10 ## [13] "mediana"  "moda"     "n"        "Notas"    "prop"  
+   "resumen"[] 
+ []
+
+
+Overfull \hbox (13.733pt too wide) in paragraph at lines 1337--1337
+[][]\OT1/cmtt/m/it/10 # Usa el Metodo de Herbert A. Sturges para determinar di
+cho numero. [][] 
+ []
+
+
+Overfull \hbox (13.733pt too wide) in paragraph at lines 1375--1375
+[][]\OT1/cmtt/m/it/10 # Define los lmites y puntos mediosde cada uno de los k
+ intervalos [][] 
+ []
+
+
+Overfull \hbox (1.49698pt too wide) in paragraph at lines 1376--1376
+[][]\OT1/cmtt/m/n/10 limites[] []<-[] []seq[][]([][]from[][]=[][]min[][](X)[][]
+-[][]0.01[][]/[][]2[][],[][]to[][]=[][]max[][](X)[][]+[][]0.01[][]/[][]2[][],[]
+ []by[][]=a); limites[][] 
+ []
+
+
+Overfull \hbox (27.74675pt too wide) in paragraph at lines 1391--1391
+[][]\OT1/cmtt/m/n/10 for[][](i[] []in[] []2[][]:[][]length[][](limites)) ci[i[]
+[]-[][]1[][],[] []1[][]][] []<-[] [](limites[i][] []+[] []limites[i[][]-[][]1[]
+[]])[][]/[][]2[][] 
+ []
+
+
+Overfull \hbox (80.24629pt too wide) in paragraph at lines 1402--1402
+[][]\OT1/cmtt/m/n/10 fi[] []<-[] []cbind[][]([][]table[][]([][]cut[][](Notas,[]
+ []breaks[] []= limites,[] []labels[][]=[][]NULL[][],[] []include.lowest[][]=[]
+[]FALSE[][],[][] 
+ []
+
+
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 1438--1438
+[][]\OT1/cmtt/m/n/10 tablaFrec[] []<-[] []data.frame[][]([][]ci[][]=ci,[] []fi[
+][]=fi,[] []fri[][]=fri,[] []Fi[][]=Fi,[] []Fri[][]=Fri); tablaFrec[][] 
+ []
+
+
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 1447--1447
+[][]\OT1/cmtt/m/n/10 h[] []<-[] []hist[][](X,[] []breaks[][]=[][]c[][](limites[
+[][]1[][]][][]-[][]a, limites, limites[k[][]+[][]1[][]][][]+[][]a),[] []freq[] 
+[]=[] []TRUE[][],[][] 
+ []
+
+
+Overfull \hbox (773.24025pt too wide) in paragraph at lines 1448--1448
+[][]\OT1/cmtt/m/n/10 probability[] []=[] []FALSE[][],[] []include.lowest[] []=[
+] []FALSE[][],[][]right[] []=[] []TRUE[][],[] []main[] []=[] []"Histograma de f
+recuencias"[][],[] []col[][]=[][]"lightyellow"[][],[] []lty[][]=[][]1[][],[] []
+border[][]=[][]"purple"[][],[] []xlab[][]=[][]"Notas de aspirantes"[][],[] []yl
+ab[][]=[][]"Frecuencia (fi)"[][],[] []axes[][]=[][]TRUE[][],[] []labels[][]=[][
+]FALSE[][])[][] 
+ []
+
+[30 <./figure/unnamed-chunk-1-12.pdf>] [31]
+<figure/unnamed-chunk-1-13.pdf, id=190, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-13.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-13.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-13.pdf used on input line 1454.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1454--1455
+[][] 
+ []
+
+[32]
+Overfull \hbox (48.74657pt too wide) in paragraph at lines 1483--1483
+[][]\OT1/cmtt/m/n/10 h[] []<-[] []hist[][](X,[] []breaks[][]=[][]c[][](limites[
+[][]1[][]][][]-[][]a, limites, limites[k[][]+[][]1[][]][][]+[][]a),[] []freq[] 
+[]=[] []FALSE[][],[][] 
+ []
+
+
+Overfull \hbox (53.74658pt too wide) in paragraph at lines 1485--1485
+[][]\OT1/cmtt/m/n/10 main[][]=[][]"Aproximacion a una Normal\OMS/cmsy/m/n/10 n
+\OT1/cmtt/m/n/10 n"[][],[] []col[][]=[][]"lightyellow"[][],[][]lty[][]=[][]1[][
+],[][]border[][]=[][]"purple"[][],[][] 
+ []
+
+
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 1490--1490
+[][]\OT1/cmtt/m/n/10 curve[][]([][]dnorm[][](x,[] []mean[][]=[][]mean[][](X),[]
+ []sd[][]=[][]sd[][](X)),[] []col[] []=[] []2[][],[] []lty[] []=[] []2[][],[][]
+lwd[] []=[] []2[][],[] []add[] []=[] []TRUE[][])[][] 
+ []
+
+[33 <./figure/unnamed-chunk-1-13.pdf>]
+<figure/unnamed-chunk-1-14.pdf, id=203, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-14.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-14.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-14.pdf used on input line 1493.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1493--1494
+[][] 
+ []
+
+
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 1496--1496
+[][]\OT1/cmtt/m/n/10 h[] []<-[] []hist[][](X,[] []breaks[][]=[][]c[][](limites[
+[][]1[][]][][]-[][]a, limites, limites[k[][]+[][]1[][]][][]+[][]a),[] []freq[] 
+[]=[] []TRUE[][],[][] 
+ []
+
+
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 1498--1499
+[][]\OT1/cmtt/m/n/10 main[] []=[] []"Polgono de frecuencias"[][],[][]col[][]=
+[][]"lightyellow"[][],[] []lty[][]=[][]1[][],[] []border[][]=[][]"purple"[][],[
+] []xlab[][]=[][]"[] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 1499--1499
+[]\OT1/cmtt/m/n/10 Notas de aspirantes"[][],[] []ylab[][]=[][]"Frecuencia (fi)"
+[][],[] []axes[][]=[][]TRUE[][],[] []labels[][]=[][]FALSE[][])[][] 
+ []
+
+[34 <./figure/unnamed-chunk-1-14.pdf>]
+<figure/unnamed-chunk-1-15.pdf, id=213, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-15.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-15.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-15.pdf used on input line 1517.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1517--1518
+[][] 
+ []
+
+
+Overfull \hbox (50.48268pt too wide) in paragraph at lines 1519--1519
+[][]\OT1/cmtt/m/it/10 #Crea la Ojiva ascendente o polgono de frecuencias acum
+uladas ascendentes [][] 
+ []
+
+
+Overfull \hbox (53.99652pt too wide) in paragraph at lines 1526--1526
+[][]\OT1/cmtt/m/n/10 plot[][](limites, Fia,[] []type[] []=[] []"p"[][],[] []pch
+[][]=[][]1[][],[] []col[] []=[] []"blue"[][],[] []main[][]=[][]"Ojiva ascendent
+e"[][],[][] 
+ []
+
+<figure/unnamed-chunk-1-16.pdf, id=214, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-16.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-16.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-16.pdf used on input line 1532.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1532--1533
+[][] 
+ []
+
+[35 <./figure/unnamed-chunk-1-15.pdf>]
+Overfull \hbox (3.2331pt too wide) in paragraph at lines 1534--1534
+[][]\OT1/cmtt/m/it/10 #Calcula los principales estadsticos descriptivos de la
+ variable [][] 
+ []
+
+
+Overfull \hbox (13.733pt too wide) in paragraph at lines 1535--1535
+[][]\OT1/cmtt/m/it/10 # Calcula la moda, ya que el R no proporciona una funcio
+n para eso. [][] 
+ []
+
+
+Overfull \hbox (90.7462pt too wide) in paragraph at lines 1538--1538
+[][]\OT1/cmtt/m/n/10 if[][](i[] []>[] []1[][]) moda[] []<-[] []limites[i][][]+[
+][]((fi[i][][]-[][]fi[i[][]-[][]1[][]])[][]/[][]((fi[i][][]-[][]fi[i[][]-[][]1[
+][]])[][]+[][](fi[i][][]-[][]fi[i[][]+[][]1[][]]) ))[][]*[][]a[][] 
+ []
+
+
+Overfull \hbox (48.74657pt too wide) in paragraph at lines 1562--1562
+[][]\OT1/cmtt/m/n/10 data[][]=[][]parent.frame[][](),[] []plot[][]=[][]TRUE[][]
+,[] []border[][]=[][]"red"[][],[] []col[][]=[][]"yellow"[][],[][]horizontal[][]
+=[][]TRUE[][])[][] 
+ []
+
+[36 <./figure/unnamed-chunk-1-16.pdf>]
+<figure/unnamed-chunk-1-17.pdf, id=233, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-17.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-17.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-17.pdf used on input line 1565.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1565--1566
+[][] 
+ []
+
+
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 1604--1604
+[]\OT1/cmtt/m/n/10 ##  [4] "package:stats"     "package:graphics"  "package:grD
+evices"[] 
+ []
+
+
+Overfull \hbox (116.99597pt too wide) in paragraph at lines 1643--1643
+[][]\OT1/cmtt/m/n/10 barplot[][]([][]t[][](tablaCont),[] []main[][]=[][]"Grafi
+co de barras (Estado, Ocupacion)"[][],[] []xlab[][]=[][]"Estado civil"[][],[][
+] 
+ []
+
+[37 <./figure/unnamed-chunk-1-17.pdf>]
+<figure/unnamed-chunk-1-18.pdf, id=244, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-18.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-18.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-18.pdf used on input line 1647.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1647--1648
+[][] 
+ []
+
+[38]
+Overfull \hbox (116.99597pt too wide) in paragraph at lines 1650--1650
+[][]\OT1/cmtt/m/n/10 barplot[][]([][]t[][](tablaCont),[] []main[][]=[][]"Grafi
+co de barras (Estado, Ocupacion)"[][],[] []xlab[][]=[][]"Estado civil"[][],[][
+] 
+ []
+
+<figure/unnamed-chunk-1-19.pdf, id=248, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-19.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-19.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-19.pdf used on input line 1654.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1654--1655
+[][] 
+ []
+
+[39 <./figure/unnamed-chunk-1-18.pdf>]
+Overfull \hbox (66.23254pt too wide) in paragraph at lines 1656--1656
+[][]\OT1/cmtt/m/it/10 #Al usar beside =FALSE se obtiene el mismo grafico de la
+ instruccion anterior.[][] 
+ []
+
+
+Overfull \hbox (27.49681pt too wide) in paragraph at lines 1658--1658
+[][]\OT1/cmtt/m/n/10 xlab[][]=[][]"Ocupacion\OMS/cmsy/m/n/10 n\OT1/cmtt/m/n/10
+ n"[][],[] []ylab[][]=[][]"Estado civil"[][],[] []beside[][]=[][]TRUE[][],[] []
+legend.text[][]=[][]TRUE[][])[][] 
+ []
+
+<figure/unnamed-chunk-1-20.pdf, id=258, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-20.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-20.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-20.pdf used on input line 1661.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1661--1662
+[][] 
+ []
+
+[40 <./figure/unnamed-chunk-1-19.pdf>]
+Overfull \hbox (113.48213pt too wide) in paragraph at lines 1673--1673
+[][]\OT1/cmtt/m/it/10 # Proporciones basadas en el total de la muestra, la suma
+ de filas y columnas suman 1. [][] 
+ []
+
+
+Overfull \hbox (127.24594pt too wide) in paragraph at lines 1684--1684
+[][]\OT1/cmtt/m/n/10 barplot[][]([][]t[][](propTotal),[] []main[][]=[][]"Grafi
+co de barras (Estado, Ocupacion)"[][],[] []xlab[][]=[][]"Estado civil\OMS/cmsy
+/m/n/10 n\OT1/cmtt/m/n/10 n"[][],[][] 
+ []
+
+<figure/unnamed-chunk-1-21.pdf, id=268, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-21.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-21.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-21.pdf used on input line 1688.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1688--1689
+[][] 
+ []
+
+[41 <./figure/unnamed-chunk-1-20.pdf>]
+Overfull \hbox (121.99599pt too wide) in paragraph at lines 1702--1702
+[][]\OT1/cmtt/m/n/10 barplot[][]([][]t[][](propFila),[] []main[][]=[][]"Grafic
+o de barras (Estado, Ocupacion)"[][],[] []xlab[][]=[][]"Estado civil\OMS/cmsy/
+m/n/10 n\OT1/cmtt/m/n/10 n"[][],[][] 
+ []
+
+<figure/unnamed-chunk-1-22.pdf, id=278, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-22.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-22.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-22.pdf used on input line 1706.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1706--1707
+[][] 
+ []
+
+[42 <./figure/unnamed-chunk-1-21.pdf>]
+Overfull \hbox (18.98296pt too wide) in paragraph at lines 1708--1708
+[][]\OT1/cmtt/m/it/10 # Proporciones basadas en el total por columna, cada colu
+mna suma 1. [][] 
+ []
+
+
+Overfull \hbox (27.49681pt too wide) in paragraph at lines 1721--1721
+[][]\OT1/cmtt/m/n/10 xlab[][]=[][]"Ocupacion\OMS/cmsy/m/n/10 n\OT1/cmtt/m/n/10
+ n"[][],[] []ylab[][]=[][]"Estado civil"[][],[] []beside[][]=[][]TRUE[][],[] []
+legend.text[][]=[][]TRUE[][])[][] 
+ []
+
+<figure/unnamed-chunk-1-23.pdf, id=288, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-1-23.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-1-23.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-1-23.pdf used on input line 1724.
+
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1724--1725
+[][] 
+ []
+
+[43 <./figure/unnamed-chunk-1-22.pdf>]
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 1731--1731
+[]\OT1/cmtt/m/n/10 ## Warning in chisq.test(tablaCont): Chi-squared approximati
+on may
+ []
+
+[44 <./figure/unnamed-chunk-1-23.pdf>] (Parte1.aux) ) 
+Here is how much of TeX's memory you used:
+ 2335 strings out of 493673
+ 31427 string characters out of 3141532
+ 226613 words of memory out of 3000000
+ 5641 multiletter control sequences out of 15000+200000
+ 8920 words of font info for 35 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 27i,7n,39p,588b,285s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Parte1.pdf (44 pages, 245251 bytes).
+PDF statistics:
+ 330 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+

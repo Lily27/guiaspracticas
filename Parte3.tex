@@ -1,0 +1,686 @@
+\documentclass[10pt,a4paper]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Lilian Martínez}
+\title{Parte III Guias Practicas de R}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\maketitle
+\newpage
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#UNIDAD 5: Práctica 21 - Prueba de hipótesis estadísticas y prueba de normalidad.}
+
+\hlcom{#  PRUEBAS DE NORMALIDAD DE UNA MUESTRA}
+\hlcom{#A continuación procedemos a contrastar normalidad para los datos del IMC en }
+\hlcom{#los grupos de Control y de Pacientes}
+
+\hlcom{# se digitan los datos del grupo de control }
+\hlstd{IMC_Control} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{23.6}\hlstd{,} \hlnum{22.7}\hlstd{,} \hlnum{21.2}\hlstd{,} \hlnum{21.7}\hlstd{,} \hlnum{20.7}\hlstd{,} \hlnum{22.0}\hlstd{,} \hlnum{21.8}\hlstd{,} \hlnum{24.2}\hlstd{,} \hlnum{20.1}\hlstd{,} \hlnum{21.3}\hlstd{,} \hlnum{20.5}\hlstd{,} \hlnum{21.1}\hlstd{,} \hlnum{21.4}\hlstd{,} \hlnum{22.2}\hlstd{,} \hlnum{22.6}\hlstd{,} \hlnum{20.4}\hlstd{,} \hlnum{23.3}\hlstd{,} \hlnum{24.8}\hlstd{)}
+\hlkwd{par}\hlstd{(}\hlkwc{mfrow}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{))}
+
+\hlcom{# se genera el histograma de la variables de interés }
+\hlkwd{hist}\hlstd{(IMC_Control,}\hlkwc{main}\hlstd{=}\hlstr{"A"}\hlstd{,}\hlkwc{xlab}\hlstd{=}\hlstr{"IMC (kg/m2)"}\hlstd{,}\hlkwc{ylab}\hlstd{=}\hlstr{"Frecuencia"}\hlstd{)}
+
+\hlcom{# se genera el diagrama de caja de la variable de interés y se muestra en la misma ventana }
+\hlkwd{boxplot}\hlstd{(IMC_Control,}\hlkwc{main}\hlstd{=}\hlstr{"B"}\hlstd{,} \hlkwc{lab}\hlstd{=}\hlstr{"IMC (kg/m2)"}\hlstd{,}\hlkwc{ylim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{20}\hlstd{,}\hlnum{25}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-1} 
+\begin{kframe}\begin{alltt}
+\hlcom{# los commandos para contrastar normalidad son los siguientes }
+\hlstd{sw} \hlkwb{<-} \hlkwd{shapiro.test}\hlstd{(IMC_Control)}
+\hlstd{sw}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  IMC_Control
+## W = 0.95321, p-value = 0.4776
+\end{verbatim}
+\begin{alltt}
+\hlcom{#La prueba de Kolmogorov}
+\hlstd{ks} \hlkwb{<-} \hlkwd{ks.test}\hlstd{(IMC_Control,}\hlstr{"pnorm"}\hlstd{,}\hlkwc{mean}\hlstd{=}\hlkwd{mean}\hlstd{(IMC_Control),}\hlkwc{sd}\hlstd{=}\hlkwd{sd}\hlstd{(IMC_Control))}
+\hlstd{ks}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	One-sample Kolmogorov-Smirnov test
+## 
+## data:  IMC_Control
+## D = 0.11172, p-value = 0.9595
+## alternative hypothesis: two-sided
+\end{verbatim}
+\begin{alltt}
+\hlcom{# luego se digitan los datos para pacientes y se ejecutan las mismas instrucciones }
+\hlstd{IMC_Pacientes} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{25.6}\hlstd{,} \hlnum{22.7}\hlstd{,} \hlnum{25.9}\hlstd{,} \hlnum{24.3}\hlstd{,} \hlnum{25.2}\hlstd{,} \hlnum{29.6}\hlstd{,} \hlnum{21.3}\hlstd{,} \hlnum{25.5}\hlstd{,} \hlnum{27.4}\hlstd{,} \hlnum{22.3}\hlstd{,} \hlnum{24.4}\hlstd{,} \hlnum{23.7}\hlstd{,} \hlnum{20.6}\hlstd{,} \hlnum{22.8}\hlstd{)}
+
+\hlcom{# se genera el histograma de la variables de interés }
+\hlkwd{hist}\hlstd{(IMC_Pacientes,}\hlkwc{main}\hlstd{=}\hlstr{"A"}\hlstd{,}\hlkwc{xlab}\hlstd{=}\hlstr{"IMC (kg/m2)"}\hlstd{,}\hlkwc{ylab}\hlstd{=}\hlstr{"Frecuencia"}\hlstd{)}
+
+\hlcom{# se genera el diagrama de caja de la variable de interés y se muestra en la misma ventana }
+\hlkwd{boxplot}\hlstd{(IMC_Pacientes,}\hlkwc{main}\hlstd{=}\hlstr{"B"}\hlstd{,} \hlkwc{lab}\hlstd{=}\hlstr{"IMC (kg/m2)"}\hlstd{,}\hlkwc{ylim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{20}\hlstd{,}\hlnum{25}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-2} 
+\begin{kframe}\begin{alltt}
+\hlcom{# los commandos para contrastar normalidad son los siguientes }
+\hlstd{sw} \hlkwb{<-} \hlkwd{shapiro.test}\hlstd{(IMC_Pacientes)}
+\hlstd{sw}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  IMC_Pacientes
+## W = 0.97437, p-value = 0.929
+\end{verbatim}
+\begin{alltt}
+\hlcom{#La prueba de Kolmogorov}
+\hlstd{ks} \hlkwb{<-} \hlkwd{ks.test}\hlstd{(IMC_Pacientes,}\hlstr{"pnorm"}\hlstd{,}\hlkwc{mean}\hlstd{=}\hlkwd{mean}\hlstd{(IMC_Pacientes),}\hlkwc{sd}\hlstd{=}\hlkwd{sd}\hlstd{(IMC_Pacientes))}
+\hlstd{ks}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	One-sample Kolmogorov-Smirnov test
+## 
+## data:  IMC_Pacientes
+## D = 0.12172, p-value = 0.9695
+## alternative hypothesis: two-sided
+\end{verbatim}
+\begin{alltt}
+\hlcom{#UNIDAD 5: Práctica 22 - Prueba de hipótesis estadísticas. Una población}
+
+\hlcom{#1.PRUEBA DE HIPÓTESIS ACERCA DEL VALOR DE UNA PROPORCIÓN}
+
+\hlcom{#Una muestra de 100 empleados que habían estado encontacto con sangre o derivados de ésta, fue }
+\hlcom{#examinada por presentar evidencia serológica de hepatitis B. Se encontró que 23 de ellos presentaron }
+\hlcom{#reacción positiva. ¿Puede concluirse a partir de estos datos que la proporción de los positivos es }
+\hlcom{#mayor que 0.15? Tome un nivel de significancia del 5%.}
+
+\hlcom{# Construyendo una función en R para realizar la prueba de hipótesis. }
+\hlstd{Prueba.prop} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{,} \hlkwc{n}\hlstd{,} \hlkwc{po}\hlstd{,} \hlkwc{H1}\hlstd{=}\hlstr{"Distinto"}\hlstd{,} \hlkwc{alfa}\hlstd{=}\hlnum{0.05}\hlstd{)}
+\hlstd{\{}
+  \hlstd{op} \hlkwb{<-} \hlkwd{options}\hlstd{();}
+  \hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{2}\hlstd{)}
+  \hlstd{pe}\hlkwb{=}\hlstd{x}\hlopt{/}\hlstd{n} \hlcom{#calcula la proporción muestral }
+  \hlstd{SE} \hlkwb{<-} \hlkwd{sqrt}\hlstd{((po} \hlopt{*} \hlstd{(}\hlnum{1}\hlopt{-}\hlstd{po))}\hlopt{/}\hlstd{n)} \hlcom{# calcula la varianza de la proporción muestral }
+  \hlstd{Zo} \hlkwb{<-} \hlstd{(pe}\hlopt{-}\hlstd{po)}\hlopt{/}\hlstd{SE} \hlcom{#calcula el estadístico de prueba }
+  \hlcom{# Si lower.tail = TRUE (por defecto), P[X <= x], en otro caso P[X > x] }
+  \hlkwa{if} \hlstd{(H1} \hlopt{==} \hlstr{"Menor"} \hlopt{||} \hlstd{H1} \hlopt{==} \hlstr{"Mayor"}\hlstd{)}
+  \hlstd{\{}
+    \hlstd{Z} \hlkwb{<-} \hlkwd{qnorm}\hlstd{(alfa,} \hlkwc{mean}\hlstd{=}\hlnum{0}\hlstd{,} \hlkwc{sd}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{lower.tail} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{log.p} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+    \hlcom{#calcula los valores críticos de la distribución N(0;1) en el caso de una prueba unilateral }
+    \hlstd{valores} \hlkwb{<-} \hlkwd{rbind}\hlstd{(}\hlkwc{Prop_Estimada}\hlstd{=pe,} \hlkwc{Prop_Hipotetica}\hlstd{=po,} \hlkwc{Z_critico}\hlstd{=Z,}\hlkwc{Estadistico}\hlstd{= Zo)}
+  \hlstd{\}}
+  \hlkwa{else}
+  \hlstd{\{}
+    \hlstd{Z} \hlkwb{<-} \hlkwd{qnorm}\hlstd{(alfa}\hlopt{/}\hlnum{2}\hlstd{,} \hlkwc{mean}\hlstd{=}\hlnum{0}\hlstd{,} \hlkwc{sd}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{lower.tail} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{log.p} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+    \hlcom{#calcula los valores críticos de la distribuciónN(0;1) en el caso de una prueba bilateral }
+    \hlstd{valores} \hlkwb{<-} \hlkwd{rbind}\hlstd{(}\hlkwc{Prop_Estimada}\hlstd{=pe,} \hlkwc{Prop_Hipotetica} \hlstd{=po,} \hlkwc{Z_critico_menor}\hlstd{=}\hlopt{-}\hlstd{Z,}
+                     \hlkwc{Z_critico_mayor} \hlstd{=Z, Zo)}
+  \hlstd{\}} \hlcom{# esto es para encontrar los valores críticos }
+  \hlkwa{if} \hlstd{(H1} \hlopt{==} \hlstr{"Menor"}\hlstd{)}
+  \hlstd{\{}
+    \hlkwa{if} \hlstd{(Zo} \hlopt{< -}\hlstd{Z) decision} \hlkwb{<-} \hlkwd{paste}\hlstd{(}\hlstr{"Como Estadistico <"}\hlstd{,} \hlkwd{round}\hlstd{(}\hlopt{-}\hlstd{Z,}\hlnum{3}\hlstd{),} \hlstr{", entonces rechazamos Ho"}\hlstd{)}
+    \hlkwa{else} \hlstd{decision} \hlkwb{<-} \hlkwd{paste}\hlstd{(}\hlstr{"Como Estadistico>="}\hlstd{,} \hlkwd{round}\hlstd{(}\hlopt{-}\hlstd{Z,}\hlnum{3}\hlstd{),} \hlstr{", entonces aceptamos Ho"}\hlstd{)}
+  \hlstd{\}}
+  \hlkwa{if} \hlstd{(H1} \hlopt{==} \hlstr{"Mayor"}\hlstd{)}
+  \hlstd{\{}
+    \hlkwa{if} \hlstd{(Zo} \hlopt{>} \hlstd{Z) decision} \hlkwb{<-} \hlkwd{paste}\hlstd{(}\hlstr{"Como Estadistico >"}\hlstd{,} \hlkwd{round}\hlstd{(Z,}\hlnum{3}\hlstd{),} \hlstr{", entonces rechazamos Ho"}\hlstd{)}
+    \hlkwa{else} \hlstd{decision} \hlkwb{<-} \hlkwd{paste}\hlstd{(}\hlstr{"Como Estadistico <="}\hlstd{,} \hlkwd{round}\hlstd{(Z,}\hlnum{3}\hlstd{),} \hlstr{", entonces aceptamos Ho"}\hlstd{)}
+  \hlstd{\}}
+  \hlkwa{if} \hlstd{(H1} \hlopt{==} \hlstr{"Distinto"}\hlstd{)}
+  \hlstd{\{}
+    \hlkwa{if} \hlstd{(Zo} \hlopt{< -}\hlstd{Z) decision} \hlkwb{<-} \hlkwd{paste}\hlstd{(}\hlstr{"Como Estadistico <"}\hlstd{,} \hlkwd{round}\hlstd{(}\hlopt{-}\hlstd{Z,}\hlnum{3}\hlstd{),} \hlstr{", entonces rechazamos Ho"}\hlstd{)}
+    \hlkwa{if} \hlstd{(Zo} \hlopt{>} \hlstd{Z) decision} \hlkwb{<-} \hlkwd{paste}\hlstd{(}\hlstr{"Como Estadistico >"}\hlstd{,} \hlkwd{round}\hlstd{(Z,}\hlnum{3}\hlstd{),} \hlstr{", entonces rechazamos Ho"}\hlstd{)}
+    \hlkwa{else} \hlstd{decision} \hlkwb{<-} \hlkwd{paste}\hlstd{(}\hlstr{"Como Estadistico pertenece a ["}\hlstd{,} \hlkwd{round}\hlstd{(}\hlopt{-}\hlstd{Z,}\hlnum{3}\hlstd{),} \hlstr{","}\hlstd{,} \hlkwd{round}\hlstd{(Z,}\hlnum{3}\hlstd{),} \hlstr{"], 
+                           entonces aceptamos Ho"}\hlstd{)}
+  \hlstd{\}} \hlcom{# esto para llevar a cabo los contraste de hipótesis }
+  \hlkwd{print}\hlstd{(valores)}
+  \hlkwd{print}\hlstd{(decision)}
+  \hlkwd{options}\hlstd{(op)} \hlcom{# restablece todas las opciones iniciales }
+\hlstd{\}}
+
+\hlkwd{Prueba.prop}\hlstd{(}\hlnum{23}\hlstd{,} \hlnum{100}\hlstd{,} \hlnum{0.15}\hlstd{,} \hlkwc{H1}\hlstd{=}\hlstr{"Menor"}\hlstd{,} \hlkwc{alfa}\hlstd{=}\hlnum{0.05}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##                 [,1]
+## Prop_Estimada   0.23
+## Prop_Hipotetica 0.15
+## Z_critico       1.64
+## Estadistico     2.24
+## [1] "Como Estadistico>= -1.645 , entonces aceptamos Ho"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{Prueba.prop}\hlstd{(}\hlnum{23}\hlstd{,} \hlnum{100}\hlstd{,} \hlnum{0.15}\hlstd{,} \hlkwc{H1}\hlstd{=}\hlstr{"Mayor"}\hlstd{,} \hlkwc{alfa}\hlstd{=}\hlnum{0.05}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##                 [,1]
+## Prop_Estimada   0.23
+## Prop_Hipotetica 0.15
+## Z_critico       1.64
+## Estadistico     2.24
+## [1] "Como Estadistico > 1.645 , entonces rechazamos Ho"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{Prueba.prop}\hlstd{(}\hlnum{23}\hlstd{,} \hlnum{100}\hlstd{,} \hlnum{0.15}\hlstd{,} \hlkwc{H1}\hlstd{=}\hlstr{"Distinto"}\hlstd{,} \hlkwc{alfa}\hlstd{=}\hlnum{0.05}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##                  [,1]
+## Prop_Estimada    0.23
+## Prop_Hipotetica  0.15
+## Z_critico_menor -1.96
+## Z_critico_mayor  1.96
+## Zo               2.24
+## [1] "Como Estadistico > 1.96 , entonces rechazamos Ho"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{prop.test}\hlstd{(}\hlkwc{x}\hlstd{=}\hlnum{23}\hlstd{,} \hlkwc{n}\hlstd{=}\hlnum{100}\hlstd{,} \hlkwc{p}\hlstd{=}\hlnum{0.15}\hlstd{,} \hlkwc{alternative}\hlstd{=}\hlstr{"less"}\hlstd{,} \hlkwc{conf.level}\hlstd{=}\hlnum{0.95}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	1-sample proportions test with continuity correction
+## 
+## data:  23 out of 100, null probability 0.15
+## X-squared = 4.4118, df = 1, p-value = 0.9822
+## alternative hypothesis: true p is less than 0.15
+## 95 percent confidence interval:
+##  0.0000000 0.3111509
+## sample estimates:
+##    p 
+## 0.23
+\end{verbatim}
+\begin{alltt}
+\hlkwd{prop.test}\hlstd{(}\hlkwc{x}\hlstd{=}\hlnum{23}\hlstd{,} \hlkwc{n}\hlstd{=}\hlnum{100}\hlstd{,} \hlkwc{p}\hlstd{=}\hlnum{0.15}\hlstd{,} \hlkwc{alternative}\hlstd{=}\hlstr{"greater"}\hlstd{,} \hlkwc{conf.level}\hlstd{=}\hlnum{0.95}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	1-sample proportions test with continuity correction
+## 
+## data:  23 out of 100, null probability 0.15
+## X-squared = 4.4118, df = 1, p-value = 0.01785
+## alternative hypothesis: true p is greater than 0.15
+## 95 percent confidence interval:
+##  0.1640827 1.0000000
+## sample estimates:
+##    p 
+## 0.23
+\end{verbatim}
+\begin{alltt}
+\hlkwd{prop.test}\hlstd{(}\hlkwc{x}\hlstd{=}\hlnum{23}\hlstd{,} \hlkwc{n}\hlstd{=}\hlnum{100}\hlstd{,} \hlkwc{p}\hlstd{=}\hlnum{0.15}\hlstd{,} \hlkwc{alternative}\hlstd{=}\hlstr{"two.sided"}\hlstd{,} \hlkwc{conf.level}\hlstd{=}\hlnum{0.95}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	1-sample proportions test with continuity correction
+## 
+## data:  23 out of 100, null probability 0.15
+## X-squared = 4.4118, df = 1, p-value = 0.03569
+## alternative hypothesis: true p is not equal to 0.15
+## 95 percent confidence interval:
+##  0.154215 0.326941
+## sample estimates:
+##    p 
+## 0.23
+\end{verbatim}
+\begin{alltt}
+\hlcom{#PRUEBA DE HIPÓTESIS SOBRE UNA MEDIA, VARIANZA DESCONOCIDA. }
+\hlcom{#Los siguientes datos corresponden a la longitud medida en centímetros de 18 pedazos de cable }
+\hlcom{#sobrantes en cada rollo utilizado:  9.0 3.41 6.13  1.99  6.92  3.12  7.86  2.01  }
+\hlcom{#5.98 4.15 6.87 1.97  4.01  3.56  8.04  3.24  5.05  7.37}
+
+\hlcom{#Una solución podría ser la siguiente: }
+\hlstd{Datos} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{9.0}\hlstd{,}\hlnum{3.41}\hlstd{,}\hlnum{6.13}\hlstd{,}\hlnum{1.99}\hlstd{,}\hlnum{6.92}\hlstd{,}\hlnum{3.12}\hlstd{,}\hlnum{7.86}\hlstd{,}\hlnum{2.01}\hlstd{,}\hlnum{5.98}\hlstd{,}\hlnum{4.15}\hlstd{,}\hlnum{6.87}\hlstd{,}\hlnum{1.97}\hlstd{,}\hlnum{4.01}\hlstd{,}\hlnum{3.56}\hlstd{,}\hlnum{8.04}\hlstd{,}\hlnum{3.24}\hlstd{,}\hlnum{5.05}\hlstd{,}\hlnum{7.37}\hlstd{)}
+
+\hlcom{# digitamos las observaciones }
+\hlkwd{t.test}\hlstd{(Datos,}\hlkwc{mu}\hlstd{=}\hlnum{4}\hlstd{,}\hlkwc{alternative}\hlstd{=}\hlstr{"greater"}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	One Sample t-test
+## 
+## data:  Datos
+## t = 1.9291, df = 17, p-value = 0.03529
+## alternative hypothesis: true mean is greater than 4
+## 95 percent confidence interval:
+##  4.101959      Inf
+## sample estimates:
+## mean of x 
+##  5.037778
+\end{verbatim}
+\begin{alltt}
+\hlcom{#UNIDAD 5: Práctica 23 - Prueba de hipótesis estadísticas. Dos poblaciones. }
+
+\hlcom{#PRUEBAS SOBRE DOS MUESTRAS INDEPENDIENTES}
+\hlcom{#Volviendo al problema de la importancia del estadonutricional (introducido en la practica 21) en }
+\hlcom{#pacientes diabéticos (pacientes) y saludables (grupo control) con complicaciones. Los datos se }
+\hlcom{#muestran en los siguientes cuadros.}
+
+\hlcom{#Las hipótesis a contrastar son:}
+\hlcom{#H0:??1=??2}
+\hlcom{#H1:??1?????2}
+
+\hlcom{#En lenguaje R está implementada la prueba t, el siguiente código ejemplo la calcula para las dos }
+\hlcom{#muestras:}
+
+\hlcom{# Primero digitamos las observaciones correspondientes a ambas muestras }
+\hlstd{IMC_Control} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{23.6}\hlstd{,} \hlnum{22.7}\hlstd{,} \hlnum{21.2}\hlstd{,} \hlnum{21.7}\hlstd{,} \hlnum{20.7}\hlstd{,} \hlnum{22.0}\hlstd{,} \hlnum{21.8}\hlstd{,} \hlnum{24.2}\hlstd{,} \hlnum{20.1}\hlstd{,} \hlnum{21.3}\hlstd{,} \hlnum{20.5}\hlstd{,} \hlnum{21.1}\hlstd{,} \hlnum{21.4}\hlstd{,} \hlnum{22.2}\hlstd{,} \hlnum{22.6}\hlstd{,}
+                 \hlnum{20.4}\hlstd{,} \hlnum{23.3}\hlstd{,} \hlnum{24.8}\hlstd{)}
+\hlstd{IMC_Pacientes} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{25.6}\hlstd{,} \hlnum{22.7}\hlstd{,} \hlnum{25.9}\hlstd{,} \hlnum{24.3}\hlstd{,} \hlnum{25.2}\hlstd{,} \hlnum{29.6}\hlstd{,} \hlnum{21.3}\hlstd{,} \hlnum{25.5}\hlstd{,} \hlnum{27.4}\hlstd{,} \hlnum{22.3}\hlstd{,} \hlnum{24.4}\hlstd{,} \hlnum{23.7}\hlstd{,} \hlnum{20.6}\hlstd{,} \hlnum{22.8}\hlstd{)}
+
+\hlcom{# Realizamos el contraste de igualdad de medias }
+\hlkwd{t.test}\hlstd{(IMC_Control, IMC_Pacientes,} \hlkwc{var.equal}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{mu}\hlstd{=}\hlnum{0}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Two Sample t-test
+## 
+## data:  IMC_Control and IMC_Pacientes
+## t = -3.5785, df = 30, p-value = 0.001198
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.770935 -1.030653
+## sample estimates:
+## mean of x mean of y 
+##  21.97778  24.37857
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Se concluye entonces que existe diferencia significativa en el IMC para ambos grupos de pacientes, }
+\hlcom{#pues el p valor de la prueba resulta ser muy pequeño.}
+
+\hlcom{#PRUEBAS SOBRE DOS MUESTRAS PAREADAS }
+\hlcom{#Se cuenta con los datos simulados (con fines didácticos), de las observaciones de la presión }
+\hlcom{#arterial sistólica (PAS) en un grupo de 10 pacientes antes y después de un tratamiento consistente en }
+\hlcom{#una dieta especial de bajosodio y medicamentos.}
+
+\hlcom{#Las hipótesis a contrastar son:}
+\hlcom{#H0:??1=??2}
+\hlcom{#H1:??1?????2}
+
+\hlcom{#El código en lenguaje R para calcular la prueba t para dos muestras apareadas es el siguiente: }
+\hlstd{PAS.antes} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{160}\hlstd{,}\hlnum{155}\hlstd{,}\hlnum{180}\hlstd{,}\hlnum{140}\hlstd{,}\hlnum{150}\hlstd{,}\hlnum{130}\hlstd{,}\hlnum{190}\hlstd{,}\hlnum{192}\hlstd{,}\hlnum{170}\hlstd{,}\hlnum{165}\hlstd{)}
+\hlstd{PAS.despues} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{139}\hlstd{,}\hlnum{135}\hlstd{,}\hlnum{175}\hlstd{,}\hlnum{120}\hlstd{,}\hlnum{145}\hlstd{,}\hlnum{140}\hlstd{,}\hlnum{170}\hlstd{,}\hlnum{180}\hlstd{,}\hlnum{149}\hlstd{,}\hlnum{146}\hlstd{)}
+
+\hlcom{#verificando la normalidad }
+\hlkwd{shapiro.test}\hlstd{(PAS.antes)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  PAS.antes
+## W = 0.97021, p-value = 0.8928
+\end{verbatim}
+\begin{alltt}
+\hlkwd{shapiro.test}\hlstd{(PAS.despues)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  PAS.despues
+## W = 0.92548, p-value = 0.4049
+\end{verbatim}
+\begin{alltt}
+\hlkwd{ks.test}\hlstd{(PAS.antes,}\hlstr{"pnorm"}\hlstd{,}\hlkwc{mean}\hlstd{=}\hlkwd{mean}\hlstd{(PAS.antes),}\hlkwc{sd}\hlstd{=}\hlkwd{sd}\hlstd{(PAS.antes))}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	One-sample Kolmogorov-Smirnov test
+## 
+## data:  PAS.antes
+## D = 0.10476, p-value = 0.9992
+## alternative hypothesis: two-sided
+\end{verbatim}
+\begin{alltt}
+\hlkwd{ks.test}\hlstd{(PAS.despues,}\hlstr{"pnorm"}\hlstd{,}\hlkwc{mean}\hlstd{=}\hlkwd{mean}\hlstd{(PAS.despues),}\hlkwc{sd}\hlstd{=}\hlkwd{sd}\hlstd{(PAS.despues))}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	One-sample Kolmogorov-Smirnov test
+## 
+## data:  PAS.despues
+## D = 0.21871, p-value = 0.6495
+## alternative hypothesis: two-sided
+\end{verbatim}
+\begin{alltt}
+\hlcom{#realizando la prueba t}
+\hlkwd{t.test}\hlstd{(PAS.antes, PAS.despues,} \hlkwc{paired}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{mu}\hlstd{=}\hlnum{0}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Paired t-test
+## 
+## data:  PAS.antes and PAS.despues
+## t = 4.0552, df = 9, p-value = 0.002862
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   5.880722 20.719278
+## sample estimates:
+## mean of the differences 
+##                    13.3
+\end{verbatim}
+\begin{alltt}
+\hlcom{#El valor del estadístico t es 4.0552, con gl = 9, P = 0.0029. Con estos resultados se rechaza  0 Hy por lo }
+\hlcom{#tanto se concluye que la PAS antes y después del tratamiento es distinta, es decir, el tratamiento ha }
+\hlcom{#sido efectivo.}
+
+
+\hlcom{#PRUEBA DE HIPÓTESIS ACERCA DE LA VARIANZA DE DOS POBLACIONES }
+\hlcom{#El director de una sucursal de una compañía deseguros espera que dos de sus mejores agentes }
+\hlcom{#consigan formalizar por término medio el mismo número de pólizas mensuales.}
+\hlcom{#Los datos indican las pólizas formalizadas en los últimos 5 meses por ambos agentes}
+
+
+\hlcom{#introduciendo los datos }
+\hlstd{Agente_A} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{12}\hlstd{,} \hlnum{11}\hlstd{,} \hlnum{18}\hlstd{,} \hlnum{16}\hlstd{,} \hlnum{13}\hlstd{)}
+\hlstd{Agente_B} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{14}\hlstd{,} \hlnum{18}\hlstd{,} \hlnum{18}\hlstd{,} \hlnum{17}\hlstd{,} \hlnum{16}\hlstd{)}
+\hlcom{# realizando el contraste de igualdad de varianzas }
+\hlkwd{var.test}\hlstd{(Agente_A, Agente_B)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	F test to compare two variances
+## 
+## data:  Agente_A and Agente_B
+## F = 3.0357, num df = 4, denom df = 4, p-value = 0.3075
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##   0.3160711 29.1566086
+## sample estimates:
+## ratio of variances 
+##           3.035714
+\end{verbatim}
+\begin{alltt}
+\hlcom{#UNIDAD 6: Práctica 24 - Análisis de Varianza (ANOVA). }
+\hlcom{#EJEMPLO 1. }
+\hlcom{#El Ministerio de Educación está interesado en implementar tres programas de estudio; con el objetivo }
+\hlcom{#de medir la habilidad de lectura en los alumnos. Para ello, se eligen alumnos del sexto grado de un }
+\hlcom{#Colegio de San Salvador, 27 alumnos fueron asignados al azar, a cada uno de los tres grupos. Se }
+\hlcom{#utilizó un programa diferente en cadagrupo, se llevó a cabo un examen al inicio y al final de la }
+\hlcom{#implementación de los programas, los valores obtenidos representan la diferencia que hay entre la }
+\hlcom{#nota del examen que se hizo al inicio y al finalde la implementación del programa.}
+
+\hlcom{#Contraste a un nivel de significancia del 5% de que los tres métodos de lectura producen el mismo }
+\hlcom{#efecto en la habilidad de lectura de los alumnos. }
+
+\hlcom{# Se digitan las observaciones }
+\hlstd{notas} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{20}\hlstd{,}\hlnum{18}\hlstd{,}\hlnum{18}\hlstd{,}\hlnum{23}\hlstd{,}\hlnum{22}\hlstd{,}\hlnum{17}\hlstd{,}\hlnum{15}\hlstd{,}\hlnum{13}\hlstd{,}\hlnum{21}\hlstd{,}\hlnum{15}\hlstd{,}\hlnum{20}\hlstd{,}\hlnum{13}\hlstd{,}\hlnum{12}\hlstd{,}\hlnum{16}\hlstd{,}\hlnum{17}\hlstd{,}\hlnum{21}\hlstd{,}\hlnum{15}\hlstd{,}\hlnum{13}\hlstd{,}\hlnum{12}\hlstd{,}\hlnum{15}\hlstd{,}\hlnum{18}\hlstd{,}\hlnum{20}\hlstd{,}\hlnum{18}\hlstd{,}\hlnum{17}\hlstd{,}\hlnum{10}\hlstd{,}\hlnum{24}\hlstd{,}\hlnum{16}\hlstd{)}
+
+\hlcom{# Se crea un vector de datos en el cual se diferencia cada uno de los programas de estudio}
+\hlstd{programas} \hlkwb{<-} \hlkwd{gl}\hlstd{(}\hlkwc{n}\hlstd{=}\hlnum{3}\hlstd{,} \hlkwc{k}\hlstd{=}\hlnum{9}\hlstd{,} \hlkwc{labels}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"P1"}\hlstd{,} \hlstr{"P2"}\hlstd{,} \hlstr{"P3"}\hlstd{))}
+
+\hlcom{#Crea la matriz de datos que contendrá la información del experimento}
+\hlstd{datos} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{notas} \hlstd{= notas,} \hlkwc{programas} \hlstd{= programas);datos}
+\end{alltt}
+\begin{verbatim}
+##    notas programas
+## 1     20        P1
+## 2     18        P1
+## 3     18        P1
+## 4     23        P1
+## 5     22        P1
+## 6     17        P1
+## 7     15        P1
+## 8     13        P1
+## 9     21        P1
+## 10    15        P2
+## 11    20        P2
+## 12    13        P2
+## 13    12        P2
+## 14    16        P2
+## 15    17        P2
+## 16    21        P2
+## 17    15        P2
+## 18    13        P2
+## 19    12        P3
+## 20    15        P3
+## 21    18        P3
+## 22    20        P3
+## 23    18        P3
+## 24    17        P3
+## 25    10        P3
+## 26    24        P3
+## 27    16        P3
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Aplicando el análisis de varianza }
+\hlstd{mod1} \hlkwb{<-} \hlkwd{aov}\hlstd{(notas} \hlopt{~} \hlstd{programas,} \hlkwc{data} \hlstd{= datos)}
+
+\hlcom{#Mostrando la tabla ANOVA }
+\hlkwd{summary}\hlstd{(mod1)}
+\end{alltt}
+\begin{verbatim}
+##             Df Sum Sq Mean Sq F value Pr(>F)
+## programas    2  36.22   18.11    1.44  0.257
+## Residuals   24 301.78   12.57
+\end{verbatim}
+\begin{alltt}
+\hlcom{#UNIDAD 6: Práctica 25 - Diseños por bloques}
+
+\hlcom{#EJEMPLO 1. }
+\hlcom{#Se probaran 5 raciones respecto a sus diferencias en el engorde de novillos. Se dispone de 20 novillos }
+\hlcom{#para el experimento, que se distribuyen en 4 bloques (5 novillos por bloque) con base a sus pesos, al }
+\hlcom{#iniciar la prueba de engorde, los novillos más pesados se agruparon en un bloque, en otro se }
+\hlcom{#agruparon los 5 siguientes más pesados y así sucesivamente. Los 5 tratamientos (raciones) se }
+\hlcom{#asignaron al azar dentro de cada bloque.}
+
+\hlcom{#Utilizando un nivel de significancia del 5%, contraste la hipótesis de que las cinco }
+\hlcom{#raciones de comida producen el mismo efecto de engorde en los novillos.}
+
+\hlcom{# Definiendo el vector que contendrá el bloque al cual pertenecen los novillos.}
+\hlstd{bloques} \hlkwb{<-} \hlkwd{gl}\hlstd{(}\hlkwc{n}\hlstd{=}\hlnum{4}\hlstd{,} \hlkwc{k}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{length}\hlstd{=}\hlnum{20}\hlstd{);bloques}
+\end{alltt}
+\begin{verbatim}
+##  [1] 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4
+## Levels: 1 2 3 4
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Se crea el vector que contendrá los tratamientos de los novillos (raciones de alimento)}
+\hlstd{tratamientos} \hlkwb{<-} \hlkwd{gl}\hlstd{(}\hlkwc{n}\hlstd{=}\hlnum{5}\hlstd{,} \hlkwc{k}\hlstd{=}\hlnum{4}\hlstd{);tratamientos}
+\end{alltt}
+\begin{verbatim}
+##  [1] 1 1 1 1 2 2 2 2 3 3 3 3 4 4 4 4 5 5 5 5
+## Levels: 1 2 3 4 5
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Se digitan los pesos de los novillos }
+\hlstd{peso} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{0.9}\hlstd{,}\hlnum{1.4}\hlstd{,}\hlnum{1.4}\hlstd{,}\hlnum{2.3}\hlstd{,}\hlnum{3.6}\hlstd{,}\hlnum{3.2}\hlstd{,}\hlnum{4.5}\hlstd{,}\hlnum{4.1}\hlstd{,}\hlnum{0.5}\hlstd{,}\hlnum{0.9}\hlstd{,}\hlnum{0.5}\hlstd{,}\hlnum{0.9}\hlstd{,}\hlnum{3.6}\hlstd{,}\hlnum{3.6}\hlstd{,}\hlnum{3.2}\hlstd{,}\hlnum{3.6}\hlstd{,}\hlnum{1.8}\hlstd{,}\hlnum{1.8}\hlstd{,}\hlnum{0.9}\hlstd{,}\hlnum{1.4} \hlstd{);peso}
+\end{alltt}
+\begin{verbatim}
+##  [1] 0.9 1.4 1.4 2.3 3.6 3.2 4.5 4.1 0.5 0.9 0.5 0.9 3.6 3.6 3.2 3.6 1.8
+## [18] 1.8 0.9 1.4
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Se registra en una hoja de datos los resultados del experimento}
+\hlstd{datos2} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{bloques} \hlstd{= bloques,} \hlkwc{tratamientos} \hlstd{= tratamientos,} \hlkwc{peso} \hlstd{= peso);datos2}
+\end{alltt}
+\begin{verbatim}
+##    bloques tratamientos peso
+## 1        1            1  0.9
+## 2        2            1  1.4
+## 3        3            1  1.4
+## 4        4            1  2.3
+## 5        1            2  3.6
+## 6        2            2  3.2
+## 7        3            2  4.5
+## 8        4            2  4.1
+## 9        1            3  0.5
+## 10       2            3  0.9
+## 11       3            3  0.5
+## 12       4            3  0.9
+## 13       1            4  3.6
+## 14       2            4  3.6
+## 15       3            4  3.2
+## 16       4            4  3.6
+## 17       1            5  1.8
+## 18       2            5  1.8
+## 19       3            5  0.9
+## 20       4            5  1.4
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Se aplica el análisis de varianza }
+\hlstd{mod2} \hlkwb{<-} \hlkwd{aov}\hlstd{(peso} \hlopt{~} \hlstd{tratamientos} \hlopt{+} \hlstd{bloques,} \hlkwc{data} \hlstd{= datos2)}
+
+\hlcom{# Se muestra la tabla ANOVA del experimento }
+\hlkwd{summary}\hlstd{(mod2)}
+\end{alltt}
+\begin{verbatim}
+##              Df Sum Sq Mean Sq F value  Pr(>F)    
+## tratamientos  4 30.712   7.678  39.107 8.6e-07 ***
+## bloques       3  0.461   0.154   0.784   0.526    
+## Residuals    12  2.356   0.196                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+\begin{alltt}
+\hlcom{#UNIDAD 6: Práctica 26 - Diseños bifactoriales}
+
+\hlcom{#EJEMPLO 1. }
+\hlcom{#Se llevó a cabo un estudio del efecto de la temperatura sobre el porcentaje de encogimiento}
+\hlcom{#de telas teñidas, con dos réplicas para cada uno de cuatro tipos de tela en un diseño totalmente }
+\hlcom{#aleatorizado. Los datos son el porcentaje de encogimiento de dos réplicas de tela }
+\hlcom{#secadas a cuatro temperaturas.}
+
+\hlcom{#Utilizando un nivel de significancia del 5%}
+\hlcom{# Definiendo el vector que contendrá el factor A.}
+\hlstd{FactorA} \hlkwb{<-} \hlkwd{gl}\hlstd{(}\hlkwc{n}\hlstd{=}\hlnum{4}\hlstd{,} \hlkwc{k}\hlstd{=}\hlnum{8}\hlstd{,} \hlkwc{length}\hlstd{=}\hlnum{32}\hlstd{);FactorA}
+\end{alltt}
+\begin{verbatim}
+##  [1] 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4
+## Levels: 1 2 3 4
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Se crea el vector que contendrá los tratamientos de los novillos (raciones de alimento).}
+\hlstd{FactorB}\hlkwb{<-} \hlkwd{gl}\hlstd{(}\hlkwc{n}\hlstd{=}\hlnum{4}\hlstd{,} \hlkwc{k}\hlstd{=}\hlnum{2}\hlstd{,}\hlkwc{length}\hlstd{=}\hlnum{32}\hlstd{);FactorB}
+\end{alltt}
+\begin{verbatim}
+##  [1] 1 1 2 2 3 3 4 4 1 1 2 2 3 3 4 4 1 1 2 2 3 3 4 4 1 1 2 2 3 3 4 4
+## Levels: 1 2 3 4
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Se digitan los pesos de los novillos }
+\hlstd{Porcentaje} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1.8}\hlstd{,} \hlnum{2.1}\hlstd{,} \hlnum{2.0}\hlstd{,} \hlnum{2.1}\hlstd{,} \hlnum{4.6}\hlstd{,} \hlnum{5.0}\hlstd{,} \hlnum{7.5}\hlstd{,} \hlnum{7.9}\hlstd{,} \hlnum{2.2}\hlstd{,} \hlnum{2.4}\hlstd{,}\hlnum{4.2}\hlstd{,} \hlnum{4.0}\hlstd{,} \hlnum{5.4}\hlstd{,} \hlnum{5.6}\hlstd{,}
+\hlnum{9.8}\hlstd{,} \hlnum{9.2}\hlstd{,} \hlnum{2.8}\hlstd{,} \hlnum{3.2}\hlstd{,} \hlnum{4.4}\hlstd{,} \hlnum{4.8}\hlstd{,} \hlnum{8.7}\hlstd{,} \hlnum{8.4}\hlstd{,} \hlnum{13.2}\hlstd{,} \hlnum{13.0}\hlstd{,} \hlnum{3.2}\hlstd{,} \hlnum{3.6}\hlstd{,} \hlnum{3.3}\hlstd{,} \hlnum{3.5}\hlstd{,} \hlnum{5.7}\hlstd{,} \hlnum{5.8}\hlstd{,}
+\hlnum{10.9}\hlstd{,} \hlnum{11.1}\hlstd{);Porcentaje}
+\end{alltt}
+\begin{verbatim}
+##  [1]  1.8  2.1  2.0  2.1  4.6  5.0  7.5  7.9  2.2  2.4  4.2  4.0  5.4  5.6
+## [15]  9.8  9.2  2.8  3.2  4.4  4.8  8.7  8.4 13.2 13.0  3.2  3.6  3.3  3.5
+## [29]  5.7  5.8 10.9 11.1
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Se registra en una hoja de datos los resultados del experimento }
+\hlstd{datos3} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{FactorA} \hlstd{= FactorA,} \hlkwc{FactorB} \hlstd{= FactorB,} \hlkwc{Porcentaje}\hlstd{=Porcentaje);datos3}
+\end{alltt}
+\begin{verbatim}
+##    FactorA FactorB Porcentaje
+## 1        1       1        1.8
+## 2        1       1        2.1
+## 3        1       2        2.0
+## 4        1       2        2.1
+## 5        1       3        4.6
+## 6        1       3        5.0
+## 7        1       4        7.5
+## 8        1       4        7.9
+## 9        2       1        2.2
+## 10       2       1        2.4
+## 11       2       2        4.2
+## 12       2       2        4.0
+## 13       2       3        5.4
+## 14       2       3        5.6
+## 15       2       4        9.8
+## 16       2       4        9.2
+## 17       3       1        2.8
+## 18       3       1        3.2
+## 19       3       2        4.4
+## 20       3       2        4.8
+## 21       3       3        8.7
+## 22       3       3        8.4
+## 23       3       4       13.2
+## 24       3       4       13.0
+## 25       4       1        3.2
+## 26       4       1        3.6
+## 27       4       2        3.3
+## 28       4       2        3.5
+## 29       4       3        5.7
+## 30       4       3        5.8
+## 31       4       4       10.9
+## 32       4       4       11.1
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Se aplica el análisis de varianza }
+\hlstd{mod3} \hlkwb{<-} \hlkwd{aov}\hlstd{(Porcentaje} \hlopt{~} \hlstd{FactorA} \hlopt{*} \hlstd{FactorB,} \hlkwc{data} \hlstd{= datos3)}
+
+\hlcom{# Se muestra la tabla ANOVA del experimento }
+\hlkwd{summary}\hlstd{(mod3)}
+\end{alltt}
+\begin{verbatim}
+##                 Df Sum Sq Mean Sq F value   Pr(>F)    
+## FactorA          3  41.88   13.96  279.18 5.05e-14 ***
+## FactorB          3 283.94   94.65 1892.91  < 2e-16 ***
+## FactorA:FactorB  9  15.86    1.76   35.24 7.09e-09 ***
+## Residuals       16   0.80    0.05                     
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+\end{document}

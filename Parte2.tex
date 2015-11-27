@@ -1,0 +1,1085 @@
+\documentclass[10pt,a4paper]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Lilian Martínez}
+\title{Parte II Guias Practicas de R}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\maketitle
+\newpage
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#Práctica 10-Análisis de una variable bidimensional (categórica, continua)}
+
+\hlcom{#EJEMPLO 1}
+\hlcom{#Crea un vector de datos para cada proceso descrito en el problema. }
+\hlstd{A} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{100}\hlstd{,}\hlnum{96}\hlstd{,}\hlnum{92}\hlstd{,}\hlnum{96}\hlstd{,}\hlnum{92}\hlstd{); A}
+\end{alltt}
+\begin{verbatim}
+## [1] 100  96  92  96  92
+\end{verbatim}
+\begin{alltt}
+\hlstd{B} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{76}\hlstd{,}\hlnum{80}\hlstd{,}\hlnum{75}\hlstd{,}\hlnum{84}\hlstd{,}\hlnum{82}\hlstd{); B}
+\end{alltt}
+\begin{verbatim}
+## [1] 76 80 75 84 82
+\end{verbatim}
+\begin{alltt}
+\hlstd{C} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{108}\hlstd{,}\hlnum{100}\hlstd{,}\hlnum{96}\hlstd{,}\hlnum{98}\hlstd{,}\hlnum{100}\hlstd{); C}
+\end{alltt}
+\begin{verbatim}
+## [1] 108 100  96  98 100
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Crea una hoja de datos teniendo como componentes (columnas) los tres vectores}
+\hlstd{Baterias} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{procesoA}\hlstd{=A,} \hlkwc{procesoB}\hlstd{=B,} \hlkwc{procesoC}\hlstd{=C); Baterias}
+\end{alltt}
+\begin{verbatim}
+##   procesoA procesoB procesoC
+## 1      100       76      108
+## 2       96       80      100
+## 3       92       75       96
+## 4       96       84       98
+## 5       92       82      100
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Para editar los datos puede utilizar la función fix() }
+\hlkwd{fix}\hlstd{(Baterias)}
+
+\hlcom{#Guarda la hoja de datos en un archivo. }
+\hlkwd{write.table}\hlstd{(Baterias,} \hlkwc{file}\hlstd{=}\hlstr{"Baterias.txt"}\hlstd{,} \hlkwc{append}\hlstd{=}\hlnum{FALSE}\hlstd{,} \hlkwc{quote}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{sep}\hlstd{=}\hlstr{" "}\hlstd{,}
+\hlkwc{na}\hlstd{=}\hlstr{"NA"}\hlstd{,} \hlkwc{col.names}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+
+\hlcom{#Elimina todos objetos que existen en el espacio de trabajo (Workspace) }
+\hlkwd{ls}\hlstd{();} \hlkwd{rm}\hlstd{(}\hlkwc{list}\hlstd{=}\hlkwd{ls}\hlstd{(}\hlkwc{all}\hlstd{=}\hlnum{TRUE}\hlstd{));} \hlkwd{ls}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## [1] "A"        "B"        "Baterias" "C"
+## character(0)
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Recupera la hoja de datos,para probar si fue guardada. }
+\hlstd{Baterias} \hlkwb{<-} \hlkwd{read.table}\hlstd{(}\hlstr{"Baterias.txt"}\hlstd{,} \hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{); Baterias}
+\end{alltt}
+\begin{verbatim}
+##   procesoA procesoB procesoC
+## 1      100       76      108
+## 2       96       80      100
+## 3       92       75       96
+## 4       96       84       98
+## 5       92       82      100
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Conecta o adjunta la hoja de datos a la segunda ruta o lista de búsqueda. }
+\hlkwd{attach}\hlstd{(Baterias,} \hlkwc{pos}\hlstd{=}\hlnum{2}\hlstd{)}
+\hlkwd{search}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+##  [1] ".GlobalEnv"        "Baterias"          "package:knitr"    
+##  [4] "package:stats"     "package:graphics"  "package:grDevices"
+##  [7] "package:utils"     "package:datasets"  "package:methods"  
+## [10] "Autoloads"         "package:base"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Dibuja un gráfico horizontal depuntos para los tres procesos. }
+\hlkwd{stripchart}\hlstd{(Baterias,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de puntos para los tres procesos"}\hlstd{,}
+\hlkwc{method} \hlstd{=} \hlstr{"stack"}\hlstd{,} \hlkwc{vertical} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"blue"}\hlstd{,} \hlkwc{pch}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Duración (semanas)"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Proceso"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-1} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Muestra un resumen estadístico para los tres procesos. }
+\hlkwd{summary}\hlstd{(Baterias)}
+\end{alltt}
+\begin{verbatim}
+##     procesoA        procesoB       procesoC    
+##  Min.   : 92.0   Min.   :75.0   Min.   : 96.0  
+##  1st Qu.: 92.0   1st Qu.:76.0   1st Qu.: 98.0  
+##  Median : 96.0   Median :80.0   Median :100.0  
+##  Mean   : 95.2   Mean   :79.4   Mean   :100.4  
+##  3rd Qu.: 96.0   3rd Qu.:82.0   3rd Qu.:100.0  
+##  Max.   :100.0   Max.   :84.0   Max.   :108.0
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Dibuja un gráfico horizontal de cajas (box-plot) para los tres procesos. }
+\hlkwd{boxplot}\hlstd{(Baterias,} \hlkwc{width}\hlstd{=}\hlkwa{NULL}\hlstd{,} \hlkwc{varwidth}\hlstd{=}\hlnum{TRUE}\hlstd{,names,} \hlkwc{add}\hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{horizontal} \hlstd{=} \hlnum{TRUE}\hlstd{,}
+\hlkwc{main}\hlstd{=}\hlstr{"Gráfico de caja por proceso"}\hlstd{,} \hlkwc{border}\hlstd{=}\hlkwd{par}\hlstd{(}\hlstr{"fg"}\hlstd{),} \hlkwc{col}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"yellow"}\hlstd{,} \hlstr{"cyan"}\hlstd{,}
+\hlstr{"red"}\hlstd{),} \hlkwc{xlab} \hlstd{=} \hlstr{"Duración (semanas)"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Proceso"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-2} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Vertical }
+\hlkwd{boxplot}\hlstd{(Baterias,} \hlkwc{width}\hlstd{=}\hlkwa{NULL}\hlstd{,} \hlkwc{varwidth}\hlstd{=}\hlnum{TRUE}\hlstd{,names,} \hlkwc{add}\hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{horizontal} \hlstd{=} \hlnum{FALSE}\hlstd{,}
+\hlkwc{main}\hlstd{=}\hlstr{"Gráfico de caja por proceso"}\hlstd{,} \hlkwc{border}\hlstd{=}\hlkwd{par}\hlstd{(}\hlstr{"fg"}\hlstd{),} \hlkwc{col}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"yellow"}\hlstd{,} \hlstr{"cyan"}\hlstd{,}
+\hlstr{"red"}\hlstd{),} \hlkwc{xlab} \hlstd{=} \hlstr{"Duración (semanas)"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Proceso"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-3} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Presenta la matriz de covarianzas muestral. }
+\hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{3}\hlstd{)}
+\hlstd{S} \hlkwb{<-} \hlkwd{var}\hlstd{(Baterias); S}
+\end{alltt}
+\begin{verbatim}
+##          procesoA procesoB procesoC
+## procesoA     11.2     -1.6     12.4
+## procesoB     -1.6     14.8     -4.7
+## procesoC     12.4     -4.7     20.8
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Concatena los tres vectores dentro de un vector simple, junto con un vector factor indicador de }
+\hlcom{#la categoría o tratamiento (A, B, C) que origina cada observación.}
+\hlstd{Baterias} \hlkwb{<-} \hlkwd{stack}\hlstd{(Baterias); Baterias}
+\end{alltt}
+\begin{verbatim}
+##    values      ind
+## 1     100 procesoA
+## 2      96 procesoA
+## 3      92 procesoA
+## 4      96 procesoA
+## 5      92 procesoA
+## 6      76 procesoB
+## 7      80 procesoB
+## 8      75 procesoB
+## 9      84 procesoB
+## 10     82 procesoB
+## 11    108 procesoC
+## 12    100 procesoC
+## 13     96 procesoC
+## 14     98 procesoC
+## 15    100 procesoC
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Prueba de igualdad de medias por descomposición de la varianza en dos fuentes de variación:}
+\hlstd{aov.Baterias} \hlkwb{<-} \hlkwd{aov}\hlstd{(values}\hlopt{~}\hlstd{ind,} \hlkwc{data}\hlstd{=Baterias)}
+
+\hlcom{# Prueba de igualdad de medias en un diseño de una vía}
+\hlkwd{oneway.test}\hlstd{(values}\hlopt{~}\hlstd{ind,} \hlkwc{data}\hlstd{=Baterias,} \hlkwc{var.equal} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	One-way analysis of means
+## 
+## data:  values and ind
+## F = 40, num df = 2, denom df = 10, p-value = 6e-06
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Deshace la concatenación del vector de valores y el vector indicador de categoría. }
+\hlstd{Baterias} \hlkwb{=} \hlkwd{unstack}\hlstd{(Baterias);Baterias}
+\end{alltt}
+\begin{verbatim}
+##   procesoA procesoB procesoC
+## 1      100       76      108
+## 2       96       80      100
+## 3       92       75       96
+## 4       96       84       98
+## 5       92       82      100
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Desconecta la hoja de datos de la segunda ruta o lista de búsqueda. }
+\hlkwd{detach}\hlstd{(Baterias,} \hlkwc{pos}\hlstd{=}\hlnum{2}\hlstd{);} \hlkwd{search}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+##  [1] ".GlobalEnv"        "package:knitr"     "package:stats"    
+##  [4] "package:graphics"  "package:grDevices" "package:utils"    
+##  [7] "package:datasets"  "package:methods"   "Autoloads"        
+## [10] "package:base"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#UNIDAD 2: Práctica 10-Análisis de una variable bidimensional (categórica, continua)}
+\hlcom{#EJEMPLO 2 Suponga que un estudiante hace una encuesta paraevaluar sí los }
+\hlcom{#estudiantes que fuman estudian menos que los que no fuman.}
+
+\hlcom{#ANÁLISIS ESTADÍSTICO DE LOS DATOS}
+
+\hlcom{#Crea dos vectores con los datos.}
+\hlstd{Fuma} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"Si"}\hlstd{,}\hlstr{"No"}\hlstd{,}\hlstr{"No"}\hlstd{,}\hlstr{"Si"}\hlstd{,}\hlstr{"No"}\hlstd{,}\hlstr{"Si"}\hlstd{,}\hlstr{"Si"}\hlstd{,}\hlstr{"Si"}\hlstd{,}\hlstr{"No"}\hlstd{,}\hlstr{"Si"}\hlstd{); Fuma}
+\end{alltt}
+\begin{verbatim}
+##  [1] "Si" "No" "No" "Si" "No" "Si" "Si" "Si" "No" "Si"
+\end{verbatim}
+\begin{alltt}
+\hlstd{Cantidad} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{,}\hlnum{2}\hlstd{,}\hlnum{3}\hlstd{,}\hlnum{3}\hlstd{,}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{,}\hlnum{1}\hlstd{,}\hlnum{3}\hlstd{,}\hlnum{2}\hlstd{); Cantidad}
+\end{alltt}
+\begin{verbatim}
+##  [1] 1 2 2 3 3 1 2 1 3 2
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Crea una hoja de datos que tenga comocomponentes o columnas los dos vectores. }
+\hlstd{Estudia} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{Fuma}\hlstd{=Fuma,} \hlkwc{Cantidad}\hlstd{=Cantidad); Estudia}
+\end{alltt}
+\begin{verbatim}
+##    Fuma Cantidad
+## 1    Si        1
+## 2    No        2
+## 3    No        2
+## 4    Si        3
+## 5    No        3
+## 6    Si        1
+## 7    Si        2
+## 8    Si        1
+## 9    No        3
+## 10   Si        2
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Puedes editar los datos utilizando }
+\hlkwd{fix}\hlstd{(Estudia)}
+
+\hlcom{#Guarda la hoja de datos en un archivo. }
+\hlkwd{write.table}\hlstd{(Estudia,} \hlkwc{file}\hlstd{=}\hlstr{"Estudia.txt"}\hlstd{,} \hlkwc{append}\hlstd{=}\hlnum{FALSE}\hlstd{,} \hlkwc{quote}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{sep}\hlstd{=}\hlstr{" "}\hlstd{,} \hlkwc{na}\hlstd{=}\hlstr{"NA"}\hlstd{,}\hlkwc{col.names}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+
+
+\hlcom{#Elimina los objetos almacenados enel área de trabajo (Workspace). }
+\hlkwd{ls}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## [1] "aov.Baterias" "Baterias"     "Cantidad"     "Estudia"     
+## [5] "Fuma"         "S"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{rm}\hlstd{(}\hlkwc{list}\hlstd{=}\hlkwd{ls}\hlstd{(}\hlkwc{all}\hlstd{=}\hlnum{TRUE}\hlstd{))}
+\hlkwd{ls}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## character(0)
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Recupera desde el archivo la hoja de datos}
+\hlstd{Estudia} \hlkwb{<-} \hlkwd{read.table}\hlstd{(}\hlstr{"Estudia.txt"}\hlstd{,} \hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\hlstd{Estudia}
+\end{alltt}
+\begin{verbatim}
+##    Fuma Cantidad
+## 1    Si        1
+## 2    No        2
+## 3    No        2
+## 4    Si        3
+## 5    No        3
+## 6    Si        1
+## 7    Si        2
+## 8    Si        1
+## 9    No        3
+## 10   Si        2
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Conecta la hoja de datos a la segunda ruta o lista de búsqueda, }
+\hlkwd{attach}\hlstd{(Estudia,} \hlkwc{pos}\hlstd{=}\hlnum{2}\hlstd{)}
+\hlkwd{search}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+##  [1] ".GlobalEnv"        "Estudia"           "package:knitr"    
+##  [4] "package:stats"     "package:graphics"  "package:grDevices"
+##  [7] "package:utils"     "package:datasets"  "package:methods"  
+## [10] "Autoloads"         "package:base"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Crea una tabla de contigencia o de doble entrada. }
+\hlstd{tablaCont} \hlkwb{<-} \hlkwd{table}\hlstd{(Estudia)}
+\hlstd{tablaCont}
+\end{alltt}
+\begin{verbatim}
+##     Cantidad
+## Fuma 1 2 3
+##   No 0 2 2
+##   Si 3 2 1
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Calcula las tablas de proporciones o de probabilidades. }
+\hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{3}\hlstd{)}
+
+\hlcom{# Proporciones basadas en el total de la muestra, la suma de filas y columnas suman 1 }
+\hlstd{propTotal} \hlkwb{<-} \hlkwd{prop.table}\hlstd{(tablaCont); propTotal}
+\end{alltt}
+\begin{verbatim}
+##     Cantidad
+## Fuma   1   2   3
+##   No 0.0 0.2 0.2
+##   Si 0.3 0.2 0.1
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Proporciones basadas en el total por fila, cada fila suma 1 }
+\hlstd{propFila} \hlkwb{<-} \hlkwd{prop.table}\hlstd{(tablaCont,} \hlnum{1}\hlstd{)}
+\hlstd{propFila}
+\end{alltt}
+\begin{verbatim}
+##     Cantidad
+## Fuma     1     2     3
+##   No 0.000 0.500 0.500
+##   Si 0.500 0.333 0.167
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Proporciones basadas en el total por columna, cada columna suma 1 }
+\hlstd{propCol} \hlkwb{<-} \hlkwd{prop.table}\hlstd{(tablaCont,} \hlnum{2}\hlstd{)}
+\hlstd{propCol}
+\end{alltt}
+\begin{verbatim}
+##     Cantidad
+## Fuma     1     2     3
+##   No 0.000 0.500 0.667
+##   Si 1.000 0.500 0.333
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Construya los gráficos de barras de la variable bidimensional. }
+\hlcom{# Gráfico de barras apiladas con la frecuencia de Cantidad como altura }
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(Estudia}\hlopt{$}\hlstd{Cantidad, Estudia}\hlopt{$}\hlstd{Fuma),} \hlkwc{beside} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{horizontal}\hlstd{=}\hlnum{FALSE}\hlstd{,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico 
+de barras (Fuma, Cantidad de horas de estudio)"}\hlstd{,} \hlkwc{legend.text} \hlstd{=T,} \hlkwc{xlab}\hlstd{=}\hlstr{"Fuma"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Cantidad de 
+horas-estudio"}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in plot.window(xlim, ylim, log = log, ...): "{}horizontal"{} is not a graphical parameter}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in axis(if (horiz) 2 else 1, at = at.l, labels = names.arg, lty = axis.lty, : "{}horizontal"{} is not a graphical parameter}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in title(main = main, sub = sub, xlab = xlab, ylab = ylab, ...): "{}horizontal"{} is not a graphical parameter}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in axis(if (horiz) 1 else 2, cex.axis = cex.axis, ...): "{}horizontal"{} is not a graphical parameter}}\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-4} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Gráfico de barras apiladas con la frecuencia de Fuma como altura }
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(Estudia}\hlopt{$}\hlstd{Fuma, Estudia}\hlopt{$}\hlstd{Cantidad),} \hlkwc{beside} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{horizontal}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{main}\hlstd{=}\hlstr{"Gráfico 
+de barras (Cantidad de horas de estudio,Fuma)"}\hlstd{,} \hlkwc{legend.text} \hlstd{=T,} \hlkwc{xlab}\hlstd{=}\hlstr{"Cantidad de horas-estudio"}\hlstd{,}
+\hlkwc{ylab}\hlstd{=}\hlstr{"Fuma"}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in plot.window(xlim, ylim, log = log, ...): "{}horizontal"{} is not a graphical parameter}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in axis(if (horiz) 2 else 1, at = at.l, labels = names.arg, lty = axis.lty, : "{}horizontal"{} is not a graphical parameter}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in title(main = main, sub = sub, xlab = xlab, ylab = ylab, ...): "{}horizontal"{} is not a graphical parameter}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in axis(if (horiz) 1 else 2, cex.axis = cex.axis, ...): "{}horizontal"{} is not a graphical parameter}}\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-5} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Gráfico de barras no apiladas y colocación de leyenda }
+\hlcom{# Crear un factor para los nombres en la leyenda }
+\hlstd{Fuma}\hlkwb{=}\hlkwd{factor}\hlstd{(Estudia}\hlopt{$}\hlstd{Fuma); Fuma}
+\end{alltt}
+\begin{verbatim}
+##  [1] Si No No Si No Si Si Si No Si
+## Levels: No Si
+\end{verbatim}
+\begin{alltt}
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(Estudia}\hlopt{$}\hlstd{Cantidad, Estudia}\hlopt{$}\hlstd{Fuma),} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras (Fuma, Cantidad de horas 
+de estudio)"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Fuma"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Cantidad dehoras-estudio"}\hlstd{,} \hlkwc{beside}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{legend.text}\hlstd{=T)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-6} 
+\begin{kframe}\begin{alltt}
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(Estudia}\hlopt{$}\hlstd{Cantidad, Estudia}\hlopt{$}\hlstd{Fuma),} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras (Fuma, Cantidad de horas 
+de estudio)"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Fuma"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Cantidad de horas-estudio"}\hlstd{,} \hlkwc{beside}\hlstd{=}\hlnum{TRUE}\hlstd{,}
+\hlkwc{legend.text}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"menor que 5"}\hlstd{,} \hlstr{"5-10"}\hlstd{,} \hlstr{"mayor que 10"}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-7} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Probabilidades esperadas para la prueba Chi-cuadrada }
+\hlkwd{chisq.test}\hlstd{(tablaCont)} \hlopt{$}\hlstd{expected}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in chisq.test(tablaCont): Chi-squared approximation may be incorrect}}\begin{verbatim}
+##     Cantidad
+## Fuma   1   2   3
+##   No 1.2 1.6 1.2
+##   Si 1.8 2.4 1.8
+\end{verbatim}
+\begin{alltt}
+\hlcom{#UNIDAD 3: Práctica 13 - Espacios muestrales}
+
+\hlcom{#GENERACIÓN DE ESPACIOS MUESTRALES Y DE MUESTRAS ALEATORIAS.}
+
+\hlcom{#Simular 10 lanzamientos de una moneda }
+\hlcom{# vector del cual se tomará la muestra }
+\hlstd{moneda} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"C"}\hlstd{,} \hlstr{"+"}\hlstd{); moneda}
+\end{alltt}
+\begin{verbatim}
+## [1] "C" "+"
+\end{verbatim}
+\begin{alltt}
+\hlcom{# tamaño de la muestra }
+\hlstd{n} \hlkwb{<-} \hlnum{10}\hlstd{; n}
+\end{alltt}
+\begin{verbatim}
+## [1] 10
+\end{verbatim}
+\begin{alltt}
+\hlcom{#generando la muestra aleatoria con reemplazamiento}
+\hlstd{lanzamientos} \hlkwb{<-} \hlkwd{sample}\hlstd{(moneda, n,} \hlkwc{replace}\hlstd{=}\hlnum{TRUE}\hlstd{); lanzamientos}
+\end{alltt}
+\begin{verbatim}
+##  [1] "+" "C" "C" "C" "+" "C" "C" "C" "C" "C"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Elegir 6 números de una lotería de 54 números }
+\hlcom{# se define el espacio muestral del cual se tomará la muestra}
+\hlstd{espacio} \hlkwb{<-} \hlnum{1}\hlopt{:}\hlnum{54}\hlstd{;espacio}
+\end{alltt}
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+## [24] 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46
+## [47] 47 48 49 50 51 52 53 54
+\end{verbatim}
+\begin{alltt}
+\hlcom{# se define el tamaño de la muestra }
+\hlstd{n} \hlkwb{<-} \hlnum{6}\hlstd{; n}
+\end{alltt}
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+\begin{alltt}
+\hlcom{#seleccionando la muestra sin reposición }
+\hlstd{muestra} \hlkwb{<-} \hlkwd{sample}\hlstd{(espacio, n); muestra}
+\end{alltt}
+\begin{verbatim}
+## [1] 13 46 27  3 40 20
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Simular 4 lanzamientos de dos dados }
+\hlstd{espacio} \hlkwb{=} \hlkwd{as.vector}\hlstd{(}\hlkwd{outer}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{6}\hlstd{,} \hlnum{1}\hlopt{:}\hlnum{6}\hlstd{, paste)); espacio}
+\end{alltt}
+\begin{verbatim}
+##  [1] "1 1" "2 1" "3 1" "4 1" "5 1" "6 1" "1 2" "2 2" "3 2" "4 2" "5 2"
+## [12] "6 2" "1 3" "2 3" "3 3" "4 3" "5 3" "6 3" "1 4" "2 4" "3 4" "4 4"
+## [23] "5 4" "6 4" "1 5" "2 5" "3 5" "4 5" "5 5" "6 5" "1 6" "2 6" "3 6"
+## [34] "4 6" "5 6" "6 6"
+\end{verbatim}
+\begin{alltt}
+\hlcom{# se define el tamaño de la muestra }
+\hlstd{n} \hlkwb{<-} \hlnum{4}\hlstd{; n}
+\end{alltt}
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+\begin{alltt}
+\hlcom{# finalmente se selecciona la muestra }
+\hlstd{muestra} \hlkwb{<-} \hlkwd{sample}\hlstd{(espacio, n,} \hlkwc{replace}\hlstd{=}\hlnum{TRUE}\hlstd{); muestra}
+\end{alltt}
+\begin{verbatim}
+## [1] "3 3" "3 3" "1 4" "4 5"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Seleccionar cinco cartas de un naipe de 52 cartas }
+\hlstd{naipe} \hlkwb{=} \hlkwd{paste}\hlstd{(}\hlkwd{rep}\hlstd{(}\hlkwd{c}\hlstd{(}\hlstr{"A"}\hlstd{,} \hlnum{2}\hlopt{:}\hlnum{10}\hlstd{,} \hlstr{"J"}\hlstd{,} \hlstr{"Q"}\hlstd{,} \hlstr{"K"}\hlstd{),} \hlnum{4}\hlstd{),}
+\hlkwd{c}\hlstd{(}\hlstr{"OROS"}\hlstd{,}\hlstr{"COPAS"}\hlstd{,} \hlstr{"BASTOS"}\hlstd{,}\hlstr{"ESPADAS"}\hlstd{));naipe}
+\end{alltt}
+\begin{verbatim}
+##  [1] "A OROS"     "2 COPAS"    "3 BASTOS"   "4 ESPADAS"  "5 OROS"    
+##  [6] "6 COPAS"    "7 BASTOS"   "8 ESPADAS"  "9 OROS"     "10 COPAS"  
+## [11] "J BASTOS"   "Q ESPADAS"  "K OROS"     "A COPAS"    "2 BASTOS"  
+## [16] "3 ESPADAS"  "4 OROS"     "5 COPAS"    "6 BASTOS"   "7 ESPADAS" 
+## [21] "8 OROS"     "9 COPAS"    "10 BASTOS"  "J ESPADAS"  "Q OROS"    
+## [26] "K COPAS"    "A BASTOS"   "2 ESPADAS"  "3 OROS"     "4 COPAS"   
+## [31] "5 BASTOS"   "6 ESPADAS"  "7 OROS"     "8 COPAS"    "9 BASTOS"  
+## [36] "10 ESPADAS" "J OROS"     "Q COPAS"    "K BASTOS"   "A ESPADAS" 
+## [41] "2 OROS"     "3 COPAS"    "4 BASTOS"   "5 ESPADAS"  "6 OROS"    
+## [46] "7 COPAS"    "8 BASTOS"   "9 ESPADAS"  "10 OROS"    "J COPAS"   
+## [51] "Q BASTOS"   "K ESPADAS"
+\end{verbatim}
+\begin{alltt}
+\hlcom{# se define el tamaño de la muestra }
+\hlstd{n} \hlkwb{<-} \hlnum{5}\hlstd{; n}
+\end{alltt}
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+\begin{alltt}
+\hlcom{# se obtiene la muestra sin reemplazo (aunque no se especifique con replace=FALSE) }
+\hlstd{cartas} \hlkwb{<-} \hlkwd{sample}\hlstd{(naipe, n) ; cartas}
+\end{alltt}
+\begin{verbatim}
+## [1] "A ESPADAS" "9 COPAS"   "A COPAS"   "8 BASTOS"  "3 ESPADAS"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Generar una muestra aleatoria de tamaño 120,con los números del 1 al 6 en el que las probabilidades de cada uno de los números son respectivamente los siguientes valores: 0.5, 0.25, 0.15, 0.04, 0.03 y 0.003.}
+\hlkwd{sample}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{6}\hlstd{,}\hlnum{120}\hlstd{,}\hlkwc{replace}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwd{c}\hlstd{(}\hlnum{0.5}\hlstd{,}\hlnum{0.25}\hlstd{,}\hlnum{0.15}\hlstd{,}\hlnum{0.04}\hlstd{,}\hlnum{0.03}\hlstd{,}\hlnum{0.03}\hlstd{))}
+\end{alltt}
+\begin{verbatim}
+##   [1] 2 3 1 1 2 1 1 3 5 1 1 2 1 1 1 1 1 3 1 4 1 3 1 6 3 1 1 2 6 3 1 2 2 3 4
+##  [36] 1 4 6 5 1 3 3 3 1 1 2 2 1 3 1 4 2 4 1 3 1 2 1 2 2 3 3 1 1 2 3 1 2 6 1
+##  [71] 2 3 2 1 1 1 2 1 1 1 1 3 1 2 1 2 1 1 2 1 1 3 2 2 1 2 5 2 1 2 1 1 2 3 3
+## [106] 4 3 1 2 1 1 1 3 1 1 2 1 2 6 1
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Escriba una función que reciba los números enteros entre 1 y 500 inclusive, la función retornará el }
+\hlcom{#espacio formado por los números divisibles entre 7.Después de llamar a esta función se extraerá }
+\hlcom{#aleatoriamente 12 de estos números, con reemplazo.}
+
+\hlcom{# definiendo la función que generará el espacio formado }
+\hlstd{espacio} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{num}\hlstd{)}
+\hlstd{\{}
+ \hlstd{numDiv7} \hlkwb{<-} \hlkwd{numeric}\hlstd{(}\hlnum{0}\hlstd{)}
+ \hlstd{ind} \hlkwb{<-} \hlnum{0}
+ \hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(num))}
+   \hlkwa{if} \hlstd{((num[i]} \hlopt{%%} \hlnum{7}\hlstd{)}\hlopt{==}\hlnum{0}\hlstd{)}
+    \hlstd{\{}
+     \hlstd{ind} \hlkwb{<-} \hlstd{ind}\hlopt{+}\hlnum{1}
+     \hlstd{numDiv7[ind]}\hlkwb{=}\hlstd{num[i]}
+    \hlstd{\}}
+ \hlkwd{return}\hlstd{(numDiv7)}
+\hlstd{\}}
+\hlstd{numeros} \hlkwb{<-} \hlnum{1}\hlopt{:}\hlnum{500}
+\hlstd{espacio}
+\end{alltt}
+\begin{verbatim}
+## function(num) 
+## { 
+##  numDiv7 <- numeric(0) 
+##  ind <- 0 
+##  for(i in 1:length(num)) 
+##    if ((num[i] %% 7)==0) 
+##     { 
+##      ind <- ind+1 
+##      numDiv7[ind]=num[i] 
+##     } 
+##  return(numDiv7) 
+## }
+\end{verbatim}
+\begin{alltt}
+\hlcom{# generando el espacio muestral }
+\hlstd{s} \hlkwb{<-} \hlkwd{espacio}\hlstd{(numeros); s}
+\end{alltt}
+\begin{verbatim}
+##  [1]   7  14  21  28  35  42  49  56  63  70  77  84  91  98 105 112 119
+## [18] 126 133 140 147 154 161 168 175 182 189 196 203 210 217 224 231 238
+## [35] 245 252 259 266 273 280 287 294 301 308 315 322 329 336 343 350 357
+## [52] 364 371 378 385 392 399 406 413 420 427 434 441 448 455 462 469 476
+## [69] 483 490 497
+\end{verbatim}
+\begin{alltt}
+\hlcom{# seleccionando la muestra }
+\hlstd{muestra} \hlkwb{<-} \hlkwd{sample}\hlstd{(s,} \hlnum{12}\hlstd{,} \hlkwc{replace}\hlstd{=}\hlnum{TRUE}\hlstd{); muestra}
+\end{alltt}
+\begin{verbatim}
+##  [1] 105 133 350 161  49 196 315 273 182 224 469 483
+\end{verbatim}
+\begin{alltt}
+\hlcom{#UNIDAD 3: Práctica 14 Distribuciones de probabilidad discreta }
+\hlcom{#CÁLCULO DE PROBABILIDADES.}
+
+\hlcom{#Ejemplo 1:}
+\hlcom{#Si un estudiante responde al azar a un examen de 8 preguntas de verdadero o falso. }
+\hlcom{#a) ¿Cuál es la probabilidad de que acierte 4?}
+\hlkwd{dbinom}\hlstd{(}\hlnum{4}\hlstd{,}\hlnum{8}\hlstd{,}\hlnum{0.5}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.273
+\end{verbatim}
+\begin{alltt}
+\hlcom{#b) ¿Cuál es la probabilidad de que acierte a lo sumo 2?}
+\hlstd{x} \hlkwb{<-} \hlnum{2}\hlstd{; n}\hlkwb{=}\hlnum{8}\hlstd{; p}\hlkwb{=}\hlnum{1}\hlopt{/}\hlnum{2}
+\hlkwd{pbinom}\hlstd{(x,} \hlkwc{size} \hlstd{= n,} \hlkwc{prob} \hlstd{= p,} \hlkwc{lower.tail}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.145
+\end{verbatim}
+\begin{alltt}
+\hlcom{#c) ¿Cuál es la probabilidad de que acierte 5 o más?}
+\hlstd{x} \hlkwb{<-} \hlnum{4}\hlstd{; n}\hlkwb{=}\hlnum{8}\hlstd{; p}\hlkwb{=}\hlnum{1}\hlopt{/}\hlnum{2}
+
+\hlcom{#primera forma }
+\hlstd{F} \hlkwb{<-} \hlnum{1} \hlopt{-} \hlkwd{pbinom}\hlstd{(x, n, p,} \hlkwc{lower.tail}\hlstd{=}\hlnum{TRUE}\hlstd{); F}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.363
+\end{verbatim}
+\begin{alltt}
+\hlcom{#segunda forma }
+\hlkwd{pbinom}\hlstd{(}\hlnum{4}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{8}\hlstd{,} \hlkwc{prob}\hlstd{=}\hlnum{0.5}\hlstd{,} \hlkwc{lower.tail}\hlstd{=}\hlnum{FALSE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.363
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlcom{#Una cierta área de Estados Unidos es afectada, en promedio, por 6 huracanes al año. }
+\hlcom{#Encuentre la probabilidad de que en un determinado año esta área sea afectada por: }
+
+\hlcom{#a) Menos de 4 huracanes.}
+\hlstd{x} \hlkwb{<-} \hlnum{3}\hlstd{; mu} \hlkwb{<-} \hlnum{6}
+\hlkwd{ppois}\hlstd{(x,} \hlkwc{lambda} \hlstd{= mu,} \hlkwc{lower.tail}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.151
+\end{verbatim}
+\begin{alltt}
+\hlcom{#b) Entre 6 y 8 huracanes}
+\hlcom{#primera forma }
+\hlkwd{sum}\hlstd{(}\hlkwd{dpois}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{6}\hlstd{,}\hlnum{7}\hlstd{,}\hlnum{8}\hlstd{),}\hlkwc{lambda} \hlstd{=} \hlnum{6}\hlstd{))}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.402
+\end{verbatim}
+\begin{alltt}
+\hlcom{# segunda forma restar las probabilidades acumuladas}
+\hlstd{F8} \hlkwb{<-} \hlkwd{ppois}\hlstd{(}\hlnum{8}\hlstd{,} \hlkwc{lambda} \hlstd{=} \hlnum{6}\hlstd{,} \hlkwc{lower.tail}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\hlstd{F5} \hlkwb{<-} \hlkwd{ppois}\hlstd{(}\hlnum{5}\hlstd{,}\hlkwc{lambda} \hlstd{=} \hlnum{6}\hlstd{,} \hlkwc{lower.tail}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\hlstd{F8} \hlopt{-} \hlstd{F5}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.402
+\end{verbatim}
+\begin{alltt}
+\hlcom{#c) Represente gráficamente la función de probabilidad }
+\hlcom{#de la variable aleatoria X que mide el número de huracanes por año.}
+\hlcom{#n <- 30 }
+\hlcom{#genera 30 valores de una distribución de Poisson con ??=6}
+\hlstd{x} \hlkwb{<-} \hlkwd{rpois}\hlstd{(n,} \hlkwc{lambda}\hlstd{=mu)}
+
+\hlcom{#calcula las probabilidades para cada valor generado }
+\hlstd{y} \hlkwb{<-} \hlkwd{dpois}\hlstd{(x,} \hlkwc{lambda}\hlstd{=mu)}
+
+\hlcom{#genera el gráfico de distribución }
+\hlkwd{plot}\hlstd{(x, y,} \hlkwc{xlab}\hlstd{=}\hlstr{"x"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Función de probalidad"}\hlstd{,}
+\hlkwc{main}\hlstd{=}\hlstr{"Distribución de Poisson: lambda = 6"}\hlstd{,}\hlkwc{type}\hlstd{=}\hlstr{"h"}\hlstd{)}
+
+\hlcom{#une los puntos a las líneas }
+\hlkwd{points}\hlstd{(x, y,} \hlkwc{pch}\hlstd{=}\hlnum{21}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-8} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Ejemplo 3: }
+\hlcom{#En un juego se disponen 15 globos llenos de agua, delos que 4 tienen premio. Los participantes en el }
+\hlcom{#juego, con los ojos vendados, golpean los globos con un bate por orden hasta que cada uno consigue romper2.}
+
+\hlcom{#a) ¿Cuál es la probabilidad de que elprimer participante consiga un premio?}
+\hlcom{# x define el número de globos con premio}
+\hlstd{x} \hlkwb{<-} \hlnum{0}\hlopt{:}\hlnum{2}\hlstd{; m} \hlkwb{=} \hlnum{11}\hlstd{; n} \hlkwb{<-} \hlnum{4}\hlstd{; k}\hlkwb{=}\hlnum{2}
+
+\hlcom{# se construye la distribución de frecuencias del número de premios }
+\hlstd{Tabla} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{Probabilidad}\hlstd{=}\hlkwd{dhyper}\hlstd{(x, m, n, k))}
+\hlkwd{rownames}\hlstd{(Tabla)} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Ningún premio"}\hlstd{,}\hlstr{"Solamente uno"}\hlstd{,} \hlstr{"Dos premios"}\hlstd{)}
+\hlstd{Tabla}
+\end{alltt}
+\begin{verbatim}
+##               Probabilidad
+## Ningún premio       0.0571
+## Solamente uno       0.4190
+## Dos premios         0.5238
+\end{verbatim}
+\begin{alltt}
+\hlcom{#b) Si el primer participante ha conseguido sólo un premio, ¿cuál es la probabilidad de que el }
+\hlcom{#segundo participante consiga otro?}
+\hlstd{x} \hlkwb{=} \hlnum{1}\hlstd{; m}\hlkwb{=} \hlnum{10}\hlstd{; n}\hlkwb{=} \hlnum{3}\hlstd{; k}\hlkwb{=} \hlnum{2}\hlstd{;}
+\hlkwd{dhyper}\hlstd{(x, m, n, k)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.385
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 4: }
+\hlcom{#Un vendedor de alarmas de hogar tiene éxito enuna casa de cada diez que visita. }
+\hlcom{#Calcula:}
+
+\hlcom{#a) La probabilidad de que en un día determinado consiga vender la primera alarma en la sexta }
+\hlcom{#casa que visita.}
+\hlcom{# x define el número de intentos fallidos }
+\hlstd{x} \hlkwb{<-} \hlnum{0}\hlopt{:}\hlnum{5}\hlstd{; p}\hlkwb{=}\hlnum{0.1}
+
+\hlcom{# creando la tabla de distribución de frecuencias del número de intentos fallidos antes de }
+\hlcom{#obtener la primera venta. }
+\hlstd{Tabla} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{Probabilidad}\hlstd{=}\hlkwd{dgeom}\hlstd{(x,} \hlkwc{prob}\hlstd{=p))}
+
+\hlcom{# nombrando las filas de la distribución de frecuencias }
+\hlkwd{rownames}\hlstd{(Tabla)} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Venta en el primer intento"}\hlstd{,} \hlstr{"Venta en el segundo intento"}\hlstd{,}
+\hlstr{"Venta en el tercer intento"}\hlstd{,} \hlstr{"Venta en el cuarto intento"}\hlstd{,}
+\hlstr{"Venta en el quinto intento"}\hlstd{,} \hlstr{"Venta en el sexto intento"}\hlstd{)}
+\hlstd{Tabla}
+\end{alltt}
+\begin{verbatim}
+##                             Probabilidad
+## Venta en el primer intento        0.1000
+## Venta en el segundo intento       0.0900
+## Venta en el tercer intento        0.0810
+## Venta en el cuarto intento        0.0729
+## Venta en el quinto intento        0.0656
+## Venta en el sexto intento         0.0590
+\end{verbatim}
+\begin{alltt}
+\hlcom{#b) La probabilidad de que no venda ninguna después de siete viviendas visitadas.}
+\hlstd{x}\hlkwb{=}\hlnum{0}\hlstd{; n}\hlkwb{=}\hlnum{7}\hlstd{; p}\hlkwb{=}\hlnum{0.1}
+\hlkwd{dbinom}\hlstd{(x, n, p,} \hlkwc{log} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.478
+\end{verbatim}
+\begin{alltt}
+\hlcom{#c) Si se plantea vender tres alarmas, ¿cuál es la probabilidad deque consiga su objetivo en la }
+\hlcom{#octava vivienda que visita?}
+\hlstd{y} \hlkwb{<-} \hlnum{0}\hlopt{:}\hlnum{5}\hlstd{; r}\hlkwb{=}\hlnum{3}\hlstd{; p} \hlkwb{<-} \hlnum{0.1}
+\hlstd{Tabla} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{Probabilidad}\hlstd{=}\hlkwd{dnbinom}\hlstd{(y,} \hlkwc{size}\hlstd{=r,} \hlkwc{prob}\hlstd{=p))}
+\hlkwd{rownames}\hlstd{(Tabla)} \hlkwb{<-} \hlnum{0}\hlopt{:}\hlnum{5}
+\hlstd{Tabla}
+\end{alltt}
+\begin{verbatim}
+##   Probabilidad
+## 0      0.00100
+## 1      0.00270
+## 2      0.00486
+## 3      0.00729
+## 4      0.00984
+## 5      0.01240
+\end{verbatim}
+\begin{alltt}
+\hlcom{#GENERACIÓN DE MUESTRAS ALEATORIAS DE LAS DISTRIBUCIONES }
+\hlcom{#Ejemplo 1: }
+\hlcom{#Generar 100 números aleatorios de una distribución Binomial de parámetros n= 15 ensayos o pruebas }
+\hlcom{#y una probabilidad de éxito de 0.25. }
+\hlcom{# Definir los parámetros apropiados }
+\hlstd{n} \hlkwb{<-} \hlnum{15}\hlstd{; p} \hlkwb{<-} \hlnum{0.25}
+
+\hlcom{# generar 100 números aleatorios binomiales }
+\hlstd{x} \hlkwb{=} \hlkwd{rbinom}\hlstd{(}\hlnum{100}\hlstd{, n, p); x}
+\end{alltt}
+\begin{verbatim}
+##   [1] 6 3 5 2 5 5 5 7 5 1 6 5 1 1 3 3 4 2 2 4 4 3 5 3 2 6 4 4 3 3 3 5 5 3 3
+##  [36] 5 3 2 6 5 4 5 2 4 2 2 3 2 3 2 5 2 4 2 3 5 4 3 5 7 4 4 5 5 2 3 2 3 1 3
+##  [71] 2 4 2 4 9 3 2 2 3 2 6 4 5 5 3 4 3 2 1 1 4 4 3 4 3 3 5 5 3 6
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Histograma para la muestra aleatoria de tamaño 100 }
+\hlkwd{hist}\hlstd{(x,} \hlkwc{main}\hlstd{=}\hlstr{"X ~ Binomial(n=15, p=0.25)"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"X = Número de éxitos"}\hlstd{,}
+\hlkwc{ylab}\hlstd{=}\hlstr{"masa de probabilidad"}\hlstd{,} \hlkwc{probability}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"Cyan"}\hlstd{)}
+
+\hlcom{# Graficar la función de probabilidad teórica, use la función points(), }
+\hlcom{#no debe cerrar el gráfico obtenido con la instrucción anterior }
+\hlstd{xvals}\hlkwb{=}\hlnum{0}\hlopt{:}\hlstd{n;} \hlkwd{points}\hlstd{(xvals,} \hlkwd{dbinom}\hlstd{(xvals, n, p),} \hlkwc{type}\hlstd{=}\hlstr{"h"}\hlstd{,} \hlkwc{lwd}\hlstd{=}\hlnum{3}\hlstd{)}
+\hlkwd{points}\hlstd{(xvals,} \hlkwd{dbinom}\hlstd{(xvals, n, p),} \hlkwc{type}\hlstd{=}\hlstr{"p"}\hlstd{,} \hlkwc{lwd}\hlstd{=}\hlnum{3}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-9} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlcom{#Generar 100 números aleatorios de una distribución Poisson con 200000 }
+\hlcom{#ensayos o pruebas y una probabilidad de éxito de 3/100000 }
+
+\hlcom{# Definir los parámetros apropiados }
+\hlstd{n} \hlkwb{<-} \hlnum{200000}\hlstd{; p} \hlkwb{<-} \hlnum{3}\hlopt{/}\hlnum{100000}\hlstd{; lambda}\hlkwb{=}\hlstd{n}\hlopt{*}\hlstd{p}
+
+\hlcom{# generar 100 números aleatorios de la distribución }
+\hlstd{x} \hlkwb{=} \hlkwd{rpois}\hlstd{(}\hlnum{100}\hlstd{, lambda); x}
+\end{alltt}
+\begin{verbatim}
+##   [1]  7  7  7  8  8  8  4  8  7  6  3 13  6  8  7  5  7  5  5  8  5  6  5
+##  [24]  9  3  5  3  8  5  6  6  6  6  3  6  6 10  2  6  5  5  4  9  6  5  9
+##  [47]  4  8  3  9  3  5  3  6  5  8  0  4  6  3  7  6  8  7  6  2  5  1  3
+##  [70]  8  0  4  7 10  4  7  4  5  4  5  4  5 10  5 10  4  1  9  4 13  5  1
+##  [93]  8  4  5  8  8  4  4  5
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Histograma para la muestra aleatoria de tamaño 100 }
+\hlkwd{hist}\hlstd{(x,} \hlkwc{main}\hlstd{=}\hlkwd{expression}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlstr{"X ~ Poisson( "}\hlstd{, lambda,} \hlstr{" = 6 )"}\hlstd{)),} \hlkwc{xlab}\hlstd{=}\hlstr{"X = Número de eventos a 
+una tasa constante"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"masa de probabilidad"}\hlstd{,} \hlkwc{probability}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"pink"}\hlstd{)}
+
+\hlcom{# Graficar la función de probabilidadteórica, use la función points() }
+\hlstd{xvals}\hlkwb{=}\hlnum{0}\hlopt{:}\hlstd{n;} \hlkwd{points}\hlstd{(xvals,} \hlkwd{dpois}\hlstd{(xvals, lambda),} \hlkwc{type}\hlstd{=}\hlstr{"h"}\hlstd{,} \hlkwc{lwd}\hlstd{=}\hlnum{3}\hlstd{)}
+\hlkwd{points}\hlstd{(xvals,} \hlkwd{dpois}\hlstd{(xvals, lambda),} \hlkwc{type}\hlstd{=}\hlstr{"p"}\hlstd{,} \hlkwc{lwd}\hlstd{=}\hlnum{3}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-10} 
+\begin{kframe}\begin{alltt}
+\hlcom{#3. GENERACIÓN DE MUESTRAS ALEATORIAS DE LAS DISTRIBUCIONES}
+\hlcom{#Ejemplo 1: }
+\hlcom{#Generar 100 números aleatorios de una distribución Uniforme en [-2, 4] }
+
+\hlcom{#Definir los parámetros apropiados }
+\hlstd{min} \hlkwb{<-} \hlopt{-}\hlnum{2}\hlstd{; max} \hlkwb{<-} \hlnum{4}
+
+\hlcom{#Generar 100 números aleatorios de la distribución }
+\hlstd{x} \hlkwb{=} \hlkwd{runif}\hlstd{(}\hlnum{100}\hlstd{, min, max); x}
+\end{alltt}
+\begin{verbatim}
+##   [1] -1.0538  2.5133  3.8057  1.0215  2.7824  0.8395  3.8096 -0.0823
+##   [9]  1.7396  1.7294  3.1855 -1.3191  1.7870  0.5221  0.1276 -1.0835
+##  [17] -0.1442 -0.7418  2.6648  3.4860 -1.8605 -1.7565  2.2712  3.6213
+##  [25] -1.4783  3.3601  2.2842  1.4992 -0.7821  2.3320  1.7817  0.5975
+##  [33]  0.7804  0.5846  3.2540  3.8579  0.0375  0.5869 -1.4594  3.0806
+##  [41]  3.8349  3.7505  2.8964 -1.2629  2.8829 -0.8356 -1.6744  0.0716
+##  [49] -0.3991  3.2519  0.3540 -1.6604 -1.4238  3.0938  0.5681  3.1491
+##  [57]  1.7629  0.8542 -1.7091  3.2531  0.0317 -0.4119  3.5731  3.8933
+##  [65]  1.4422  2.4828  1.4095 -0.9630  3.8873  3.1218  1.3441  2.2815
+##  [73]  2.0632 -0.3577 -1.8555 -1.9561  1.4785 -0.0694 -1.5619  1.8424
+##  [81]  1.1848  1.9683  2.9156 -1.7200 -1.4292  0.2461  2.8784  2.5653
+##  [89]  0.6444 -0.6981 -0.0917  1.1360  2.4387  3.5300  3.9581 -0.1509
+##  [97]  3.0954  2.9737  3.0579  0.3238
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Histograma para la nuestra aleatoria de tamaño 100 }
+\hlkwd{hist}\hlstd{(x,} \hlkwc{main}\hlstd{=}\hlstr{"X ~ Uniforme(min=-2, max=4"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"X"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"densidad de probabilidad"}\hlstd{,}
+     \hlkwc{probability}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"green"}\hlstd{)}
+
+\hlcom{#Graficar la función de densidad, use la función curve() para variable continua }
+\hlkwd{curve}\hlstd{(}\hlkwd{dunif}\hlstd{(x, min, max),} \hlkwc{col}\hlstd{=}\hlstr{"blue"}\hlstd{,} \hlkwc{add}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-11} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlcom{#Supongamos que tenemos una muestra de tamañon=200 perteneciente a una población normal }
+\hlcom{#N(10,2) con ??=10 y ??=2:}
+
+\hlcom{#genera los valores aleatorios de la distribución }
+\hlstd{x.norm} \hlkwb{<-} \hlkwd{rnorm}\hlstd{(}\hlkwc{n}\hlstd{=}\hlnum{200}\hlstd{,}\hlkwc{mean}\hlstd{=}\hlnum{10}\hlstd{,} \hlkwc{sd}\hlstd{=}\hlnum{2}\hlstd{)}
+
+\hlcom{# Podemos obtener un histograma usando la función hist() }
+\hlkwd{hist}\hlstd{(x.norm,} \hlkwc{breaks} \hlstd{=} \hlstr{"Sturges"}\hlstd{,} \hlkwc{freq} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{probability} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{include.lowest} \hlstd{=} \hlnum{TRUE}\hlstd{,}
+\hlkwc{right}\hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{density} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{angle} \hlstd{=} \hlnum{45}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"steelblue1"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlkwa{NULL}\hlstd{,}
+\hlkwc{main} \hlstd{=} \hlstr{"Histograma de datos observados"}\hlstd{,} \hlkwc{axes} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{plot} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{labels} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-12} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Podemos estimar la densidad de frecuencia usando la función density() y plot() para dibujar su gráfica }
+\hlkwd{plot}\hlstd{(}\hlkwd{density}\hlstd{(x.norm),} \hlkwc{main}\hlstd{=}\hlstr{"Densidad estimada de los datos"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-13} 
+\begin{kframe}\begin{alltt}
+\hlcom{# R permite calcular la función de distribución acumulada teórica con ecdf() }
+\hlkwd{plot}\hlstd{(}\hlkwd{ecdf}\hlstd{(x.norm),}\hlkwc{main}\hlstd{=}\hlstr{"Función de distribución acumulada teórica"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-14} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Ejemplo 3: }
+\hlcom{#Generar 100 números aleatorios de una distribución Normal con media 4.5 y desviación estándar 0.75 }
+
+\hlcom{# Definir los parámetros apropiados }
+\hlstd{media} \hlkwb{<-} \hlnum{4.5}\hlstd{; desviacion} \hlkwb{<-} \hlnum{0.75}
+
+\hlcom{# generar 100 números aleatorios de la distribución }
+\hlstd{x} \hlkwb{=} \hlkwd{rnorm}\hlstd{(}\hlnum{100}\hlstd{, media, desviacion); x}
+\end{alltt}
+\begin{verbatim}
+##   [1] 3.85 3.80 4.15 4.29 4.70 4.57 5.17 3.28 5.20 5.17 4.84 5.45 4.39 5.58
+##  [15] 5.04 3.66 4.38 3.46 5.43 4.29 4.19 4.56 4.85 3.99 5.42 4.30 5.59 4.62
+##  [29] 5.50 3.64 5.37 4.74 4.99 6.20 4.73 4.61 3.88 3.78 3.71 4.25 3.95 4.63
+##  [43] 4.84 3.89 5.18 6.08 5.23 4.82 4.86 4.15 4.60 4.60 3.02 5.26 3.61 4.70
+##  [57] 4.66 4.01 4.13 4.68 4.57 3.05 4.19 3.24 3.42 4.15 3.08 4.63 5.12 4.77
+##  [71] 3.68 3.75 3.28 4.78 5.16 2.42 4.77 4.40 4.21 4.35 3.61 4.97 4.67 3.86
+##  [85] 3.92 4.75 3.88 5.13 4.70 4.67 4.32 4.70 4.44 5.98 4.61 3.73 5.42 3.35
+##  [99] 3.36 3.80
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Histograma para la nuestra aleatoria de tamaño 100 }
+\hlkwd{hist}\hlstd{(x,}\hlkwc{main}\hlstd{=}\hlkwd{expression}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlstr{"X ~ N("}\hlstd{, mu,} \hlstr{" = 4.5, "}\hlstd{, sigma,} \hlstr{" = 0.75)"}\hlstd{)),}
+\hlkwc{xlab}\hlstd{=}\hlstr{"X"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"densidad de probabilidad"}\hlstd{,} \hlkwc{probability}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{col}\hlstd{=}\hlkwd{gray}\hlstd{(}\hlnum{0.9}\hlstd{))}
+
+\hlcom{# Graficar la función de densidad teórica, usando la función curve() }
+\hlkwd{curve}\hlstd{(}\hlkwd{dnorm}\hlstd{(x, media, desviacion),} \hlkwc{col}\hlstd{=}\hlstr{"red"}\hlstd{,} \hlkwc{lwd}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{add}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-15} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Ejemplo 4: }
+\hlcom{#Generar números aleatorios de una distribución exponencial. Por ejemplo, si la vida media de un }
+\hlcom{#bulbo de luz es 2500 horas, uno puede pensar que el tiempo de vida es aleatorio con una distribución }
+\hlcom{#exponencial que tiene media 2500. El único parámetro es la razón = 1/media.}
+
+\hlcom{# Definir el parámetro apropiado }
+\hlstd{media} \hlkwb{<-} \hlnum{2500}\hlstd{; razon} \hlkwb{<-} \hlnum{1}\hlopt{/}\hlstd{media;n}\hlkwb{=}\hlnum{100}
+
+\hlcom{# generar 100 números aleatorios de la distribución }
+\hlstd{x} \hlkwb{=} \hlkwd{rexp}\hlstd{(n, razon); x}
+\end{alltt}
+\begin{verbatim}
+##   [1] 14679.8  3594.3    42.8  1233.9   937.6  2551.1  3363.8   488.5
+##   [9]  2715.7  3651.8 11959.1  1433.5  4014.1  4514.0  3096.5   645.4
+##  [17]   773.9  7084.5   477.8  1853.5  1369.6   841.9   945.2  1336.3
+##  [25]  4497.0   796.0   278.2  1049.2  1138.9  2800.3   726.2  3134.2
+##  [33]  4654.7  2761.7   102.5   764.8  3627.9  2427.5  2250.2   425.8
+##  [41]  2573.0  1582.9    76.8  3716.5   165.6   478.7   850.8   752.3
+##  [49]  2815.9  3267.7  1089.6  1323.9  1953.1   478.4   856.5 11723.3
+##  [57]  2619.2  6198.8  2838.9  1782.7  2872.1   228.8    38.3  3470.8
+##  [65]   331.7   117.7  3510.1   820.2  4108.1  4277.9   820.3   984.4
+##  [73]   321.9  3179.5   781.0  6207.7   134.7  3121.4   117.6   244.2
+##  [81]  1607.4   734.1  5565.6   527.2  1439.0  4581.1 11655.7  1359.2
+##  [89]  5286.8   659.1    53.5  5059.4 12968.9  4770.1  1290.7  1012.2
+##  [97]   585.7    68.9  1301.2  3784.5
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Histograma para la nuestra aleatoria de tamaño 100 }
+\hlkwd{hist}\hlstd{(x,} \hlkwc{main}\hlstd{=}\hlstr{"X ~ Exponencial( media = 2500 )"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"X"}\hlstd{,}
+\hlkwc{ylab}\hlstd{=}\hlstr{"densidad de probabilidad"}\hlstd{,} \hlkwc{probability}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"pink"}\hlstd{)}
+
+\hlcom{# Graficar la función de densidad, usando la función curve() }
+\hlkwd{curve}\hlstd{(}\hlkwd{dexp}\hlstd{(x, razon),} \hlkwc{col}\hlstd{=}\hlstr{"blue"}\hlstd{,} \hlkwc{lwd}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{add}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-16} 
+\begin{kframe}\begin{alltt}
+\hlcom{#4. FUNCIONES DE DISTRIBUCIÓN Y SU INVERSA (LOS CUANTILES).}
+\hlcom{#Ejemplo 1:Para una Variable aleatoria X con distribución normal de media 1 y desviación }
+\hlcom{#estándar 1, ¿cuál es la probabilidad de que sea menor que 0.7? }
+\hlstd{x} \hlkwb{<-} \hlnum{0.7}
+\hlstd{p} \hlkwb{<-} \hlkwd{pnorm}\hlstd{(x,} \hlkwc{mean}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{sd}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{lower.tail} \hlstd{=} \hlnum{TRUE}\hlstd{); p}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.382
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2:}
+\hlcom{#Para una variable aleatoria con distribución normal estándar, encontrar P[Z ??? 0.7 ] y P[Z> 0.7].}
+\hlstd{z} \hlkwb{<-} \hlnum{0.7}
+\hlstd{p1} \hlkwb{<-} \hlkwd{pnorm}\hlstd{(z,} \hlkwc{mean}\hlstd{=}\hlnum{0}\hlstd{,} \hlkwc{sd}\hlstd{=}\hlnum{1}\hlstd{); p1}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.758
+\end{verbatim}
+\begin{alltt}
+\hlstd{p2} \hlkwb{<-} \hlkwd{pnorm}\hlstd{(z,} \hlkwc{mean}\hlstd{=}\hlnum{0}\hlstd{,} \hlkwc{sd}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{lower.tail}\hlstd{=}\hlnum{FALSE}\hlstd{); p2}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.242
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 3:}
+\hlcom{#¿Qué valor de una variable aleatoria con distribución normal estándar, tiene 75% }
+\hlcom{#del área a la izquierda?. }
+\hlstd{p} \hlkwb{<-} \hlnum{0.75}
+\hlstd{z} \hlkwb{<-} \hlkwd{qnorm}\hlstd{(p,} \hlkwc{mean}\hlstd{=}\hlnum{0}\hlstd{,} \hlkwc{sd}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{lower.tail} \hlstd{=} \hlnum{TRUE}\hlstd{); z}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.674
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 4:}
+\hlcom{#¿Cuál es la probabilidad a la derecha de 18.55 para una Variable aleatoria X con }
+\hlcom{#distribución Chi-cuadrado de 12 grados de libertad? }
+\hlstd{x} \hlkwb{<-} \hlnum{18.55}\hlstd{; gl} \hlkwb{<-} \hlnum{12}
+\hlstd{p} \hlkwb{<-} \hlkwd{pchisq}\hlstd{(x, gl,} \hlkwc{lower.tail} \hlstd{=} \hlnum{FALSE}\hlstd{); p}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.1
+\end{verbatim}
+\begin{alltt}
+\hlcom{#UNIDAD 4: Práctica 17 - Inferencia estadística, Estimación.}
+
+\hlcom{#SIMULACIÓN DEL CONCEPTO DE INTERVALO DE CONFIANZA PARA ESTIMAR UN PARÁMETRO. }
+
+\hlcom{#Ejemplo 1. }
+\hlcom{#Sea la variable aleatoria X = el número de caras obtenidas, al lanzar una moneda }
+\hlcom{#balanceada 20 veces. Simulamos 50 muestras para generar intervalos de 95% de }
+\hlcom{#confianza y así poder estimar la proporción verdadera de caras (p), y encontrar }
+\hlcom{#en cuántos de estos intervalos se encuentra el verdadero valor de la proporción}
+
+\hlstd{simulIntProp} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{m}\hlstd{=}\hlnum{5}\hlstd{,} \hlkwc{n}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{p}\hlstd{,} \hlkwc{nivel.conf}\hlstd{=}\hlnum{0.95}\hlstd{)}
+\hlstd{\{}
+  \hlstd{X} \hlkwb{<-} \hlkwd{rbinom}\hlstd{(m, n, p)}
+  \hlcom{# Matriz con 1000 valores aleatorios binomial(n,p), 50 muestras cada una de tamaño 20 }
+  \hlstd{pe} \hlkwb{<<-} \hlstd{X}\hlopt{/}\hlstd{n}
+  \hlcom{# Calcula la proporción estimada en cada una de las muestras. }
+  \hlstd{SE} \hlkwb{<<-} \hlkwd{sqrt}\hlstd{(pe}\hlopt{*}\hlstd{(}\hlnum{1}\hlopt{-}\hlstd{pe)}\hlopt{/}\hlstd{n)}
+  \hlcom{# Calcula la desviación estándarestimada en cada una de las muestras. }
+  \hlstd{alfa} \hlkwb{<-} \hlnum{1}\hlopt{-}\hlstd{nivel.conf}
+  \hlstd{z} \hlkwb{<<-} \hlkwd{qnorm}\hlstd{(}\hlnum{1}\hlopt{-}\hlstd{alfa}\hlopt{/}\hlnum{2}\hlstd{)}
+  \hlstd{Intervalo} \hlkwb{<<-} \hlkwd{cbind}\hlstd{(pe} \hlopt{-} \hlstd{z}\hlopt{*}\hlstd{SE, pe} \hlopt{+} \hlstd{z}\hlopt{*}\hlstd{SE)}
+  \hlcom{# genera los extremos del intervalo de confianza }
+  \hlstd{nInter} \hlkwb{<<-} \hlnum{0}
+  \hlcom{# un contador para conocer en cuántos intervalos se encuentra la verdadera proporción. }
+  \hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlstd{m)}
+    \hlkwa{if} \hlstd{((p} \hlopt{>=} \hlstd{Intervalo[i,} \hlnum{1}\hlstd{])} \hlopt{&&} \hlstd{(p} \hlopt{<=} \hlstd{Intervalo[i,} \hlnum{2}\hlstd{]))}
+      \hlstd{nInter} \hlkwb{<<-} \hlstd{nInter} \hlopt{+} \hlnum{1}
+  \hlcom{# función que cuenta cuántos intervalos contienen el verdadero valor del parámetro. }
+  \hlkwd{return}\hlstd{(nInter)}
+\hlstd{\}}
+\hlstd{n}\hlkwb{=}\hlnum{20}\hlstd{; m}\hlkwb{=} \hlnum{50}\hlstd{; p}\hlkwb{=}\hlnum{0.5}\hlstd{; nivel.conf}\hlkwb{=}\hlnum{0.95}
+\hlkwd{simulIntProp}\hlstd{(m, n, p, nivel.conf)}
+\end{alltt}
+\begin{verbatim}
+## [1] 50
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Gráfico que muestra los intervalosde confianza de 95% que contienen y no contienen el verdadero }
+\hlcom{#valor del parámetro p. }
+\hlkwd{matplot}\hlstd{(}\hlkwd{rbind}\hlstd{(pe} \hlopt{-} \hlstd{z}\hlopt{*}\hlstd{SE, pe} \hlopt{+} \hlstd{z}\hlopt{*}\hlstd{SE),} \hlkwd{rbind}\hlstd{(}\hlnum{1}\hlopt{:}\hlstd{m,} \hlnum{1}\hlopt{:}\hlstd{m),} \hlkwc{type}\hlstd{=}\hlstr{"l"}\hlstd{,} \hlkwc{lty}\hlstd{=}\hlnum{1}\hlstd{)}
+\hlkwd{abline}\hlstd{(}\hlkwc{v}\hlstd{=p)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-17} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Ejercicio 1. }
+\hlcom{#Sea la variable aleatoria X = el número que se obtiene al lanzar un dado no cargado }
+\hlcom{#30 veces. Simular 56 muestras para generar intervalos de 95%de confianza para }
+\hlcom{#estimar el promedio (??), y encontrar cuántos de estos intervalos contiene el valor }
+\hlcom{#medio verdadero.}
+
+\hlstd{simulIntProp} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{m}\hlstd{=}\hlnum{5}\hlstd{,} \hlkwc{n}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{p}\hlstd{,} \hlkwc{nivel.conf}\hlstd{=}\hlnum{0.95}\hlstd{)}
+\hlstd{\{}
+  \hlstd{X} \hlkwb{<-} \hlkwd{rbinom}\hlstd{(m, n, p)}
+\hlstd{pe} \hlkwb{<<-} \hlstd{X}\hlopt{/}\hlstd{n}
+\hlstd{SE} \hlkwb{<<-} \hlkwd{sqrt}\hlstd{(pe}\hlopt{*}\hlstd{(}\hlnum{1}\hlopt{-}\hlstd{pe)}\hlopt{/}\hlstd{n)}
+\hlstd{alfa} \hlkwb{<-} \hlnum{1}\hlopt{-}\hlstd{nivel.conf}
+\hlstd{z} \hlkwb{<<-} \hlkwd{qnorm}\hlstd{(}\hlnum{1}\hlopt{-}\hlstd{alfa}\hlopt{/}\hlnum{2}\hlstd{)}
+\hlstd{Intervalo} \hlkwb{<<-} \hlkwd{cbind}\hlstd{(pe} \hlopt{-} \hlstd{z}\hlopt{*}\hlstd{SE, pe} \hlopt{+} \hlstd{z}\hlopt{*}\hlstd{SE)}
+\hlstd{nInter} \hlkwb{<<-} \hlnum{0}
+\hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlstd{m)}
+\hlkwa{if} \hlstd{((p} \hlopt{>=} \hlstd{Intervalo[i,} \hlnum{1}\hlstd{])} \hlopt{&&} \hlstd{(p} \hlopt{<=} \hlstd{Intervalo[i,} \hlnum{2}\hlstd{])) nInter} \hlkwb{<<-} \hlstd{nInter} \hlopt{+} \hlnum{1}
+\hlkwd{return}\hlstd{(nInter)}
+\hlstd{\}}
+\hlstd{n}\hlkwb{=}\hlnum{30}\hlstd{; m}\hlkwb{=} \hlnum{56}\hlstd{; p}\hlkwb{=}\hlnum{0.5}\hlstd{; nivel.conf}\hlkwb{=}\hlnum{0.95}
+\hlkwd{simulIntProp}\hlstd{(m, n, p, nivel.conf)}
+\end{alltt}
+\begin{verbatim}
+## [1] 51
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\end{document}

@@ -1,0 +1,719 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Lilian Martínez}
+\title{Guias Practicas de R}
+\begin{document}
+
+\maketitle
+\newpage
+<<>>=
+#1 CREACIÓN Y MANEJO DE VECTORES DE DATOS.
+#1.1 VECTORES NUMÉRICOS 
+
+#FORMA 1-Crear un vector numérico vacío y añadirle luego sus elementos.
+
+#Ejemplo 1: 
+v <- numeric(3)
+v 
+
+#Ejemplo 2:  
+v[3] <- 17 
+v
+
+#FORMA 2-Crear un vector numérico asignándole todos sus elementos o valores.
+#Ejemplo 1:
+x <- c(2, 4, 3.1, 8, 6)
+length(x) 
+
+#Ejemplo 2:
+x <- edit(x)
+
+#FORMA 3-Crear un vector numérico dando un rango de valores. 
+#Ejemplo 1: 
+y = 1:4; y
+
+#Ejemplo 2:
+y[2] <- 5
+y
+
+# Ejemplo 3:
+u <- 1:12 
+u1=u[2 * 1:5]
+u
+
+#FORMA 4-Crear un vector numérico utilizando la función assign()
+#Ejemplo 1: 
+assign("z", c(x, 0, x)) 
+z
+
+#FORMA 5-Crear un vector numérico generando una sucesión de valores. 
+#Ejemplo 1: 
+s1 <- seq(2, 10)
+s1
+
+#Ejemplo 2: 
+s2 = seq(from=-1, to=5) 
+s2
+
+#Ejemplo 3: 
+s3<-seq(to=2, from=-2)
+s3
+
+#Ejemplo 4: 
+s4=seq(from=-3, to=3, by=0.2) 
+s4 
+
+#Ejemplo 5. 
+s5 <- rep(s3, times=3) 
+s5
+
+#1.1.1  OPERACIONES CON VECTORES NUMÉRICOS
+#Ejemplo 
+1: 1/x 
+
+#Ejemplo 2: 
+v=2*x+z+1 
+v
+
+#Ejemplo 3: 
+e1 <- c(1, 2, 3, 4) 
+e2<-c(4, 5, 6, 7) 
+crossprod(e1, e2)  
+t(e1)%*%e2
+
+#1.1.2  OPERACIONES DE FUNCIONES SOBRE VECTORES NUMÉRICOS.
+#Ejemplo 1:
+xt = t(x) 
+xt
+
+#Ejemplo 2: 
+u = exp(y)
+u
+
+#OTRAS OPERACIONES: 
+#Ejemplo 1: 
+resum <- c(length(y), sum(y), prod(y), min(y), max(y)) 
+resum 
+
+#Ejemplo 2: 
+yo <- sort(y) 
+yo
+
+#1.2 VECTORES DE CARACTERES 
+#FORMA 1-Crear un vector de caracteres vacío y añadirle luego sus elementos.
+#Ejemplo 1: 
+S<-character()
+
+#FORMA 2-Crear un vector de caracteres asignándole todos sus elementos.
+#Ejemplo 1: Crear el vector de caracteres: 
+deptos <- c("Santa Ana", "Sonsonate", "San Salvador")
+deptos
+
+#Ejemplo 2: Agregue el elemento "Ahuachapán" en la cuarta posición. 
+deptos[4]="Ahuachapán" 
+deptos 
+
+#FORMA 3-Crear un vector de caracteres dándole nombres a los elementos para identificarlos más fácilmente. 
+#Ejemplo 1: 
+codDeptos <- c(11, 12, 13, 14) 
+names(codDeptos) <- c("Usulután", "San Miguel", "Morazán", "La Unión")
+codDeptos 
+Oriente <- codDeptos [c("La Unión", "San Miguel")]
+Oriente 
+
+#Ejemplo 2: Crear un vector con las etiquetas X1, Y2, ... , X9, Y10 
+etiqs<-paste(c("X", "Y"), 1:10, sep="") 
+etiqs 
+
+#2.  CREACIÓN Y MANEJO DE MATRICES.
+#2.1 CREACIÓN DE MATRICES NUMÉRICAS. 
+#FORMA 1-Crear una matriz numérica vacía y añadirle luego sus elementos. 
+#Ejemplo 1: 
+M <- matrix(numeric(), nrow = 3, ncol=4) 
+
+#Ejemplo 2:
+M[2,3] <- 6
+M
+
+#FORMA 2-Crear una matriz numérica asignándole todos sus elementos o valores. 
+#Ejemplo 1: 
+A <- matrix(c(2, 4, 6, 8, 10, 12), nrow=2, ncol=3); A
+
+#FORMA 3-Crear una matriz numérica dando un rango de valores 
+#Ejemplo 1: 
+B <- matrix(1:12, nrow=3, ncol=4)
+B
+
+#FORMA 4-Crear una matriz a partir de la unión de vectores 
+# Crear tres vectores 
+x1 <- seq(0, 10, 2); x1 
+x2 <- seq(1, 11, 2); x2 
+x3 <- runif(6); x3 
+
+# Unir los tres vectores en una matriz por columnas. 
+Xcol <- cbind(x1, x2, x3)
+Xcol 
+
+#Unir los tres vectores en una matriz por filas. 
+Xfil <- rbind(x1, x2, x3)
+Xfil 
+
+# Acceso a las filas y columnas de una matriz. 
+X <- Xfil[1:3, c(2, 3)]
+X 
+
+#2.2 OPERACIONES CON MATRICES NUMÉRICAS. 
+#MULTIPLICACIÓN DE MATRICES MATRICES NUMÉRICAS: 
+#Ejemplo 1:
+v<-c(1, 2) 
+v %*%A 
+
+#Ejemplo 2: 
+P <- A %*% B
+P 
+
+#OPERACIONES DE FUNCIONES SOBRE MATRICES NUMÉRICAS: 
+#Ejemplo 1:
+length(A) 
+
+#Ejemplo 2: 
+T=sqrt(B) 
+T  
+#Ejemplo 3: Transpuesta de una matriz
+t(B) 
+
+#Ejemplo 4: Determinante de una matriz: 
+C <- matrix(c(2, 1, 10, 12), nrow=2, ncol=2) 
+C 
+det(C) 
+
+#Ejemplo 5: Inversa de una matriz 
+InvC <- solve(C)
+InvC
+b=diag(2)
+InvC<-solve(C, b) 
+InvC 
+
+#Ejemplo 6: Autovalores y autovectores de uma matriz simétrica
+eigen(C) 
+
+#Ejemplo 7: 
+diag(C)
+
+#Ejemplo 8:
+diag(C)
+ 
+#Ejemplo 9: 
+diag(C)
+ 
+#OTRAS OPERACIONES: 
+#Ejemplo 1: 
+c(length(C), sum(C), prod(C), min(C), max(C)) 
+
+#Ejemplo 2: 
+O <- matrix(sort(C), nrow=2, ncol=2)
+O 
+
+#CREACIÓN DE UNA MATRIZ DE CADENAS 
+#Ejemplo 1: 
+nombres <- matrix(c("Carlos", "José", "Ana", "René", "María", "Mario"),
+nrow=3, ncol=2);nombres
+
+#3.  CREACIÓN Y MANEJO DE MATRICES INDEXADAS (ARRAY).
+#Ejemplo 1: 
+X <- array(c(1, 3, 5, 7, 9, 11), dim=c(2, 3)) 
+X 
+
+#Ejemplo 2: 
+Z <- array(1, c(3, 3)) 
+Z 
+
+#Ejemplo 3: 
+W <- 2*Z+1
+W 
+
+#Ejemplo 4:
+TX <- t(X)
+TX 
+
+#Ejemplo 5:
+a <- c(2, 4, 6); a 
+b <- 1:3;b 
+M <- a %o% b; M
+
+#Ejemplo 6:  
+Arreglo3 <- array(c(1:8, 11:18, 111:118), dim = c(2, 4, 3))
+Arreglo3
+
+#Práctica 03 - Tipos de objetos: factores, listas y hojas de datos, operadores y funciones que operan sobre ellos.
+
+#1.FACTORES NOMINALES Y ORDINALES.
+#Ejemplo 1:
+sexo <- c("M", "F", "F", "M", "F", "F", "M")
+sexo 
+edad <- c(19, 20, 19, 22, 20, 21, 19)
+edad 
+
+FactorSexo = factor(sexo)
+FactorSexo
+
+mediaEdad <- tapply(edad, FactorSexo, mean) 
+mediaEdad
+
+#2. CREACIÓN Y MANEJO DE LISTAS.
+#Ejemplo 1: 
+lista1<-list(padre="Pedro", madre="María", no.hijos=3, edad.hijos=c(4,7,9)) 
+lista1
+
+#Ejemplo 3: 
+lista1[[4]][2] 
+
+#jemplo 4:  
+lista1["padre"]
+
+#Ejemplo 5: 
+lista1[["nombre"]] 
+x <- "nombre" 
+lista1[x]
+
+#Ejemplo 6: 
+subLista <- lista1[4]
+subLista
+
+#Ejemplo 7: 
+lista1[5] <- list(sexo.hijos=c("F", "M", "F"))
+lista1
+
+#Ejemplo 8: Funciones que devuelven una lista. 
+S <- matrix(c(3, -sqrt(2), -sqrt(2), 2), nrow=2, ncol=2)
+S 
+autovS <- eigen(S)
+autovS
+
+evals <- eigen(S)$values
+evals
+
+#Ejemplo 9: Crear una matriz dando nombres a las filas y columnas 
+Notas <- matrix(c(2, 5, 7, 6, 8, 2, 4, 9, 10),  ncol=3,
+dimnames=list(c("Matemática","Álgebra","Geometría"), 
+c("Juan","José","René"))); Notas
+
+#3.  CREACIÓN Y MANEJO DE HOJAS DE DATOS (DATA FRAME).
+#Ejemplo 1: Creación de un data frame teniendo como columnas tres vectores: 
+
+#log <- sample(c(TRUE, FALSE), size = 20, replace = T); log
+
+comp <- rnorm(20) + runif(20) * (1i); comp
+
+num <- rnorm(20, mean=0, sd=1); num
+
+#Data frame compuesto por los tres vectores anteriores 
+#df1 <- data.frame(log, comp, num); df1
+
+#Crear un vector de nombres de los tres vectores anteriores 
+nombres <- c("logico", "complejo", "numerico") 
+nombres
+
+#Define los nombres de las filas del data frame asignándoles un vector de 20 #elementos correspondientes a las 20 primeras letras del abecedario 
+#row.names(df1) <- letters[1:20]; df1 
+
+edad <- c(18, 21, 45, 54); edad 
+datos <- matrix(c(150, 160, 180, 205, 65, 68, 65, 69), ncol=2, 
+dimnames=list(c(), c("Estatura","Peso"))); datos 
+sexo <- c("F", "M", "M", "M"); sexo 
+hoja1 <- data.frame(Edad=edad, datos, Sexo=sexo); hoja1
+
+#Práctica 05-Estructuras de control y definición de función en R.
+#1.  ESTRUCTURA CONDICIONAL: LA ORDEN IF() Y IFELSE().
+
+#Ejemplo 1: 
+if(x>0) y<-1 else y<-0
+
+#Ejemplo 2:
+x <- c(6:-4); x 
+sqrt(x)  
+sqrt(ifelse(x >= 0, x, NA)) 
+ifelse(x >= 0, sqrt(x), NA)  
+
+#2. ESTRUCTURAS ITERATIVAS O DE REPETICIÓN: FOR(), WHILE() Y REPEAT()
+
+#Ejemplo 1: 
+x <- c(2, 6, 4, 7, 5, 1) 
+suma<-0; for(i in 1:3) suma = suma+x[i]; suma
+
+#3.  FUNCIONES ESCRITAS POR EL USUARIO.
+#Ejemplo 1: Definir en R la función cuadrática  y=f(x)3x^2-5x+2
+func.cuadratica <- function(x) 
+{ 
+  3*x^2-5*x+2 
+}
+
+#Ejemplo: calcular f(2)
+y <- func.cuadratica(2);y
+
+#Ejemplo 2: Se quiere definir una función para calcular la media de un vector de datos. 
+ 
+  media <- function(x) 
+  { 
+    n = length(x) 
+    suma <- 0.0 
+    for(i in 1:n) suma = suma + x[i] 
+    media = suma/n 
+  }
+  
+#Guarde este objeto  
+save(media, file= "media.RData")
+
+#Borre todos los objetos del área de trabajo
+rm(list=ls(all=TRUE))
+
+#Cargue el objeto con
+load("media.RData")
+
+#Pruebe la función media() con los siguientes vectores:
+x <- 1:5;(media(x))
+
+y <- c(5, NA , 4, 9)
+  
+
+#Ejemplo 3: Se quiere definir una función para graficar la función seno de x. 
+
+Seno <- function(x) 
+{ 
+  y = sin(x) 
+  plot(x, y, main="Ejemplo de gráficos en R", 
+       xlab="x", ylab="y = Seno(x)", col="blue", pch=1) 
+} 
+#Pruebe la función con el siguiente vector: 
+  x<-seq(-pi, pi, len=100) 
+Seno(x)
+
+#Práctica 07 Análisis de datos categóricos.
+#1.ANÁLISIS ESTADÍSTICO DE DATOS CATEGÓRICOS.
+#Preferencias sobre el tipo de gaseosa que se consume: 
+#"CC"=Coca Cola, "PC"=Pepsi Cola, "SC"=Salva Cola
+
+#Ejemplo 1: Crear un vector con el tipo de gaseosa y otro con la muestra generada #aleatoriamente: 
+  Tipo <- c("CC", "PC", "SC"); Tipo 
+
+#Crea un vector en las que contiene los tres tipos de refrescos 
+Consumo <- sample(Tipo, 20, replace=TRUE); Consumo
+
+#Editar o agregar datos
+data.entry(Consumo)
+
+#Guarde el vector en un archivo de datos 
+write(Consumo, "Consumo.txt")
+
+#Eliminar los objetos que existen enel espacio de trabajo (Workspace) 
+ls() 
+rm(list=ls(all=TRUE)) 
+ls()
+
+#Leer o recuperar el vector de datos o archivo de texto 
+Consumo <- scan("Consumo.txt", what= character(), na.strings = "NA",flush=FALSE)
+Consumo 
+ls()
+
+#Crear la tabla de distribuciónde frecuencias y proporciones 
+frec <- table(Consumo); frec 
+prop <- table(Consumo)/length(Consumo); prop
+
+#Conocer un resumen de los datos 
+summary(Consumo)
+
+#Realizar un gráfico de barras 
+# Para las frecuencias absolutas 
+barplot(frec, main="Gráfico de barras", xlab="Consumo", col=c("yellow", "pink", "red"), sub="Agosto-2012") 
+
+# Para las frecuencias relativas 
+barplot(prop, main="Gráfico de barras", xlab=" Consumo\n", col=c("yellow", 
+"white","Cyan"), sub="Agosto-2012")
+
+#Realizar un gráfico de pastel 
+pie(frec, main="Gráfico de pastel", xlab="Tipo de Consumo", col=c("yellow", 
+"pink", "cyan"), sub="Agosto-2012")
+
+#Especificar nombres para las categorías y el color de los sectores 
+names(frec) = c("Coca Cola", "Pepsi", "Salva Cola") 
+pie(frec, main="Gráfico de pastel", xlab=" Consumo", radius=0.8, col=c("red", 
+"gray","cyan"), sub="Agosto-2012")
+
+#Colocar valores numéricos en los sectores del gráfico
+n <- length(frec) 
+hoja <- data.frame(frec); hoja 
+etiq <- c(paste(hoja$Var1, "-", hoja$Freq)); etiq 
+pie(frec, main="Gráfico de pastel", labels=etiq, col=rainbow(n), border=TRUE)
+
+#UNIDAD 2: Práctica 07-Análisis estadístico de datos univariados discretos con R.
+# Crear el vector de datos.
+Hijos <- c(2, 1) 
+data.entry(Hijos) 
+Hijos 
+length(Hijos)
+
+# Guardar el vector de datos en un archivo de texto. 
+write(Hijos, "Hijos.txt") 
+
+# Leer o recuperar el vector de datos o archivo de texto 
+X <- scan("Hijos.txt", what = integer(0), na.strings = "NA", flush=FALSE)
+ls()
+
+#Elaborar el gráfico de puntos y diagrama de tallo-hojas (stem-and-leaf) 
+stripchart(Hijos, method="stack", vertical=FALSE, col="blue", pch=1, 
+main="Gráfico de\n puntos", xlab="Número de hijos")
+
+# Crear la tabla de frecuencias completa 
+# frecuencias individuales 
+fab <- table(Hijos); fab # frecuencias absolutas 
+fre <- fab/length(Hijos); fre # frecuencias relativas 
+Fac <- cumsum(fab); Fac # frecuencias acumuladas 
+Far <- Fac/length(Hijos); Far # frecuencias acumuladas relativas
+
+# tabla de frecuencias completa 
+options(digits=2) 
+tabla <- data.frame(fab=fab, fre=fre, Fac=Fac, Far=Far) 
+names(tabla) <- c("X", "fab", "free.X", "fre", "Fac", "Far") 
+tabla 
+tfre <- data.frame(X=tabla$X, fab=tabla$fab, fre=tabla$fre, Fac=tabla$Fac, Far=tabla$Far) 
+tfre 
+
+# Calcular los estadísticos descriptivos de la variable 
+# Estadísticos de tendencia central de los datos 
+media <- mean(Hijos, na.rm = FALSE); media
+
+# R no tiene incorporada una función para la moda
+for(i in 1:length(Hijos)) if (fab[i] == max(fab)) break() 
+moda <- names(fab[i]); moda
+
+#Función para la moda
+mediana <- median(Hijos); mediana 
+
+# Estadísticos de dispersión o variabilidad de los datos 
+# Devuelve el valor mínimo y máximo del conjunto de datos.
+range(Hijos)
+
+# Devuelve la cuasivarianza y la cuasivarianza muestral 
+cuasivar <- var(Hijos); cuasivar 
+s <- sd(Hijos); s
+
+# Cálculo de Q1, Q2, Q3
+quantile(Hijos,c(0.25, 0.5, 0.75))
+
+# En general se pueden encontrar cualquier percentil
+quantile(Hijos, 0.6)
+
+# Conocer un resumen de los datos Min, Q1, Median, Mean, Q3, Max 
+resumen <- summary(Hijos); resumen 
+
+# min, cuartil menor, mediana, cuartil mayor, max
+fivenum(Hijos) 
+
+#Elaborar los gráficos que se le pueden aplicar a la variable discreta 
+# Gráfico de barras (por ser pocos valores) 
+barplot(tfre[[2]], main="Gráfico de barras", xlab="X = Número Hijos\n", ylab="frecuencia", 
+col=c("yellow", "blue", "white", "orange", "cyan", "red"), sub="Agosto-2012")
+
+# Gráfico de pastel (por ser pocos valores) 
+pie(tfre[[2]], main="Gráfico de pastel", xlab="Número Hijos \n", 
+col=c("yellow", "blue","white", "orange", "cyan", "red"), sub="Agosto-2012")
+
+# Se puede especificar nombres para las categorías 
+names(fab) = c("Cero", "Uno", "Dos", "Tres", "Cuatro", "Cinco") 
+pie(fab, main="Gráfico de pastel", xlab="X = Número Hijos\n", 
+col=c("yellow", "blue","white", "orange", "cyan", "red"), sub="Agosto-2012")
+
+# Gráfico de cajas (box-plot) es la representación gráfica de los cinco números 
+# Horizontal 
+boxplot(Hijos, main="Gráfico de caja", ylab="Número de hijos\n")
+
+# Vertical 
+boxplot(Hijos, main="Gráfico de caja", xlab=" Número de hijos\n", 
+plot=TRUE, border="red",col="yellow", horizontal=TRUE)
+
+#UNIDAD 2: Práctica 08 ANÁLISIS ESTADÍSTICO DE LOS DATOS. 
+#Crea el vector que contendrá los datos. 
+Notas <- c(4.47, 5.43); Notas 
+data.entry(Notas) 
+Notas 
+length(Notas)
+
+#Guarda el vector de datos en un archivo. 
+write(Notas, "Notas.txt")
+
+#Lee o recupera el vector de datos desde el archivo de texto. 
+X <- scan("Notas.txt", what = double(0), na.strings = "NA", flush=FALSE) 
+ls()
+
+#Crea la tabla de frecuencias. 
+# Usa el Método de Herbert A. Sturges para determinar dicho número. 
+n <- length(X); n 
+k <- 1+3.322*logb(n, 10); k 
+k <- round(k); k
+
+# Calcula el ancho o amplitud a de cada intervalo a=rango/k 
+rango <- max(X)-min(X); rango 
+a=rango/k; a 
+a <- round(a, 3); a
+
+# Define los límites y puntos mediosde cada uno de los k intervalos 
+limites <- seq(from=min(X)-0.01/2,to=max(X)+0.01/2, by=a); limites 
+options(digits=4) 
+ci <- cbind(1:k); ci 
+for(i in 2:length(limites)) ci[i-1, 1] <- (limites[i] + limites[i-1])/2 
+ci
+
+# Encuentra las frecuencias absolutas fi para cada intervalo. 
+options(digits=2) 
+fi <- cbind(table(cut(Notas, breaks = limites, labels=NULL, include.lowest=FALSE, 
+right=FALSE, dig.lab=4))); fi
+
+# Encuentra las frecuencias relativas o proporciones fri. 
+options(digits=4) 
+fri <- fi/n; fri
+
+# Encuentra las frecuencias acumuladas ascendentes Fi 
+options(digits=2) 
+Fi <- cumsum(fi); Fi
+
+# Encuentra las frecuencias relativas acumuladas Fri 
+options(digits=4) 
+Fri <- Fi/n; Fri
+
+#Completa la tabla de frecuencias. 
+tablaFrec <- data.frame(ci=ci, fi=fi, fri=fri, Fi=Fi, Fri=Fri); tablaFrec
+
+#Crea el histograma de frecuencias 
+h <- hist(X, breaks=c(limites[1]-a, limites, limites[k+1]+a), freq = TRUE, 
+probability = FALSE, include.lowest = FALSE,right = TRUE, main = "Histograma de frecuencias", col="lightyellow", lty=1, border="purple", xlab="Notas de aspirantes", ylab="Frecuencia (fi)", axes=TRUE, labels=FALSE) 
+
+text(h$mids, h$density, h$counts, adj=c(0.5, -0.5), col="red") 
+rug(jitter(Notas))  
+is.list(h); h
+
+#Aproxima al histograma la función de densidad normal 
+h <- hist(X, breaks=c(limites[1]-a, limites, limites[k+1]+a), freq = FALSE, 
+probability = TRUE, include.lowest = FALSE, right = TRUE, 
+main="Aproximación a una Normal\n", col="lightyellow",lty=1,border="purple", 
+xlab="Notas de aspirantes\n", ylab="Frecuencia relativa (fri)", 
+axes=TRUE, labels=FALSE) 
+text(h$mids, h$density, h$counts, adj=c(0.5, 0.2), col="red") 
+rug(jitter(X)) # adiciona marcas de los datos 
+curve(dnorm(x, mean=mean(X), sd=sd(X)), col = 2, lty = 2,lwd = 2, add = TRUE) 
+
+#Crea el polígono de frecuencias 
+h <- hist(X, breaks=c(limites[1]-a, limites, limites[k+1]+a), freq = TRUE, 
+probability=FALSE, include.lowest=FALSE,right=TRUE, 
+main = "Polígono de frecuencias",col="lightyellow", lty=1, border="purple", xlab=" 
+Notas de aspirantes", ylab="Frecuencia (fi)", axes=TRUE, labels=FALSE) 
+text(h$mids, h$density, h$counts, adj=c(0.5, -0.5), col="red") 
+rug(jitter(X)) # adiciona marcas de los datos 
+vCi <- c(h$mids[1]-a, h$mids, h$mids[k+1]+a); vCi 
+vfi <- c(0, h$counts, 0); vfi 
+lines(vCi, vfi, col="blue", type="l")
+
+#Crea la Ojiva ascendente o polígono de frecuencias acumuladas ascendentes 
+Fia <- c(0, Fi); Fia 
+plot(limites, Fia, type = "p", pch=1, col = "blue", main="Ojiva ascendente", 
+xlab="Notas de aspirantes",ylab="Frecuencia acumulada (Fi)") 
+text(limites, h$density, Fia, adj=c(0.5, -0.5), col="red") 
+lines(limites, Fia, col="black", type="l")
+
+#Calcula los principales estadísticos descriptivos de la variable 
+# Calcula la moda, ya que el R no proporciona una función para eso. 
+options(digits=4) 
+for(i in 1:k) if (fi[i] == max(fi)) break() 
+if(i > 1) moda <- limites[i]+((fi[i]-fi[i-1])/((fi[i]-fi[i-1])+(fi[i]-fi[i+1]) ))*a
+moda <- limites[i]+(fi[i]/(fi[i]+(fi[i]-fi[i+1])))*a 
+moda
+
+# Calcula los cuartiles: Q1, Q2, Q3 
+Q <- 1:3 
+for(v in 1:3) for(i in 1:k) if (Fi[i] > (v*25*n)/100) 
+{ 
+  Q[v] <- limites[i]+(((25*v*n/100)-Fi[i-1])/fi[i])*a 
+  break 
+} 
+Q
+
+#Otros gráficos: 
+# Gráfico de cajas 
+boxplot(2, main="Gráfico de caja", xlab="Notas", notch=FALSE, 
+data=parent.frame(), plot=TRUE, border="red", col="yellow",horizontal=TRUE)
+
+
+#Práctica 09-Análisis de unavariable bidimensional categórica.
+
+#REALICE UN ANÁLISIS ESTADÍSTICO DE LOS DATOS.
+#Leer o recuperar este archivo con la función read.table() 
+HojaCat <- read.csv("HojaCat.csv", strip.white=TRUE);HojaCat
+
+#Conecta la hoja de datos a la segunda ruta o lista de búsqueda. 
+attach(HojaCat, pos=2)
+search() 
+
+#Crea una tabla de contigencia o de doble entrada 
+tablaCont <- table(HojaCat); tablaCont 
+length(HojaCat)
+
+# Encuentra la suma de cada filade la tabla de contingencia 
+# Distribución marginal de X=Estado civil 
+suma.filas <- apply(tablaCont, 1, sum); suma.filas
+
+# Encuentra la suma de cada filade la tabla de contingencia 
+# distribución marginal de Y=Ocupación 
+suma.columnas <- apply(tablaCont,2,sum); suma.columnas
+
+# Gráficos de barras para tabla de contingencia. 
+# Barras apiladas 
+barplot(t(tablaCont), main="Gráfico de barras (Estado, Ocupación)", xlab="Estado civil", 
+ylab="Ocupación", legend.text=TRUE)
+
+# Barras agrupadas 
+barplot(t(tablaCont), main="Gráfico de barras (Estado, Ocupación)", xlab="Estado civil", 
+ylab="Ocupación", beside=TRUE, legend.text=TRUE)
+
+#Al usar beside =FALSE se obtiene el mismo gráfico de la instrucción anterior.
+barplot(tablaCont, main="Gráfico de barras (Ocupación, Estado)", 
+xlab="Ocupación\n", ylab="Estado civil", beside=TRUE, legend.text=TRUE)
+
+#Calcula tablas de proporciones o de probabilidades. 
+op <- options() 
+options(digits=3) 
+options('digits')
+
+# Proporciones basadas en el total de la muestra, la suma de filas y columnas suman 1. 
+propTotal <- prop.table(tablaCont); propTotal 
+barplot(t(propTotal), main="Gráfico de barras (Estado, Ocupación)", xlab="Estado civil\n", 
+ylab="Ocupación", beside=TRUE, legend.text=TRUE)
+
+# Proporciones basadas en el total por fila, cada fila suma 1. 
+propFila <- prop.table(tablaCont, 1); propFila 
+
+# Total por fila se indica en 1 
+barplot(t(propFila), main="Gráfico de barras (Estado, Ocupación)", xlab="Estado civil\n", 
+ylab="Ocupación", beside=TRUE, legend.text=TRUE)
+
+# Proporciones basadas en el total por columna, cada columna suma 1. 
+propColum <- prop.table(tablaCont, 2); propColum 
+
+# Total por columna se indica en 2 
+barplot(propColum, main="Gráfico de barras (Ocupación, Estado)", 
+xlab="Ocupación\n", ylab="Estado civil", beside=TRUE, legend.text=TRUE)
+
+
+#Realizar la prueba o contraste Chi-cuadrado de independencia 
+prueba <- chisq.test(tablaCont); prueba
+
+# Frecuencias absolutas esperadas para la prueba Chi-cuadrada 
+# fij = fi./No. column
+prueba$expected
+
+
+
+@
+
+\end{document}

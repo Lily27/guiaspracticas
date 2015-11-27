@@ -1,0 +1,1753 @@
+\documentclass[10pt,a4paper]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Lilian Martínez}
+\title{Guias Practicas de R}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\maketitle
+\newpage
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#1 CREACIÓN Y MANEJO DE VECTORES DE DATOS.}
+\hlcom{#1.1 VECTORES NUMÉRICOS }
+
+\hlcom{#FORMA 1-Crear un vector numérico vacío y añadirle luego sus elementos.}
+
+\hlcom{#Ejemplo 1: }
+\hlstd{v} \hlkwb{<-} \hlkwd{numeric}\hlstd{(}\hlnum{3}\hlstd{)}
+\hlstd{v}
+\end{alltt}
+\begin{verbatim}
+## [1] 0 0 0
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2:  }
+\hlstd{v[}\hlnum{3}\hlstd{]} \hlkwb{<-} \hlnum{17}
+\hlstd{v}
+\end{alltt}
+\begin{verbatim}
+## [1]  0  0 17
+\end{verbatim}
+\begin{alltt}
+\hlcom{#FORMA 2-Crear un vector numérico asignándole todos sus elementos o valores.}
+\hlcom{#Ejemplo 1:}
+\hlstd{x} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{4}\hlstd{,} \hlnum{3.1}\hlstd{,} \hlnum{8}\hlstd{,} \hlnum{6}\hlstd{)}
+\hlkwd{length}\hlstd{(x)}
+\end{alltt}
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2:}
+\hlstd{x} \hlkwb{<-} \hlkwd{edit}\hlstd{(x)}
+
+\hlcom{#FORMA 3-Crear un vector numérico dando un rango de valores. }
+\hlcom{#Ejemplo 1: }
+\hlstd{y} \hlkwb{=} \hlnum{1}\hlopt{:}\hlnum{4}\hlstd{; y}
+\end{alltt}
+\begin{verbatim}
+## [1] 1 2 3 4
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2:}
+\hlstd{y[}\hlnum{2}\hlstd{]} \hlkwb{<-} \hlnum{5}
+\hlstd{y}
+\end{alltt}
+\begin{verbatim}
+## [1] 1 5 3 4
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Ejemplo 3:}
+\hlstd{u} \hlkwb{<-} \hlnum{1}\hlopt{:}\hlnum{12}
+\hlstd{u1}\hlkwb{=}\hlstd{u[}\hlnum{2} \hlopt{*} \hlnum{1}\hlopt{:}\hlnum{5}\hlstd{]}
+\hlstd{u}
+\end{alltt}
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#FORMA 4-Crear un vector numérico utilizando la función assign()}
+\hlcom{#Ejemplo 1: }
+\hlkwd{assign}\hlstd{(}\hlstr{"z"}\hlstd{,} \hlkwd{c}\hlstd{(x,} \hlnum{0}\hlstd{, x))}
+\hlstd{z}
+\end{alltt}
+\begin{verbatim}
+##  [1] 2.0 4.0 3.1 8.0 6.0 0.0 2.0 4.0 3.1 8.0 6.0
+\end{verbatim}
+\begin{alltt}
+\hlcom{#FORMA 5-Crear un vector numérico generando una sucesión de valores. }
+\hlcom{#Ejemplo 1: }
+\hlstd{s1} \hlkwb{<-} \hlkwd{seq}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{10}\hlstd{)}
+\hlstd{s1}
+\end{alltt}
+\begin{verbatim}
+## [1]  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlstd{s2} \hlkwb{=} \hlkwd{seq}\hlstd{(}\hlkwc{from}\hlstd{=}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{to}\hlstd{=}\hlnum{5}\hlstd{)}
+\hlstd{s2}
+\end{alltt}
+\begin{verbatim}
+## [1] -1  0  1  2  3  4  5
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 3: }
+\hlstd{s3}\hlkwb{<-}\hlkwd{seq}\hlstd{(}\hlkwc{to}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{from}\hlstd{=}\hlopt{-}\hlnum{2}\hlstd{)}
+\hlstd{s3}
+\end{alltt}
+\begin{verbatim}
+## [1] -2 -1  0  1  2
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 4: }
+\hlstd{s4}\hlkwb{=}\hlkwd{seq}\hlstd{(}\hlkwc{from}\hlstd{=}\hlopt{-}\hlnum{3}\hlstd{,} \hlkwc{to}\hlstd{=}\hlnum{3}\hlstd{,} \hlkwc{by}\hlstd{=}\hlnum{0.2}\hlstd{)}
+\hlstd{s4}
+\end{alltt}
+\begin{verbatim}
+##  [1] -3.0 -2.8 -2.6 -2.4 -2.2 -2.0 -1.8 -1.6 -1.4 -1.2 -1.0 -0.8 -0.6 -0.4
+## [15] -0.2  0.0  0.2  0.4  0.6  0.8  1.0  1.2  1.4  1.6  1.8  2.0  2.2  2.4
+## [29]  2.6  2.8  3.0
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 5. }
+\hlstd{s5} \hlkwb{<-} \hlkwd{rep}\hlstd{(s3,} \hlkwc{times}\hlstd{=}\hlnum{3}\hlstd{)}
+\hlstd{s5}
+\end{alltt}
+\begin{verbatim}
+##  [1] -2 -1  0  1  2 -2 -1  0  1  2 -2 -1  0  1  2
+\end{verbatim}
+\begin{alltt}
+\hlcom{#1.1.1  OPERACIONES CON VECTORES NUMÉRICOS}
+\hlcom{#Ejemplo }
+\hlnum{1}\hlopt{:} \hlnum{1}\hlopt{/}\hlstd{x}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.5000000 0.2500000 0.3225806 0.1250000 0.1666667
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlstd{v}\hlkwb{=}\hlnum{2}\hlopt{*}\hlstd{x}\hlopt{+}\hlstd{z}\hlopt{+}\hlnum{1}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in 2 * x + z: longitud de objeto mayor no es múltiplo de la longitud de uno menor}}\begin{alltt}
+\hlstd{v}
+\end{alltt}
+\begin{verbatim}
+##  [1]  7.0 13.0 10.3 25.0 19.0  5.0 11.0 11.2 20.1 21.0 11.0
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 3: }
+\hlstd{e1} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{2}\hlstd{,} \hlnum{3}\hlstd{,} \hlnum{4}\hlstd{)}
+\hlstd{e2}\hlkwb{<-}\hlkwd{c}\hlstd{(}\hlnum{4}\hlstd{,} \hlnum{5}\hlstd{,} \hlnum{6}\hlstd{,} \hlnum{7}\hlstd{)}
+\hlkwd{crossprod}\hlstd{(e1, e2)}
+\end{alltt}
+\begin{verbatim}
+##      [,1]
+## [1,]   60
+\end{verbatim}
+\begin{alltt}
+\hlkwd{t}\hlstd{(e1)}\hlopt{%*%}\hlstd{e2}
+\end{alltt}
+\begin{verbatim}
+##      [,1]
+## [1,]   60
+\end{verbatim}
+\begin{alltt}
+\hlcom{#1.1.2  OPERACIONES DE FUNCIONES SOBRE VECTORES NUMÉRICOS.}
+\hlcom{#Ejemplo 1:}
+\hlstd{xt} \hlkwb{=} \hlkwd{t}\hlstd{(x)}
+\hlstd{xt}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    2    4  3.1    8    6
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlstd{u} \hlkwb{=} \hlkwd{exp}\hlstd{(y)}
+\hlstd{u}
+\end{alltt}
+\begin{verbatim}
+## [1]   2.718282 148.413159  20.085537  54.598150
+\end{verbatim}
+\begin{alltt}
+\hlcom{#OTRAS OPERACIONES: }
+\hlcom{#Ejemplo 1: }
+\hlstd{resum} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlkwd{length}\hlstd{(y),} \hlkwd{sum}\hlstd{(y),} \hlkwd{prod}\hlstd{(y),} \hlkwd{min}\hlstd{(y),} \hlkwd{max}\hlstd{(y))}
+\hlstd{resum}
+\end{alltt}
+\begin{verbatim}
+## [1]  4 13 60  1  5
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlstd{yo} \hlkwb{<-} \hlkwd{sort}\hlstd{(y)}
+\hlstd{yo}
+\end{alltt}
+\begin{verbatim}
+## [1] 1 3 4 5
+\end{verbatim}
+\begin{alltt}
+\hlcom{#1.2 VECTORES DE CARACTERES }
+\hlcom{#FORMA 1-Crear un vector de caracteres vacío y añadirle luego sus elementos.}
+\hlcom{#Ejemplo 1: }
+\hlstd{S}\hlkwb{<-}\hlkwd{character}\hlstd{()}
+
+\hlcom{#FORMA 2-Crear un vector de caracteres asignándole todos sus elementos.}
+\hlcom{#Ejemplo 1: Crear el vector de caracteres: }
+\hlstd{deptos} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Santa Ana"}\hlstd{,} \hlstr{"Sonsonate"}\hlstd{,} \hlstr{"San Salvador"}\hlstd{)}
+\hlstd{deptos}
+\end{alltt}
+\begin{verbatim}
+## [1] "Santa Ana"    "Sonsonate"    "San Salvador"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: Agregue el elemento "Ahuachapán" en la cuarta posición. }
+\hlstd{deptos[}\hlnum{4}\hlstd{]}\hlkwb{=}\hlstr{"Ahuachapán"}
+\hlstd{deptos}
+\end{alltt}
+\begin{verbatim}
+## [1] "Santa Ana"    "Sonsonate"    "San Salvador" "Ahuachapán"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#FORMA 3-Crear un vector de caracteres dándole nombres a los elementos para identificarlos más fácilmente. }
+\hlcom{#Ejemplo 1: }
+\hlstd{codDeptos} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{11}\hlstd{,} \hlnum{12}\hlstd{,} \hlnum{13}\hlstd{,} \hlnum{14}\hlstd{)}
+\hlkwd{names}\hlstd{(codDeptos)} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Usulután"}\hlstd{,} \hlstr{"San Miguel"}\hlstd{,} \hlstr{"Morazán"}\hlstd{,} \hlstr{"La Unión"}\hlstd{)}
+\hlstd{codDeptos}
+\end{alltt}
+\begin{verbatim}
+##   Usulután San Miguel    Morazán   La Unión 
+##         11         12         13         14
+\end{verbatim}
+\begin{alltt}
+\hlstd{Oriente} \hlkwb{<-} \hlstd{codDeptos [}\hlkwd{c}\hlstd{(}\hlstr{"La Unión"}\hlstd{,} \hlstr{"San Miguel"}\hlstd{)]}
+\hlstd{Oriente}
+\end{alltt}
+\begin{verbatim}
+##   La Unión San Miguel 
+##         14         12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: Crear un vector con las etiquetas X1, Y2, ... , X9, Y10 }
+\hlstd{etiqs}\hlkwb{<-}\hlkwd{paste}\hlstd{(}\hlkwd{c}\hlstd{(}\hlstr{"X"}\hlstd{,} \hlstr{"Y"}\hlstd{),} \hlnum{1}\hlopt{:}\hlnum{10}\hlstd{,} \hlkwc{sep}\hlstd{=}\hlstr{""}\hlstd{)}
+\hlstd{etiqs}
+\end{alltt}
+\begin{verbatim}
+##  [1] "X1"  "Y2"  "X3"  "Y4"  "X5"  "Y6"  "X7"  "Y8"  "X9"  "Y10"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#2.  CREACIÓN Y MANEJO DE MATRICES.}
+\hlcom{#2.1 CREACIÓN DE MATRICES NUMÉRICAS. }
+\hlcom{#FORMA 1-Crear una matriz numérica vacía y añadirle luego sus elementos. }
+\hlcom{#Ejemplo 1: }
+\hlstd{M} \hlkwb{<-} \hlkwd{matrix}\hlstd{(}\hlkwd{numeric}\hlstd{(),} \hlkwc{nrow} \hlstd{=} \hlnum{3}\hlstd{,} \hlkwc{ncol}\hlstd{=}\hlnum{4}\hlstd{)}
+
+\hlcom{#Ejemplo 2:}
+\hlstd{M[}\hlnum{2}\hlstd{,}\hlnum{3}\hlstd{]} \hlkwb{<-} \hlnum{6}
+\hlstd{M}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]   NA   NA   NA   NA
+## [2,]   NA   NA    6   NA
+## [3,]   NA   NA   NA   NA
+\end{verbatim}
+\begin{alltt}
+\hlcom{#FORMA 2-Crear una matriz numérica asignándole todos sus elementos o valores. }
+\hlcom{#Ejemplo 1: }
+\hlstd{A} \hlkwb{<-} \hlkwd{matrix}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{4}\hlstd{,} \hlnum{6}\hlstd{,} \hlnum{8}\hlstd{,} \hlnum{10}\hlstd{,} \hlnum{12}\hlstd{),} \hlkwc{nrow}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{ncol}\hlstd{=}\hlnum{3}\hlstd{); A}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    2    6   10
+## [2,]    4    8   12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#FORMA 3-Crear una matriz numérica dando un rango de valores }
+\hlcom{#Ejemplo 1: }
+\hlstd{B} \hlkwb{<-} \hlkwd{matrix}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{12}\hlstd{,} \hlkwc{nrow}\hlstd{=}\hlnum{3}\hlstd{,} \hlkwc{ncol}\hlstd{=}\hlnum{4}\hlstd{)}
+\hlstd{B}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#FORMA 4-Crear una matriz a partir de la unión de vectores }
+\hlcom{# Crear tres vectores }
+\hlstd{x1} \hlkwb{<-} \hlkwd{seq}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{10}\hlstd{,} \hlnum{2}\hlstd{); x1}
+\end{alltt}
+\begin{verbatim}
+## [1]  0  2  4  6  8 10
+\end{verbatim}
+\begin{alltt}
+\hlstd{x2} \hlkwb{<-} \hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{11}\hlstd{,} \hlnum{2}\hlstd{); x2}
+\end{alltt}
+\begin{verbatim}
+## [1]  1  3  5  7  9 11
+\end{verbatim}
+\begin{alltt}
+\hlstd{x3} \hlkwb{<-} \hlkwd{runif}\hlstd{(}\hlnum{6}\hlstd{); x3}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.3597401 0.9102380 0.3020148 0.5028854 0.5070357 0.6354945
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Unir los tres vectores en una matriz por columnas. }
+\hlstd{Xcol} \hlkwb{<-} \hlkwd{cbind}\hlstd{(x1, x2, x3)}
+\hlstd{Xcol}
+\end{alltt}
+\begin{verbatim}
+##      x1 x2        x3
+## [1,]  0  1 0.3597401
+## [2,]  2  3 0.9102380
+## [3,]  4  5 0.3020148
+## [4,]  6  7 0.5028854
+## [5,]  8  9 0.5070357
+## [6,] 10 11 0.6354945
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Unir los tres vectores en una matriz por filas. }
+\hlstd{Xfil} \hlkwb{<-} \hlkwd{rbind}\hlstd{(x1, x2, x3)}
+\hlstd{Xfil}
+\end{alltt}
+\begin{verbatim}
+##         [,1]     [,2]      [,3]      [,4]      [,5]       [,6]
+## x1 0.0000000 2.000000 4.0000000 6.0000000 8.0000000 10.0000000
+## x2 1.0000000 3.000000 5.0000000 7.0000000 9.0000000 11.0000000
+## x3 0.3597401 0.910238 0.3020148 0.5028854 0.5070357  0.6354945
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Acceso a las filas y columnas de una matriz. }
+\hlstd{X} \hlkwb{<-} \hlstd{Xfil[}\hlnum{1}\hlopt{:}\hlnum{3}\hlstd{,} \hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{3}\hlstd{)]}
+\hlstd{X}
+\end{alltt}
+\begin{verbatim}
+##        [,1]      [,2]
+## x1 2.000000 4.0000000
+## x2 3.000000 5.0000000
+## x3 0.910238 0.3020148
+\end{verbatim}
+\begin{alltt}
+\hlcom{#2.2 OPERACIONES CON MATRICES NUMÉRICAS. }
+\hlcom{#MULTIPLICACIÓN DE MATRICES MATRICES NUMÉRICAS: }
+\hlcom{#Ejemplo 1:}
+\hlstd{v}\hlkwb{<-}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{2}\hlstd{)}
+\hlstd{v} \hlopt{%*%}\hlstd{A}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   10   22   34
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlstd{P} \hlkwb{<-} \hlstd{A} \hlopt{%*%} \hlstd{B}
+\hlstd{P}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]   44   98  152  206
+## [2,]   56  128  200  272
+\end{verbatim}
+\begin{alltt}
+\hlcom{#OPERACIONES DE FUNCIONES SOBRE MATRICES NUMÉRICAS: }
+\hlcom{#Ejemplo 1:}
+\hlkwd{length}\hlstd{(A)}
+\end{alltt}
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlstd{T}\hlkwb{=}\hlkwd{sqrt}\hlstd{(B)}
+\hlstd{T}
+\end{alltt}
+\begin{verbatim}
+##          [,1]     [,2]     [,3]     [,4]
+## [1,] 1.000000 2.000000 2.645751 3.162278
+## [2,] 1.414214 2.236068 2.828427 3.316625
+## [3,] 1.732051 2.449490 3.000000 3.464102
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 3: Transpuesta de una matriz}
+\hlkwd{t}\hlstd{(B)}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## [4,]   10   11   12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 4: Determinante de una matriz: }
+\hlstd{C} \hlkwb{<-} \hlkwd{matrix}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{1}\hlstd{,} \hlnum{10}\hlstd{,} \hlnum{12}\hlstd{),} \hlkwc{nrow}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{ncol}\hlstd{=}\hlnum{2}\hlstd{)}
+\hlstd{C}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    2   10
+## [2,]    1   12
+\end{verbatim}
+\begin{alltt}
+\hlkwd{det}\hlstd{(C)}
+\end{alltt}
+\begin{verbatim}
+## [1] 14
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 5: Inversa de una matriz }
+\hlstd{InvC} \hlkwb{<-} \hlkwd{solve}\hlstd{(C)}
+\hlstd{InvC}
+\end{alltt}
+\begin{verbatim}
+##             [,1]       [,2]
+## [1,]  0.85714286 -0.7142857
+## [2,] -0.07142857  0.1428571
+\end{verbatim}
+\begin{alltt}
+\hlstd{b}\hlkwb{=}\hlkwd{diag}\hlstd{(}\hlnum{2}\hlstd{)}
+\hlstd{InvC}\hlkwb{<-}\hlkwd{solve}\hlstd{(C, b)}
+\hlstd{InvC}
+\end{alltt}
+\begin{verbatim}
+##             [,1]       [,2]
+## [1,]  0.85714286 -0.7142857
+## [2,] -0.07142857  0.1428571
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 6: Autovalores y autovectores de uma matriz simétrica}
+\hlkwd{eigen}\hlstd{(C)}
+\end{alltt}
+\begin{verbatim}
+## $values
+## [1] 12.91608  1.08392
+## 
+## $vectors
+##            [,1]        [,2]
+## [1,] -0.6754894 -0.99583022
+## [2,] -0.7373697  0.09122599
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 7: }
+\hlkwd{diag}\hlstd{(C)}
+\end{alltt}
+\begin{verbatim}
+## [1]  2 12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 8:}
+\hlkwd{diag}\hlstd{(C)}
+\end{alltt}
+\begin{verbatim}
+## [1]  2 12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 9: }
+\hlkwd{diag}\hlstd{(C)}
+\end{alltt}
+\begin{verbatim}
+## [1]  2 12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#OTRAS OPERACIONES: }
+\hlcom{#Ejemplo 1: }
+\hlkwd{c}\hlstd{(}\hlkwd{length}\hlstd{(C),} \hlkwd{sum}\hlstd{(C),} \hlkwd{prod}\hlstd{(C),} \hlkwd{min}\hlstd{(C),} \hlkwd{max}\hlstd{(C))}
+\end{alltt}
+\begin{verbatim}
+## [1]   4  25 240   1  12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlstd{O} \hlkwb{<-} \hlkwd{matrix}\hlstd{(}\hlkwd{sort}\hlstd{(C),} \hlkwc{nrow}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{ncol}\hlstd{=}\hlnum{2}\hlstd{)}
+\hlstd{O}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1   10
+## [2,]    2   12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#CREACIÓN DE UNA MATRIZ DE CADENAS }
+\hlcom{#Ejemplo 1: }
+\hlstd{nombres} \hlkwb{<-} \hlkwd{matrix}\hlstd{(}\hlkwd{c}\hlstd{(}\hlstr{"Carlos"}\hlstd{,} \hlstr{"José"}\hlstd{,} \hlstr{"Ana"}\hlstd{,} \hlstr{"René"}\hlstd{,} \hlstr{"María"}\hlstd{,} \hlstr{"Mario"}\hlstd{),}
+\hlkwc{nrow}\hlstd{=}\hlnum{3}\hlstd{,} \hlkwc{ncol}\hlstd{=}\hlnum{2}\hlstd{);nombres}
+\end{alltt}
+\begin{verbatim}
+##      [,1]     [,2]   
+## [1,] "Carlos" "René" 
+## [2,] "José"   "María"
+## [3,] "Ana"    "Mario"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#3.  CREACIÓN Y MANEJO DE MATRICES INDEXADAS (ARRAY).}
+\hlcom{#Ejemplo 1: }
+\hlstd{X} \hlkwb{<-} \hlkwd{array}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{3}\hlstd{,} \hlnum{5}\hlstd{,} \hlnum{7}\hlstd{,} \hlnum{9}\hlstd{,} \hlnum{11}\hlstd{),} \hlkwc{dim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{3}\hlstd{))}
+\hlstd{X}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    5    9
+## [2,]    3    7   11
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: }
+\hlstd{Z} \hlkwb{<-} \hlkwd{array}\hlstd{(}\hlnum{1}\hlstd{,} \hlkwd{c}\hlstd{(}\hlnum{3}\hlstd{,} \hlnum{3}\hlstd{))}
+\hlstd{Z}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    1    1
+## [2,]    1    1    1
+## [3,]    1    1    1
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 3: }
+\hlstd{W} \hlkwb{<-} \hlnum{2}\hlopt{*}\hlstd{Z}\hlopt{+}\hlnum{1}
+\hlstd{W}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    3    3    3
+## [2,]    3    3    3
+## [3,]    3    3    3
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 4:}
+\hlstd{TX} \hlkwb{<-} \hlkwd{t}\hlstd{(X)}
+\hlstd{TX}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    5    7
+## [3,]    9   11
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 5:}
+\hlstd{a} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{4}\hlstd{,} \hlnum{6}\hlstd{); a}
+\end{alltt}
+\begin{verbatim}
+## [1] 2 4 6
+\end{verbatim}
+\begin{alltt}
+\hlstd{b} \hlkwb{<-} \hlnum{1}\hlopt{:}\hlnum{3}\hlstd{;b}
+\end{alltt}
+\begin{verbatim}
+## [1] 1 2 3
+\end{verbatim}
+\begin{alltt}
+\hlstd{M} \hlkwb{<-} \hlstd{a} \hlopt{%o%} \hlstd{b; M}
+\end{alltt}
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    2    4    6
+## [2,]    4    8   12
+## [3,]    6   12   18
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 6:  }
+\hlstd{Arreglo3} \hlkwb{<-} \hlkwd{array}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{8}\hlstd{,} \hlnum{11}\hlopt{:}\hlnum{18}\hlstd{,} \hlnum{111}\hlopt{:}\hlnum{118}\hlstd{),} \hlkwc{dim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{4}\hlstd{,} \hlnum{3}\hlstd{))}
+\hlstd{Arreglo3}
+\end{alltt}
+\begin{verbatim}
+## , , 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    3    5    7
+## [2,]    2    4    6    8
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]   11   13   15   17
+## [2,]   12   14   16   18
+## 
+## , , 3
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]  111  113  115  117
+## [2,]  112  114  116  118
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Práctica 03 - Tipos de objetos: factores, listas y hojas de datos, operadores y funciones que operan sobre ellos.}
+
+\hlcom{#1.FACTORES NOMINALES Y ORDINALES.}
+\hlcom{#Ejemplo 1:}
+\hlstd{sexo} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"M"}\hlstd{,} \hlstr{"F"}\hlstd{,} \hlstr{"F"}\hlstd{,} \hlstr{"M"}\hlstd{,} \hlstr{"F"}\hlstd{,} \hlstr{"F"}\hlstd{,} \hlstr{"M"}\hlstd{)}
+\hlstd{sexo}
+\end{alltt}
+\begin{verbatim}
+## [1] "M" "F" "F" "M" "F" "F" "M"
+\end{verbatim}
+\begin{alltt}
+\hlstd{edad} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{19}\hlstd{,} \hlnum{20}\hlstd{,} \hlnum{19}\hlstd{,} \hlnum{22}\hlstd{,} \hlnum{20}\hlstd{,} \hlnum{21}\hlstd{,} \hlnum{19}\hlstd{)}
+\hlstd{edad}
+\end{alltt}
+\begin{verbatim}
+## [1] 19 20 19 22 20 21 19
+\end{verbatim}
+\begin{alltt}
+\hlstd{FactorSexo} \hlkwb{=} \hlkwd{factor}\hlstd{(sexo)}
+\hlstd{FactorSexo}
+\end{alltt}
+\begin{verbatim}
+## [1] M F F M F F M
+## Levels: F M
+\end{verbatim}
+\begin{alltt}
+\hlstd{mediaEdad} \hlkwb{<-} \hlkwd{tapply}\hlstd{(edad, FactorSexo, mean)}
+\hlstd{mediaEdad}
+\end{alltt}
+\begin{verbatim}
+##  F  M 
+## 20 20
+\end{verbatim}
+\begin{alltt}
+\hlcom{#2. CREACIÓN Y MANEJO DE LISTAS.}
+\hlcom{#Ejemplo 1: }
+\hlstd{lista1}\hlkwb{<-}\hlkwd{list}\hlstd{(}\hlkwc{padre}\hlstd{=}\hlstr{"Pedro"}\hlstd{,} \hlkwc{madre}\hlstd{=}\hlstr{"María"}\hlstd{,} \hlkwc{no.hijos}\hlstd{=}\hlnum{3}\hlstd{,} \hlkwc{edad.hijos}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{4}\hlstd{,}\hlnum{7}\hlstd{,}\hlnum{9}\hlstd{))}
+\hlstd{lista1}
+\end{alltt}
+\begin{verbatim}
+## $padre
+## [1] "Pedro"
+## 
+## $madre
+## [1] "María"
+## 
+## $no.hijos
+## [1] 3
+## 
+## $edad.hijos
+## [1] 4 7 9
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 3: }
+\hlstd{lista1[[}\hlnum{4}\hlstd{]][}\hlnum{2}\hlstd{]}
+\end{alltt}
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+\begin{alltt}
+\hlcom{#jemplo 4:  }
+\hlstd{lista1[}\hlstr{"padre"}\hlstd{]}
+\end{alltt}
+\begin{verbatim}
+## $padre
+## [1] "Pedro"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 5: }
+\hlstd{lista1[[}\hlstr{"nombre"}\hlstd{]]}
+\end{alltt}
+\begin{verbatim}
+## NULL
+\end{verbatim}
+\begin{alltt}
+\hlstd{x} \hlkwb{<-} \hlstr{"nombre"}
+\hlstd{lista1[x]}
+\end{alltt}
+\begin{verbatim}
+## $<NA>
+## NULL
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 6: }
+\hlstd{subLista} \hlkwb{<-} \hlstd{lista1[}\hlnum{4}\hlstd{]}
+\hlstd{subLista}
+\end{alltt}
+\begin{verbatim}
+## $edad.hijos
+## [1] 4 7 9
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 7: }
+\hlstd{lista1[}\hlnum{5}\hlstd{]} \hlkwb{<-} \hlkwd{list}\hlstd{(}\hlkwc{sexo.hijos}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"F"}\hlstd{,} \hlstr{"M"}\hlstd{,} \hlstr{"F"}\hlstd{))}
+\hlstd{lista1}
+\end{alltt}
+\begin{verbatim}
+## $padre
+## [1] "Pedro"
+## 
+## $madre
+## [1] "María"
+## 
+## $no.hijos
+## [1] 3
+## 
+## $edad.hijos
+## [1] 4 7 9
+## 
+## [[5]]
+## [1] "F" "M" "F"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 8: Funciones que devuelven una lista. }
+\hlstd{S} \hlkwb{<-} \hlkwd{matrix}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{3}\hlstd{,} \hlopt{-}\hlkwd{sqrt}\hlstd{(}\hlnum{2}\hlstd{),} \hlopt{-}\hlkwd{sqrt}\hlstd{(}\hlnum{2}\hlstd{),} \hlnum{2}\hlstd{),} \hlkwc{nrow}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{ncol}\hlstd{=}\hlnum{2}\hlstd{)}
+\hlstd{S}
+\end{alltt}
+\begin{verbatim}
+##           [,1]      [,2]
+## [1,]  3.000000 -1.414214
+## [2,] -1.414214  2.000000
+\end{verbatim}
+\begin{alltt}
+\hlstd{autovS} \hlkwb{<-} \hlkwd{eigen}\hlstd{(S)}
+\hlstd{autovS}
+\end{alltt}
+\begin{verbatim}
+## $values
+## [1] 4 1
+## 
+## $vectors
+##            [,1]       [,2]
+## [1,] -0.8164966 -0.5773503
+## [2,]  0.5773503 -0.8164966
+\end{verbatim}
+\begin{alltt}
+\hlstd{evals} \hlkwb{<-} \hlkwd{eigen}\hlstd{(S)}\hlopt{$}\hlstd{values}
+\hlstd{evals}
+\end{alltt}
+\begin{verbatim}
+## [1] 4 1
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 9: Crear una matriz dando nombres a las filas y columnas }
+\hlstd{Notas} \hlkwb{<-} \hlkwd{matrix}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{5}\hlstd{,} \hlnum{7}\hlstd{,} \hlnum{6}\hlstd{,} \hlnum{8}\hlstd{,} \hlnum{2}\hlstd{,} \hlnum{4}\hlstd{,} \hlnum{9}\hlstd{,} \hlnum{10}\hlstd{),}  \hlkwc{ncol}\hlstd{=}\hlnum{3}\hlstd{,}
+\hlkwc{dimnames}\hlstd{=}\hlkwd{list}\hlstd{(}\hlkwd{c}\hlstd{(}\hlstr{"Matemática"}\hlstd{,}\hlstr{"Álgebra"}\hlstd{,}\hlstr{"Geometría"}\hlstd{),}
+\hlkwd{c}\hlstd{(}\hlstr{"Juan"}\hlstd{,}\hlstr{"José"}\hlstd{,}\hlstr{"René"}\hlstd{))); Notas}
+\end{alltt}
+\begin{verbatim}
+##            Juan José René
+## Matemática    2    6    4
+## Álgebra       5    8    9
+## Geometría     7    2   10
+\end{verbatim}
+\begin{alltt}
+\hlcom{#3.  CREACIÓN Y MANEJO DE HOJAS DE DATOS (DATA FRAME).}
+\hlcom{#Ejemplo 1: Creación de un data frame teniendo como columnas tres vectores: }
+
+\hlcom{#log <- sample(c(TRUE, FALSE), size = 20, replace = T); log}
+
+\hlstd{comp} \hlkwb{<-} \hlkwd{rnorm}\hlstd{(}\hlnum{20}\hlstd{)} \hlopt{+} \hlkwd{runif}\hlstd{(}\hlnum{20}\hlstd{)} \hlopt{*} \hlstd{(}\hlnum{1i}\hlstd{); comp}
+\end{alltt}
+\begin{verbatim}
+##  [1]  0.2812909+0.1872242i  0.5076552+0.8397858i  1.0067152+0.8415720i
+##  [4] -0.2706487+0.9415722i  0.3834390+0.6420772i  1.0147361+0.1468087i
+##  [7]  0.7741639+0.0323138i -0.4229943+0.2316601i  0.5817461+0.7160524i
+## [10]  1.7260241+0.1783340i -0.1399647+0.5533374i  1.3204574+0.2810097i
+## [13]  1.9052410+0.7503338i  1.3780097+0.0684782i  0.0474793+0.9109889i
+## [16] -0.2122710+0.7597308i  1.7548401+0.5396302i  1.6001864+0.4463336i
+## [19] -1.2880362+0.9172408i -0.5516972+0.8530917i
+\end{verbatim}
+\begin{alltt}
+\hlstd{num} \hlkwb{<-} \hlkwd{rnorm}\hlstd{(}\hlnum{20}\hlstd{,} \hlkwc{mean}\hlstd{=}\hlnum{0}\hlstd{,} \hlkwc{sd}\hlstd{=}\hlnum{1}\hlstd{); num}
+\end{alltt}
+\begin{verbatim}
+##  [1] -0.41617703  1.01059198  0.61470031 -0.17979940  0.10932679
+##  [6] -0.37896961 -0.62293985  1.20664229 -1.16390363 -0.77037984
+## [11] -1.61239068  1.49925264  0.06317187 -1.19546125  0.17817468
+## [16]  0.47729211  0.32177586  0.66147017  0.11282361  0.29310450
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Data frame compuesto por los tres vectores anteriores }
+\hlcom{#df1 <- data.frame(log, comp, num); df1}
+
+\hlcom{#Crear un vector de nombres de los tres vectores anteriores }
+\hlstd{nombres} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"logico"}\hlstd{,} \hlstr{"complejo"}\hlstd{,} \hlstr{"numerico"}\hlstd{)}
+\hlstd{nombres}
+\end{alltt}
+\begin{verbatim}
+## [1] "logico"   "complejo" "numerico"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Define los nombres de las filas del data frame asignándoles un vector de 20 #elementos correspondientes a las 20 primeras letras del abecedario }
+\hlcom{#row.names(df1) <- letters[1:20]; df1 }
+
+\hlstd{edad} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{18}\hlstd{,} \hlnum{21}\hlstd{,} \hlnum{45}\hlstd{,} \hlnum{54}\hlstd{); edad}
+\end{alltt}
+\begin{verbatim}
+## [1] 18 21 45 54
+\end{verbatim}
+\begin{alltt}
+\hlstd{datos} \hlkwb{<-} \hlkwd{matrix}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{150}\hlstd{,} \hlnum{160}\hlstd{,} \hlnum{180}\hlstd{,} \hlnum{205}\hlstd{,} \hlnum{65}\hlstd{,} \hlnum{68}\hlstd{,} \hlnum{65}\hlstd{,} \hlnum{69}\hlstd{),} \hlkwc{ncol}\hlstd{=}\hlnum{2}\hlstd{,}
+\hlkwc{dimnames}\hlstd{=}\hlkwd{list}\hlstd{(}\hlkwd{c}\hlstd{(),} \hlkwd{c}\hlstd{(}\hlstr{"Estatura"}\hlstd{,}\hlstr{"Peso"}\hlstd{))); datos}
+\end{alltt}
+\begin{verbatim}
+##      Estatura Peso
+## [1,]      150   65
+## [2,]      160   68
+## [3,]      180   65
+## [4,]      205   69
+\end{verbatim}
+\begin{alltt}
+\hlstd{sexo} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"F"}\hlstd{,} \hlstr{"M"}\hlstd{,} \hlstr{"M"}\hlstd{,} \hlstr{"M"}\hlstd{); sexo}
+\end{alltt}
+\begin{verbatim}
+## [1] "F" "M" "M" "M"
+\end{verbatim}
+\begin{alltt}
+\hlstd{hoja1} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{Edad}\hlstd{=edad, datos,} \hlkwc{Sexo}\hlstd{=sexo); hoja1}
+\end{alltt}
+\begin{verbatim}
+##   Edad Estatura Peso Sexo
+## 1   18      150   65    F
+## 2   21      160   68    M
+## 3   45      180   65    M
+## 4   54      205   69    M
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Práctica 05-Estructuras de control y definición de función en R.}
+\hlcom{#1.  ESTRUCTURA CONDICIONAL: LA ORDEN IF() Y IFELSE().}
+
+\hlcom{#Ejemplo 1: }
+\hlkwa{if}\hlstd{(x}\hlopt{>}\hlnum{0}\hlstd{) y}\hlkwb{<-}\hlnum{1} \hlkwa{else} \hlstd{y}\hlkwb{<-}\hlnum{0}
+
+\hlcom{#Ejemplo 2:}
+\hlstd{x} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{6}\hlopt{:-}\hlnum{4}\hlstd{); x}
+\end{alltt}
+\begin{verbatim}
+##  [1]  6  5  4  3  2  1  0 -1 -2 -3 -4
+\end{verbatim}
+\begin{alltt}
+\hlkwd{sqrt}\hlstd{(x)}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in sqrt(x): Se han producido NaNs}}\begin{verbatim}
+##  [1] 2.449490 2.236068 2.000000 1.732051 1.414214 1.000000 0.000000
+##  [8]      NaN      NaN      NaN      NaN
+\end{verbatim}
+\begin{alltt}
+\hlkwd{sqrt}\hlstd{(}\hlkwd{ifelse}\hlstd{(x} \hlopt{>=} \hlnum{0}\hlstd{, x,} \hlnum{NA}\hlstd{))}
+\end{alltt}
+\begin{verbatim}
+##  [1] 2.449490 2.236068 2.000000 1.732051 1.414214 1.000000 0.000000
+##  [8]       NA       NA       NA       NA
+\end{verbatim}
+\begin{alltt}
+\hlkwd{ifelse}\hlstd{(x} \hlopt{>=} \hlnum{0}\hlstd{,} \hlkwd{sqrt}\hlstd{(x),} \hlnum{NA}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in sqrt(x): Se han producido NaNs}}\begin{verbatim}
+##  [1] 2.449490 2.236068 2.000000 1.732051 1.414214 1.000000 0.000000
+##  [8]       NA       NA       NA       NA
+\end{verbatim}
+\begin{alltt}
+\hlcom{#2. ESTRUCTURAS ITERATIVAS O DE REPETICIÓN: FOR(), WHILE() Y REPEAT()}
+
+\hlcom{#Ejemplo 1: }
+\hlstd{x} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{6}\hlstd{,} \hlnum{4}\hlstd{,} \hlnum{7}\hlstd{,} \hlnum{5}\hlstd{,} \hlnum{1}\hlstd{)}
+\hlstd{suma}\hlkwb{<-}\hlnum{0}\hlstd{;} \hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlnum{3}\hlstd{) suma} \hlkwb{=} \hlstd{suma}\hlopt{+}\hlstd{x[i]; suma}
+\end{alltt}
+\begin{verbatim}
+## [1] 12
+\end{verbatim}
+\begin{alltt}
+\hlcom{#3.  FUNCIONES ESCRITAS POR EL USUARIO.}
+\hlcom{#Ejemplo 1: Definir en R la función cuadrática  y=f(x)3x^2-5x+2}
+\hlstd{func.cuadratica} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)}
+\hlstd{\{}
+  \hlnum{3}\hlopt{*}\hlstd{x}\hlopt{^}\hlnum{2}\hlopt{-}\hlnum{5}\hlopt{*}\hlstd{x}\hlopt{+}\hlnum{2}
+\hlstd{\}}
+
+\hlcom{#Ejemplo: calcular f(2)}
+\hlstd{y} \hlkwb{<-} \hlkwd{func.cuadratica}\hlstd{(}\hlnum{2}\hlstd{);y}
+\end{alltt}
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Ejemplo 2: Se quiere definir una función para calcular la media de un vector de datos. }
+
+  \hlstd{media} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)}
+  \hlstd{\{}
+    \hlstd{n} \hlkwb{=} \hlkwd{length}\hlstd{(x)}
+    \hlstd{suma} \hlkwb{<-} \hlnum{0.0}
+    \hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlstd{n) suma} \hlkwb{=} \hlstd{suma} \hlopt{+} \hlstd{x[i]}
+    \hlstd{media} \hlkwb{=} \hlstd{suma}\hlopt{/}\hlstd{n}
+  \hlstd{\}}
+
+\hlcom{#Guarde este objeto  }
+\hlkwd{save}\hlstd{(media,} \hlkwc{file}\hlstd{=} \hlstr{"media.RData"}\hlstd{)}
+
+\hlcom{#Borre todos los objetos del área de trabajo}
+\hlkwd{rm}\hlstd{(}\hlkwc{list}\hlstd{=}\hlkwd{ls}\hlstd{(}\hlkwc{all}\hlstd{=}\hlnum{TRUE}\hlstd{))}
+
+\hlcom{#Cargue el objeto con}
+\hlkwd{load}\hlstd{(}\hlstr{"media.RData"}\hlstd{)}
+
+\hlcom{#Pruebe la función media() con los siguientes vectores:}
+\hlstd{x} \hlkwb{<-} \hlnum{1}\hlopt{:}\hlnum{5}\hlstd{;(}\hlkwd{media}\hlstd{(x))}
+\end{alltt}
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+\begin{alltt}
+\hlstd{y} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{5}\hlstd{,} \hlnum{NA} \hlstd{,} \hlnum{4}\hlstd{,} \hlnum{9}\hlstd{)}
+
+
+\hlcom{#Ejemplo 3: Se quiere definir una función para graficar la función seno de x. }
+
+\hlstd{Seno} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)}
+\hlstd{\{}
+  \hlstd{y} \hlkwb{=} \hlkwd{sin}\hlstd{(x)}
+  \hlkwd{plot}\hlstd{(x, y,} \hlkwc{main}\hlstd{=}\hlstr{"Ejemplo de gráficos en R"}\hlstd{,}
+       \hlkwc{xlab}\hlstd{=}\hlstr{"x"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"y = Seno(x)"}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"blue"}\hlstd{,} \hlkwc{pch}\hlstd{=}\hlnum{1}\hlstd{)}
+\hlstd{\}}
+\hlcom{#Pruebe la función con el siguiente vector: }
+  \hlstd{x}\hlkwb{<-}\hlkwd{seq}\hlstd{(}\hlopt{-}\hlstd{pi, pi,} \hlkwc{len}\hlstd{=}\hlnum{100}\hlstd{)}
+\hlkwd{Seno}\hlstd{(x)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-1} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Práctica 07 Análisis de datos categóricos.}
+\hlcom{#1.ANÁLISIS ESTADÍSTICO DE DATOS CATEGÓRICOS.}
+\hlcom{#Preferencias sobre el tipo de gaseosa que se consume: }
+\hlcom{#"CC"=Coca Cola, "PC"=Pepsi Cola, "SC"=Salva Cola}
+
+\hlcom{#Ejemplo 1: Crear un vector con el tipo de gaseosa y otro con la muestra generada #aleatoriamente: }
+  \hlstd{Tipo} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"CC"}\hlstd{,} \hlstr{"PC"}\hlstd{,} \hlstr{"SC"}\hlstd{); Tipo}
+\end{alltt}
+\begin{verbatim}
+## [1] "CC" "PC" "SC"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Crea un vector en las que contiene los tres tipos de refrescos }
+\hlstd{Consumo} \hlkwb{<-} \hlkwd{sample}\hlstd{(Tipo,} \hlnum{20}\hlstd{,} \hlkwc{replace}\hlstd{=}\hlnum{TRUE}\hlstd{); Consumo}
+\end{alltt}
+\begin{verbatim}
+##  [1] "SC" "CC" "SC" "SC" "SC" "PC" "SC" "SC" "SC" "PC" "PC" "PC" "SC" "CC"
+## [15] "SC" "SC" "SC" "PC" "CC" "PC"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Editar o agregar datos}
+\hlkwd{data.entry}\hlstd{(Consumo)}
+
+\hlcom{#Guarde el vector en un archivo de datos }
+\hlkwd{write}\hlstd{(Consumo,} \hlstr{"Consumo.txt"}\hlstd{)}
+
+\hlcom{#Eliminar los objetos que existen enel espacio de trabajo (Workspace) }
+\hlkwd{ls}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## [1] "Consumo" "media"   "Seno"    "Tipo"    "x"       "y"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{rm}\hlstd{(}\hlkwc{list}\hlstd{=}\hlkwd{ls}\hlstd{(}\hlkwc{all}\hlstd{=}\hlnum{TRUE}\hlstd{))}
+\hlkwd{ls}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## character(0)
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Leer o recuperar el vector de datos o archivo de texto }
+\hlstd{Consumo} \hlkwb{<-} \hlkwd{scan}\hlstd{(}\hlstr{"Consumo.txt"}\hlstd{,} \hlkwc{what}\hlstd{=} \hlkwd{character}\hlstd{(),} \hlkwc{na.strings} \hlstd{=} \hlstr{"NA"}\hlstd{,}\hlkwc{flush}\hlstd{=}\hlnum{FALSE}\hlstd{)}
+\hlstd{Consumo}
+\end{alltt}
+\begin{verbatim}
+##  [1] "SC" "CC" "SC" "SC" "SC" "PC" "SC" "SC" "SC" "PC" "PC" "PC" "SC" "CC"
+## [15] "SC" "SC" "SC" "PC" "CC" "PC"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{ls}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## [1] "Consumo"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Crear la tabla de distribuciónde frecuencias y proporciones }
+\hlstd{frec} \hlkwb{<-} \hlkwd{table}\hlstd{(Consumo); frec}
+\end{alltt}
+\begin{verbatim}
+## Consumo
+## CC PC SC 
+##  3  6 11
+\end{verbatim}
+\begin{alltt}
+\hlstd{prop} \hlkwb{<-} \hlkwd{table}\hlstd{(Consumo)}\hlopt{/}\hlkwd{length}\hlstd{(Consumo); prop}
+\end{alltt}
+\begin{verbatim}
+## Consumo
+##   CC   PC   SC 
+## 0.15 0.30 0.55
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Conocer un resumen de los datos }
+\hlkwd{summary}\hlstd{(Consumo)}
+\end{alltt}
+\begin{verbatim}
+##    Length     Class      Mode 
+##        20 character character
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Realizar un gráfico de barras }
+\hlcom{# Para las frecuencias absolutas }
+\hlkwd{barplot}\hlstd{(frec,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Consumo"}\hlstd{,} \hlkwc{col}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"yellow"}\hlstd{,} \hlstr{"pink"}\hlstd{,} \hlstr{"red"}\hlstd{),} \hlkwc{sub}\hlstd{=}\hlstr{"Agosto-2012"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-2} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Para las frecuencias relativas }
+\hlkwd{barplot}\hlstd{(prop,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{" Consumo\textbackslash{}n"}\hlstd{,} \hlkwc{col}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"yellow"}\hlstd{,}
+\hlstr{"white"}\hlstd{,}\hlstr{"Cyan"}\hlstd{),} \hlkwc{sub}\hlstd{=}\hlstr{"Agosto-2012"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-3} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Realizar un gráfico de pastel }
+\hlkwd{pie}\hlstd{(frec,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de pastel"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Tipo de Consumo"}\hlstd{,} \hlkwc{col}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"yellow"}\hlstd{,}
+\hlstr{"pink"}\hlstd{,} \hlstr{"cyan"}\hlstd{),} \hlkwc{sub}\hlstd{=}\hlstr{"Agosto-2012"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-4} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Especificar nombres para las categorías y el color de los sectores }
+\hlkwd{names}\hlstd{(frec)} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"Coca Cola"}\hlstd{,} \hlstr{"Pepsi"}\hlstd{,} \hlstr{"Salva Cola"}\hlstd{)}
+\hlkwd{pie}\hlstd{(frec,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de pastel"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{" Consumo"}\hlstd{,} \hlkwc{radius}\hlstd{=}\hlnum{0.8}\hlstd{,} \hlkwc{col}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"red"}\hlstd{,}
+\hlstr{"gray"}\hlstd{,}\hlstr{"cyan"}\hlstd{),} \hlkwc{sub}\hlstd{=}\hlstr{"Agosto-2012"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-5} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Colocar valores numéricos en los sectores del gráfico}
+\hlstd{n} \hlkwb{<-} \hlkwd{length}\hlstd{(frec)}
+\hlstd{hoja} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(frec); hoja}
+\end{alltt}
+\begin{verbatim}
+##         Var1 Freq
+## 1  Coca Cola    3
+## 2      Pepsi    6
+## 3 Salva Cola   11
+\end{verbatim}
+\begin{alltt}
+\hlstd{etiq} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlkwd{paste}\hlstd{(hoja}\hlopt{$}\hlstd{Var1,} \hlstr{"-"}\hlstd{, hoja}\hlopt{$}\hlstd{Freq)); etiq}
+\end{alltt}
+\begin{verbatim}
+## [1] "Coca Cola - 3"   "Pepsi - 6"       "Salva Cola - 11"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{pie}\hlstd{(frec,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de pastel"}\hlstd{,} \hlkwc{labels}\hlstd{=etiq,} \hlkwc{col}\hlstd{=}\hlkwd{rainbow}\hlstd{(n),} \hlkwc{border}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-6} 
+\begin{kframe}\begin{alltt}
+\hlcom{#UNIDAD 2: Práctica 07-Análisis estadístico de datos univariados discretos con R.}
+\hlcom{# Crear el vector de datos.}
+\hlstd{Hijos} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{2}\hlstd{,} \hlnum{1}\hlstd{)}
+\hlkwd{data.entry}\hlstd{(Hijos)}
+\hlstd{Hijos}
+\end{alltt}
+\begin{verbatim}
+## [1] 2 1
+\end{verbatim}
+\begin{alltt}
+\hlkwd{length}\hlstd{(Hijos)}
+\end{alltt}
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Guardar el vector de datos en un archivo de texto. }
+\hlkwd{write}\hlstd{(Hijos,} \hlstr{"Hijos.txt"}\hlstd{)}
+
+\hlcom{# Leer o recuperar el vector de datos o archivo de texto }
+\hlstd{X} \hlkwb{<-} \hlkwd{scan}\hlstd{(}\hlstr{"Hijos.txt"}\hlstd{,} \hlkwc{what} \hlstd{=} \hlkwd{integer}\hlstd{(}\hlnum{0}\hlstd{),} \hlkwc{na.strings} \hlstd{=} \hlstr{"NA"}\hlstd{,} \hlkwc{flush}\hlstd{=}\hlnum{FALSE}\hlstd{)}
+\hlkwd{ls}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## [1] "Consumo" "etiq"    "frec"    "Hijos"   "hoja"    "n"       "prop"   
+## [8] "X"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Elaborar el gráfico de puntos y diagrama de tallo-hojas (stem-and-leaf) }
+\hlkwd{stripchart}\hlstd{(Hijos,} \hlkwc{method}\hlstd{=}\hlstr{"stack"}\hlstd{,} \hlkwc{vertical}\hlstd{=}\hlnum{FALSE}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"blue"}\hlstd{,} \hlkwc{pch}\hlstd{=}\hlnum{1}\hlstd{,}
+\hlkwc{main}\hlstd{=}\hlstr{"Gráfico de\textbackslash{}n puntos"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Número de hijos"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-7} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Crear la tabla de frecuencias completa }
+\hlcom{# frecuencias individuales }
+\hlstd{fab} \hlkwb{<-} \hlkwd{table}\hlstd{(Hijos); fab} \hlcom{# frecuencias absolutas }
+\end{alltt}
+\begin{verbatim}
+## Hijos
+## 1 2 
+## 1 1
+\end{verbatim}
+\begin{alltt}
+\hlstd{fre} \hlkwb{<-} \hlstd{fab}\hlopt{/}\hlkwd{length}\hlstd{(Hijos); fre} \hlcom{# frecuencias relativas }
+\end{alltt}
+\begin{verbatim}
+## Hijos
+##   1   2 
+## 0.5 0.5
+\end{verbatim}
+\begin{alltt}
+\hlstd{Fac} \hlkwb{<-} \hlkwd{cumsum}\hlstd{(fab); Fac} \hlcom{# frecuencias acumuladas }
+\end{alltt}
+\begin{verbatim}
+## 1 2 
+## 1 2
+\end{verbatim}
+\begin{alltt}
+\hlstd{Far} \hlkwb{<-} \hlstd{Fac}\hlopt{/}\hlkwd{length}\hlstd{(Hijos); Far} \hlcom{# frecuencias acumuladas relativas}
+\end{alltt}
+\begin{verbatim}
+##   1   2 
+## 0.5 1.0
+\end{verbatim}
+\begin{alltt}
+\hlcom{# tabla de frecuencias completa }
+\hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{2}\hlstd{)}
+\hlstd{tabla} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{fab}\hlstd{=fab,} \hlkwc{fre}\hlstd{=fre,} \hlkwc{Fac}\hlstd{=Fac,} \hlkwc{Far}\hlstd{=Far)}
+\hlkwd{names}\hlstd{(tabla)} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"X"}\hlstd{,} \hlstr{"fab"}\hlstd{,} \hlstr{"free.X"}\hlstd{,} \hlstr{"fre"}\hlstd{,} \hlstr{"Fac"}\hlstd{,} \hlstr{"Far"}\hlstd{)}
+\hlstd{tabla}
+\end{alltt}
+\begin{verbatim}
+##   X fab free.X fre Fac Far
+## 1 1   1      1 0.5   1 0.5
+## 2 2   1      2 0.5   2 1.0
+\end{verbatim}
+\begin{alltt}
+\hlstd{tfre} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{X}\hlstd{=tabla}\hlopt{$}\hlstd{X,} \hlkwc{fab}\hlstd{=tabla}\hlopt{$}\hlstd{fab,} \hlkwc{fre}\hlstd{=tabla}\hlopt{$}\hlstd{fre,} \hlkwc{Fac}\hlstd{=tabla}\hlopt{$}\hlstd{Fac,} \hlkwc{Far}\hlstd{=tabla}\hlopt{$}\hlstd{Far)}
+\hlstd{tfre}
+\end{alltt}
+\begin{verbatim}
+##   X fab fre Fac Far
+## 1 1   1 0.5   1 0.5
+## 2 2   1 0.5   2 1.0
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Calcular los estadísticos descriptivos de la variable }
+\hlcom{# Estadísticos de tendencia central de los datos }
+\hlstd{media} \hlkwb{<-} \hlkwd{mean}\hlstd{(Hijos,} \hlkwc{na.rm} \hlstd{=} \hlnum{FALSE}\hlstd{); media}
+\end{alltt}
+\begin{verbatim}
+## [1] 1.5
+\end{verbatim}
+\begin{alltt}
+\hlcom{# R no tiene incorporada una función para la moda}
+\hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(Hijos))} \hlkwa{if} \hlstd{(fab[i]} \hlopt{==} \hlkwd{max}\hlstd{(fab))} \hlkwa{break}\hlstd{()}
+\hlstd{moda} \hlkwb{<-} \hlkwd{names}\hlstd{(fab[i]); moda}
+\end{alltt}
+\begin{verbatim}
+## [1] "1"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Función para la moda}
+\hlstd{mediana} \hlkwb{<-} \hlkwd{median}\hlstd{(Hijos); mediana}
+\end{alltt}
+\begin{verbatim}
+## [1] 1.5
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Estadísticos de dispersión o variabilidad de los datos }
+\hlcom{# Devuelve el valor mínimo y máximo del conjunto de datos.}
+\hlkwd{range}\hlstd{(Hijos)}
+\end{alltt}
+\begin{verbatim}
+## [1] 1 2
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Devuelve la cuasivarianza y la cuasivarianza muestral }
+\hlstd{cuasivar} \hlkwb{<-} \hlkwd{var}\hlstd{(Hijos); cuasivar}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.5
+\end{verbatim}
+\begin{alltt}
+\hlstd{s} \hlkwb{<-} \hlkwd{sd}\hlstd{(Hijos); s}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.71
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Cálculo de Q1, Q2, Q3}
+\hlkwd{quantile}\hlstd{(Hijos,}\hlkwd{c}\hlstd{(}\hlnum{0.25}\hlstd{,} \hlnum{0.5}\hlstd{,} \hlnum{0.75}\hlstd{))}
+\end{alltt}
+\begin{verbatim}
+## 25% 50% 75% 
+## 1.2 1.5 1.8
+\end{verbatim}
+\begin{alltt}
+\hlcom{# En general se pueden encontrar cualquier percentil}
+\hlkwd{quantile}\hlstd{(Hijos,} \hlnum{0.6}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## 60% 
+## 1.6
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Conocer un resumen de los datos Min, Q1, Median, Mean, Q3, Max }
+\hlstd{resumen} \hlkwb{<-} \hlkwd{summary}\hlstd{(Hijos); resumen}
+\end{alltt}
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     1.0     1.2     1.5     1.5     1.8     2.0
+\end{verbatim}
+\begin{alltt}
+\hlcom{# min, cuartil menor, mediana, cuartil mayor, max}
+\hlkwd{fivenum}\hlstd{(Hijos)}
+\end{alltt}
+\begin{verbatim}
+## [1] 1.0 1.0 1.5 2.0 2.0
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Elaborar los gráficos que se le pueden aplicar a la variable discreta }
+\hlcom{# Gráfico de barras (por ser pocos valores) }
+\hlkwd{barplot}\hlstd{(tfre[[}\hlnum{2}\hlstd{]],} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"X = Número Hijos\textbackslash{}n"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"frecuencia"}\hlstd{,}
+\hlkwc{col}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"yellow"}\hlstd{,} \hlstr{"blue"}\hlstd{,} \hlstr{"white"}\hlstd{,} \hlstr{"orange"}\hlstd{,} \hlstr{"cyan"}\hlstd{,} \hlstr{"red"}\hlstd{),} \hlkwc{sub}\hlstd{=}\hlstr{"Agosto-2012"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-8} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Gráfico de pastel (por ser pocos valores) }
+\hlkwd{pie}\hlstd{(tfre[[}\hlnum{2}\hlstd{]],} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de pastel"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Número Hijos \textbackslash{}n"}\hlstd{,}
+\hlkwc{col}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"yellow"}\hlstd{,} \hlstr{"blue"}\hlstd{,}\hlstr{"white"}\hlstd{,} \hlstr{"orange"}\hlstd{,} \hlstr{"cyan"}\hlstd{,} \hlstr{"red"}\hlstd{),} \hlkwc{sub}\hlstd{=}\hlstr{"Agosto-2012"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-9} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Se puede especificar nombres para las categorías }
+\hlkwd{names}\hlstd{(fab)} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"Cero"}\hlstd{,} \hlstr{"Uno"}\hlstd{,} \hlstr{"Dos"}\hlstd{,} \hlstr{"Tres"}\hlstd{,} \hlstr{"Cuatro"}\hlstd{,} \hlstr{"Cinco"}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in names(fab) = c("{}Cero"{}, "{}Uno"{}, "{}Dos"{}, "{}Tres"{}, "{}Cuatro"{}, "{}Cinco"{}): el atributo 'names' [6] debe tener la misma longitud que el vector [2]}}\begin{alltt}
+\hlkwd{pie}\hlstd{(fab,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de pastel"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"X = Número Hijos\textbackslash{}n"}\hlstd{,}
+\hlkwc{col}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"yellow"}\hlstd{,} \hlstr{"blue"}\hlstd{,}\hlstr{"white"}\hlstd{,} \hlstr{"orange"}\hlstd{,} \hlstr{"cyan"}\hlstd{,} \hlstr{"red"}\hlstd{),} \hlkwc{sub}\hlstd{=}\hlstr{"Agosto-2012"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-10} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Gráfico de cajas (box-plot) es la representación gráfica de los cinco números }
+\hlcom{# Horizontal }
+\hlkwd{boxplot}\hlstd{(Hijos,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de caja"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Número de hijos\textbackslash{}n"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-11} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Vertical }
+\hlkwd{boxplot}\hlstd{(Hijos,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de caja"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{" Número de hijos\textbackslash{}n"}\hlstd{,}
+\hlkwc{plot}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{border}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{col}\hlstd{=}\hlstr{"yellow"}\hlstd{,} \hlkwc{horizontal}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-12} 
+\begin{kframe}\begin{alltt}
+\hlcom{#UNIDAD 2: Práctica 08 ANÁLISIS ESTADÍSTICO DE LOS DATOS. }
+\hlcom{#Crea el vector que contendrá los datos. }
+\hlstd{Notas} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{4.47}\hlstd{,} \hlnum{5.43}\hlstd{); Notas}
+\end{alltt}
+\begin{verbatim}
+## [1] 4.5 5.4
+\end{verbatim}
+\begin{alltt}
+\hlkwd{data.entry}\hlstd{(Notas)}
+\hlstd{Notas}
+\end{alltt}
+\begin{verbatim}
+## [1] 4.5 5.4
+\end{verbatim}
+\begin{alltt}
+\hlkwd{length}\hlstd{(Notas)}
+\end{alltt}
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Guarda el vector de datos en un archivo. }
+\hlkwd{write}\hlstd{(Notas,} \hlstr{"Notas.txt"}\hlstd{)}
+
+\hlcom{#Lee o recupera el vector de datos desde el archivo de texto. }
+\hlstd{X} \hlkwb{<-} \hlkwd{scan}\hlstd{(}\hlstr{"Notas.txt"}\hlstd{,} \hlkwc{what} \hlstd{=} \hlkwd{double}\hlstd{(}\hlnum{0}\hlstd{),} \hlkwc{na.strings} \hlstd{=} \hlstr{"NA"}\hlstd{,} \hlkwc{flush}\hlstd{=}\hlnum{FALSE}\hlstd{)}
+\hlkwd{ls}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+##  [1] "Consumo"  "cuasivar" "etiq"     "fab"      "Fac"      "Far"     
+##  [7] "fre"      "frec"     "Hijos"    "hoja"     "i"        "media"   
+## [13] "mediana"  "moda"     "n"        "Notas"    "prop"     "resumen" 
+## [19] "s"        "tabla"    "tfre"     "X"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Crea la tabla de frecuencias. }
+\hlcom{# Usa el Método de Herbert A. Sturges para determinar dicho número. }
+\hlstd{n} \hlkwb{<-} \hlkwd{length}\hlstd{(X); n}
+\end{alltt}
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+\begin{alltt}
+\hlstd{k} \hlkwb{<-} \hlnum{1}\hlopt{+}\hlnum{3.322}\hlopt{*}\hlkwd{logb}\hlstd{(n,} \hlnum{10}\hlstd{); k}
+\end{alltt}
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+\begin{alltt}
+\hlstd{k} \hlkwb{<-} \hlkwd{round}\hlstd{(k); k}
+\end{alltt}
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Calcula el ancho o amplitud a de cada intervalo a=rango/k }
+\hlstd{rango} \hlkwb{<-} \hlkwd{max}\hlstd{(X)}\hlopt{-}\hlkwd{min}\hlstd{(X); rango}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.9
+\end{verbatim}
+\begin{alltt}
+\hlstd{a}\hlkwb{=}\hlstd{rango}\hlopt{/}\hlstd{k; a}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.45
+\end{verbatim}
+\begin{alltt}
+\hlstd{a} \hlkwb{<-} \hlkwd{round}\hlstd{(a,} \hlnum{3}\hlstd{); a}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.45
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Define los límites y puntos mediosde cada uno de los k intervalos }
+\hlstd{limites} \hlkwb{<-} \hlkwd{seq}\hlstd{(}\hlkwc{from}\hlstd{=}\hlkwd{min}\hlstd{(X)}\hlopt{-}\hlnum{0.01}\hlopt{/}\hlnum{2}\hlstd{,}\hlkwc{to}\hlstd{=}\hlkwd{max}\hlstd{(X)}\hlopt{+}\hlnum{0.01}\hlopt{/}\hlnum{2}\hlstd{,} \hlkwc{by}\hlstd{=a); limites}
+\end{alltt}
+\begin{verbatim}
+## [1] 4.5 4.9 5.4
+\end{verbatim}
+\begin{alltt}
+\hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{4}\hlstd{)}
+\hlstd{ci} \hlkwb{<-} \hlkwd{cbind}\hlstd{(}\hlnum{1}\hlopt{:}\hlstd{k); ci}
+\end{alltt}
+\begin{verbatim}
+##      [,1]
+## [1,]    1
+## [2,]    2
+\end{verbatim}
+\begin{alltt}
+\hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{2}\hlopt{:}\hlkwd{length}\hlstd{(limites)) ci[i}\hlopt{-}\hlnum{1}\hlstd{,} \hlnum{1}\hlstd{]} \hlkwb{<-} \hlstd{(limites[i]} \hlopt{+} \hlstd{limites[i}\hlopt{-}\hlnum{1}\hlstd{])}\hlopt{/}\hlnum{2}
+\hlstd{ci}
+\end{alltt}
+\begin{verbatim}
+##      [,1]
+## [1,] 4.72
+## [2,] 5.17
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Encuentra las frecuencias absolutas fi para cada intervalo. }
+\hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{2}\hlstd{)}
+\hlstd{fi} \hlkwb{<-} \hlkwd{cbind}\hlstd{(}\hlkwd{table}\hlstd{(}\hlkwd{cut}\hlstd{(Notas,} \hlkwc{breaks} \hlstd{= limites,} \hlkwc{labels}\hlstd{=}\hlkwa{NULL}\hlstd{,} \hlkwc{include.lowest}\hlstd{=}\hlnum{FALSE}\hlstd{,}
+\hlkwc{right}\hlstd{=}\hlnum{FALSE}\hlstd{,} \hlkwc{dig.lab}\hlstd{=}\hlnum{4}\hlstd{))); fi}
+\end{alltt}
+\begin{verbatim}
+##               [,1]
+## [4.495,4.945)    0
+## [4.945,5.395)    0
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Encuentra las frecuencias relativas o proporciones fri. }
+\hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{4}\hlstd{)}
+\hlstd{fri} \hlkwb{<-} \hlstd{fi}\hlopt{/}\hlstd{n; fri}
+\end{alltt}
+\begin{verbatim}
+##               [,1]
+## [4.495,4.945)    0
+## [4.945,5.395)    0
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Encuentra las frecuencias acumuladas ascendentes Fi }
+\hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{2}\hlstd{)}
+\hlstd{Fi} \hlkwb{<-} \hlkwd{cumsum}\hlstd{(fi); Fi}
+\end{alltt}
+\begin{verbatim}
+## [1] 0 0
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Encuentra las frecuencias relativas acumuladas Fri }
+\hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{4}\hlstd{)}
+\hlstd{Fri} \hlkwb{<-} \hlstd{Fi}\hlopt{/}\hlstd{n; Fri}
+\end{alltt}
+\begin{verbatim}
+## [1] 0 0
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Completa la tabla de frecuencias. }
+\hlstd{tablaFrec} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{ci}\hlstd{=ci,} \hlkwc{fi}\hlstd{=fi,} \hlkwc{fri}\hlstd{=fri,} \hlkwc{Fi}\hlstd{=Fi,} \hlkwc{Fri}\hlstd{=Fri); tablaFrec}
+\end{alltt}
+\begin{verbatim}
+##                 ci fi fri Fi Fri
+## [4.495,4.945) 4.72  0   0  0   0
+## [4.945,5.395) 5.17  0   0  0   0
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Crea el histograma de frecuencias }
+\hlstd{h} \hlkwb{<-} \hlkwd{hist}\hlstd{(X,} \hlkwc{breaks}\hlstd{=}\hlkwd{c}\hlstd{(limites[}\hlnum{1}\hlstd{]}\hlopt{-}\hlstd{a, limites, limites[k}\hlopt{+}\hlnum{1}\hlstd{]}\hlopt{+}\hlstd{a),} \hlkwc{freq} \hlstd{=} \hlnum{TRUE}\hlstd{,}
+\hlkwc{probability} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{include.lowest} \hlstd{=} \hlnum{FALSE}\hlstd{,}\hlkwc{right} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{"Histograma de frecuencias"}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"lightyellow"}\hlstd{,} \hlkwc{lty}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{border}\hlstd{=}\hlstr{"purple"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Notas de aspirantes"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Frecuencia (fi)"}\hlstd{,} \hlkwc{axes}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{labels}\hlstd{=}\hlnum{FALSE}\hlstd{)}
+
+\hlkwd{text}\hlstd{(h}\hlopt{$}\hlstd{mids, h}\hlopt{$}\hlstd{density, h}\hlopt{$}\hlstd{counts,} \hlkwc{adj}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0.5}\hlstd{,} \hlopt{-}\hlnum{0.5}\hlstd{),} \hlkwc{col}\hlstd{=}\hlstr{"red"}\hlstd{)}
+\hlkwd{rug}\hlstd{(}\hlkwd{jitter}\hlstd{(Notas))}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-13} 
+\begin{kframe}\begin{alltt}
+\hlkwd{is.list}\hlstd{(h); h}
+\end{alltt}
+\begin{verbatim}
+## [1] TRUE
+## $breaks
+## [1] 4.045 4.495 4.945 5.395 5.845
+## 
+## $counts
+## [1] 0 1 0 1
+## 
+## $density
+## [1] 0.000 1.111 0.000 1.111
+## 
+## $mids
+## [1] 4.27 4.72 5.17 5.62
+## 
+## $xname
+## [1] "X"
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,"class")
+## [1] "histogram"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Aproxima al histograma la función de densidad normal }
+\hlstd{h} \hlkwb{<-} \hlkwd{hist}\hlstd{(X,} \hlkwc{breaks}\hlstd{=}\hlkwd{c}\hlstd{(limites[}\hlnum{1}\hlstd{]}\hlopt{-}\hlstd{a, limites, limites[k}\hlopt{+}\hlnum{1}\hlstd{]}\hlopt{+}\hlstd{a),} \hlkwc{freq} \hlstd{=} \hlnum{FALSE}\hlstd{,}
+\hlkwc{probability} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{include.lowest} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{right} \hlstd{=} \hlnum{TRUE}\hlstd{,}
+\hlkwc{main}\hlstd{=}\hlstr{"Aproximación a una Normal\textbackslash{}n"}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"lightyellow"}\hlstd{,}\hlkwc{lty}\hlstd{=}\hlnum{1}\hlstd{,}\hlkwc{border}\hlstd{=}\hlstr{"purple"}\hlstd{,}
+\hlkwc{xlab}\hlstd{=}\hlstr{"Notas de aspirantes\textbackslash{}n"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Frecuencia relativa (fri)"}\hlstd{,}
+\hlkwc{axes}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{labels}\hlstd{=}\hlnum{FALSE}\hlstd{)}
+\hlkwd{text}\hlstd{(h}\hlopt{$}\hlstd{mids, h}\hlopt{$}\hlstd{density, h}\hlopt{$}\hlstd{counts,} \hlkwc{adj}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0.5}\hlstd{,} \hlnum{0.2}\hlstd{),} \hlkwc{col}\hlstd{=}\hlstr{"red"}\hlstd{)}
+\hlkwd{rug}\hlstd{(}\hlkwd{jitter}\hlstd{(X))} \hlcom{# adiciona marcas de los datos }
+\hlkwd{curve}\hlstd{(}\hlkwd{dnorm}\hlstd{(x,} \hlkwc{mean}\hlstd{=}\hlkwd{mean}\hlstd{(X),} \hlkwc{sd}\hlstd{=}\hlkwd{sd}\hlstd{(X)),} \hlkwc{col} \hlstd{=} \hlnum{2}\hlstd{,} \hlkwc{lty} \hlstd{=} \hlnum{2}\hlstd{,}\hlkwc{lwd} \hlstd{=} \hlnum{2}\hlstd{,} \hlkwc{add} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-14} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Crea el polígono de frecuencias }
+\hlstd{h} \hlkwb{<-} \hlkwd{hist}\hlstd{(X,} \hlkwc{breaks}\hlstd{=}\hlkwd{c}\hlstd{(limites[}\hlnum{1}\hlstd{]}\hlopt{-}\hlstd{a, limites, limites[k}\hlopt{+}\hlnum{1}\hlstd{]}\hlopt{+}\hlstd{a),} \hlkwc{freq} \hlstd{=} \hlnum{TRUE}\hlstd{,}
+\hlkwc{probability}\hlstd{=}\hlnum{FALSE}\hlstd{,} \hlkwc{include.lowest}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{right}\hlstd{=}\hlnum{TRUE}\hlstd{,}
+\hlkwc{main} \hlstd{=} \hlstr{"Polígono de frecuencias"}\hlstd{,}\hlkwc{col}\hlstd{=}\hlstr{"lightyellow"}\hlstd{,} \hlkwc{lty}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{border}\hlstd{=}\hlstr{"purple"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{" 
+Notas de aspirantes"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Frecuencia (fi)"}\hlstd{,} \hlkwc{axes}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{labels}\hlstd{=}\hlnum{FALSE}\hlstd{)}
+\hlkwd{text}\hlstd{(h}\hlopt{$}\hlstd{mids, h}\hlopt{$}\hlstd{density, h}\hlopt{$}\hlstd{counts,} \hlkwc{adj}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0.5}\hlstd{,} \hlopt{-}\hlnum{0.5}\hlstd{),} \hlkwc{col}\hlstd{=}\hlstr{"red"}\hlstd{)}
+\hlkwd{rug}\hlstd{(}\hlkwd{jitter}\hlstd{(X))} \hlcom{# adiciona marcas de los datos }
+\hlstd{vCi} \hlkwb{<-} \hlkwd{c}\hlstd{(h}\hlopt{$}\hlstd{mids[}\hlnum{1}\hlstd{]}\hlopt{-}\hlstd{a, h}\hlopt{$}\hlstd{mids, h}\hlopt{$}\hlstd{mids[k}\hlopt{+}\hlnum{1}\hlstd{]}\hlopt{+}\hlstd{a); vCi}
+\end{alltt}
+\begin{verbatim}
+## [1] 3.82 4.27 4.72 5.17 5.62 5.62
+\end{verbatim}
+\begin{alltt}
+\hlstd{vfi} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{, h}\hlopt{$}\hlstd{counts,} \hlnum{0}\hlstd{); vfi}
+\end{alltt}
+\begin{verbatim}
+## [1] 0 0 1 0 1 0
+\end{verbatim}
+\begin{alltt}
+\hlkwd{lines}\hlstd{(vCi, vfi,} \hlkwc{col}\hlstd{=}\hlstr{"blue"}\hlstd{,} \hlkwc{type}\hlstd{=}\hlstr{"l"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-15} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Crea la Ojiva ascendente o polígono de frecuencias acumuladas ascendentes }
+\hlstd{Fia} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{, Fi); Fia}
+\end{alltt}
+\begin{verbatim}
+## [1] 0 0 0
+\end{verbatim}
+\begin{alltt}
+\hlkwd{plot}\hlstd{(limites, Fia,} \hlkwc{type} \hlstd{=} \hlstr{"p"}\hlstd{,} \hlkwc{pch}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"blue"}\hlstd{,} \hlkwc{main}\hlstd{=}\hlstr{"Ojiva ascendente"}\hlstd{,}
+\hlkwc{xlab}\hlstd{=}\hlstr{"Notas de aspirantes"}\hlstd{,}\hlkwc{ylab}\hlstd{=}\hlstr{"Frecuencia acumulada (Fi)"}\hlstd{)}
+\hlkwd{text}\hlstd{(limites, h}\hlopt{$}\hlstd{density, Fia,} \hlkwc{adj}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0.5}\hlstd{,} \hlopt{-}\hlnum{0.5}\hlstd{),} \hlkwc{col}\hlstd{=}\hlstr{"red"}\hlstd{)}
+\hlkwd{lines}\hlstd{(limites, Fia,} \hlkwc{col}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{type}\hlstd{=}\hlstr{"l"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-16} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Calcula los principales estadísticos descriptivos de la variable }
+\hlcom{# Calcula la moda, ya que el R no proporciona una función para eso. }
+\hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{4}\hlstd{)}
+\hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlstd{k)} \hlkwa{if} \hlstd{(fi[i]} \hlopt{==} \hlkwd{max}\hlstd{(fi))} \hlkwa{break}\hlstd{()}
+\hlkwa{if}\hlstd{(i} \hlopt{>} \hlnum{1}\hlstd{) moda} \hlkwb{<-} \hlstd{limites[i]}\hlopt{+}\hlstd{((fi[i]}\hlopt{-}\hlstd{fi[i}\hlopt{-}\hlnum{1}\hlstd{])}\hlopt{/}\hlstd{((fi[i]}\hlopt{-}\hlstd{fi[i}\hlopt{-}\hlnum{1}\hlstd{])}\hlopt{+}\hlstd{(fi[i]}\hlopt{-}\hlstd{fi[i}\hlopt{+}\hlnum{1}\hlstd{]) ))}\hlopt{*}\hlstd{a}
+\hlstd{moda} \hlkwb{<-} \hlstd{limites[i]}\hlopt{+}\hlstd{(fi[i]}\hlopt{/}\hlstd{(fi[i]}\hlopt{+}\hlstd{(fi[i]}\hlopt{-}\hlstd{fi[i}\hlopt{+}\hlnum{1}\hlstd{])))}\hlopt{*}\hlstd{a}
+\hlstd{moda}
+\end{alltt}
+\begin{verbatim}
+## [1] NaN
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Calcula los cuartiles: Q1, Q2, Q3 }
+\hlstd{Q} \hlkwb{<-} \hlnum{1}\hlopt{:}\hlnum{3}
+\hlkwa{for}\hlstd{(v} \hlkwa{in} \hlnum{1}\hlopt{:}\hlnum{3}\hlstd{)} \hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlstd{k)} \hlkwa{if} \hlstd{(Fi[i]} \hlopt{>} \hlstd{(v}\hlopt{*}\hlnum{25}\hlopt{*}\hlstd{n)}\hlopt{/}\hlnum{100}\hlstd{)}
+\hlstd{\{}
+  \hlstd{Q[v]} \hlkwb{<-} \hlstd{limites[i]}\hlopt{+}\hlstd{(((}\hlnum{25}\hlopt{*}\hlstd{v}\hlopt{*}\hlstd{n}\hlopt{/}\hlnum{100}\hlstd{)}\hlopt{-}\hlstd{Fi[i}\hlopt{-}\hlnum{1}\hlstd{])}\hlopt{/}\hlstd{fi[i])}\hlopt{*}\hlstd{a}
+  \hlkwa{break}
+\hlstd{\}}
+\hlstd{Q}
+\end{alltt}
+\begin{verbatim}
+## [1] 1 2 3
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Otros gráficos: }
+\hlcom{# Gráfico de cajas }
+\hlkwd{boxplot}\hlstd{(}\hlnum{2}\hlstd{,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de caja"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Notas"}\hlstd{,} \hlkwc{notch}\hlstd{=}\hlnum{FALSE}\hlstd{,}
+\hlkwc{data}\hlstd{=}\hlkwd{parent.frame}\hlstd{(),} \hlkwc{plot}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{border}\hlstd{=}\hlstr{"red"}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"yellow"}\hlstd{,}\hlkwc{horizontal}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-17} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Práctica 09-Análisis de unavariable bidimensional categórica.}
+
+\hlcom{#REALICE UN ANÁLISIS ESTADÍSTICO DE LOS DATOS.}
+\hlcom{#Leer o recuperar este archivo con la función read.table() }
+\hlstd{HojaCat} \hlkwb{<-} \hlkwd{read.csv}\hlstd{(}\hlstr{"HojaCat.csv"}\hlstd{,} \hlkwc{strip.white}\hlstd{=}\hlnum{TRUE}\hlstd{);HojaCat}
+\end{alltt}
+\begin{verbatim}
+##    Estado.Civil  Ocupación
+## 1        Casado Desocupado
+## 2       Soltero    Estudia
+## 3       Soltero    Trabaja
+## 4        Casado    Estudia
+## 5    Acompañado    Trabaja
+## 6       Soltero Desocupado
+## 7        Casado    Trabaja
+## 8        Casado    Estudia
+## 9    Acompañado Desocupado
+## 10   Acompañado    Estudia
+## 11       Casado    Trabaja
+## 12      Soltero    Estudia
+## 13   Acompañado Desocupado
+## 14       Casado Desocupado
+## 15      Soltero    Estudia
+## 16      Soltero    Trabaja
+## 17       Casado Desocupado
+## 18      Soltero    Trabaja
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Conecta la hoja de datos a la segunda ruta o lista de búsqueda. }
+\hlkwd{attach}\hlstd{(HojaCat,} \hlkwc{pos}\hlstd{=}\hlnum{2}\hlstd{)}
+\hlkwd{search}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+##  [1] ".GlobalEnv"        "HojaCat"           "package:knitr"    
+##  [4] "package:stats"     "package:graphics"  "package:grDevices"
+##  [7] "package:utils"     "package:datasets"  "package:methods"  
+## [10] "Autoloads"         "package:base"
+\end{verbatim}
+\begin{alltt}
+\hlcom{#Crea una tabla de contigencia o de doble entrada }
+\hlstd{tablaCont} \hlkwb{<-} \hlkwd{table}\hlstd{(HojaCat); tablaCont}
+\end{alltt}
+\begin{verbatim}
+##             Ocupación
+## Estado.Civil Desocupado Estudia Trabaja
+##   Acompañado          2       1       1
+##   Casado              3       2       2
+##   Soltero             1       3       3
+\end{verbatim}
+\begin{alltt}
+\hlkwd{length}\hlstd{(HojaCat)}
+\end{alltt}
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Encuentra la suma de cada filade la tabla de contingencia }
+\hlcom{# Distribución marginal de X=Estado civil }
+\hlstd{suma.filas} \hlkwb{<-} \hlkwd{apply}\hlstd{(tablaCont,} \hlnum{1}\hlstd{, sum); suma.filas}
+\end{alltt}
+\begin{verbatim}
+## Acompañado     Casado    Soltero 
+##          4          7          7
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Encuentra la suma de cada filade la tabla de contingencia }
+\hlcom{# distribución marginal de Y=Ocupación }
+\hlstd{suma.columnas} \hlkwb{<-} \hlkwd{apply}\hlstd{(tablaCont,}\hlnum{2}\hlstd{,sum); suma.columnas}
+\end{alltt}
+\begin{verbatim}
+## Desocupado    Estudia    Trabaja 
+##          6          6          6
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Gráficos de barras para tabla de contingencia. }
+\hlcom{# Barras apiladas }
+\hlkwd{barplot}\hlstd{(}\hlkwd{t}\hlstd{(tablaCont),} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras (Estado, Ocupación)"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Estado civil"}\hlstd{,}
+\hlkwc{ylab}\hlstd{=}\hlstr{"Ocupación"}\hlstd{,} \hlkwc{legend.text}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-18} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Barras agrupadas }
+\hlkwd{barplot}\hlstd{(}\hlkwd{t}\hlstd{(tablaCont),} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras (Estado, Ocupación)"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Estado civil"}\hlstd{,}
+\hlkwc{ylab}\hlstd{=}\hlstr{"Ocupación"}\hlstd{,} \hlkwc{beside}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{legend.text}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-19} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Al usar beside =FALSE se obtiene el mismo gráfico de la instrucción anterior.}
+\hlkwd{barplot}\hlstd{(tablaCont,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras (Ocupación, Estado)"}\hlstd{,}
+\hlkwc{xlab}\hlstd{=}\hlstr{"Ocupación\textbackslash{}n"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Estado civil"}\hlstd{,} \hlkwc{beside}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{legend.text}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-20} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Calcula tablas de proporciones o de probabilidades. }
+\hlstd{op} \hlkwb{<-} \hlkwd{options}\hlstd{()}
+\hlkwd{options}\hlstd{(}\hlkwc{digits}\hlstd{=}\hlnum{3}\hlstd{)}
+\hlkwd{options}\hlstd{(}\hlstr{'digits'}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## $digits
+## [1] 3
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Proporciones basadas en el total de la muestra, la suma de filas y columnas suman 1. }
+\hlstd{propTotal} \hlkwb{<-} \hlkwd{prop.table}\hlstd{(tablaCont); propTotal}
+\end{alltt}
+\begin{verbatim}
+##             Ocupación
+## Estado.Civil Desocupado Estudia Trabaja
+##   Acompañado     0.1111  0.0556  0.0556
+##   Casado         0.1667  0.1111  0.1111
+##   Soltero        0.0556  0.1667  0.1667
+\end{verbatim}
+\begin{alltt}
+\hlkwd{barplot}\hlstd{(}\hlkwd{t}\hlstd{(propTotal),} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras (Estado, Ocupación)"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Estado civil\textbackslash{}n"}\hlstd{,}
+\hlkwc{ylab}\hlstd{=}\hlstr{"Ocupación"}\hlstd{,} \hlkwc{beside}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{legend.text}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-21} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Proporciones basadas en el total por fila, cada fila suma 1. }
+\hlstd{propFila} \hlkwb{<-} \hlkwd{prop.table}\hlstd{(tablaCont,} \hlnum{1}\hlstd{); propFila}
+\end{alltt}
+\begin{verbatim}
+##             Ocupación
+## Estado.Civil Desocupado Estudia Trabaja
+##   Acompañado      0.500   0.250   0.250
+##   Casado          0.429   0.286   0.286
+##   Soltero         0.143   0.429   0.429
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Total por fila se indica en 1 }
+\hlkwd{barplot}\hlstd{(}\hlkwd{t}\hlstd{(propFila),} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras (Estado, Ocupación)"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Estado civil\textbackslash{}n"}\hlstd{,}
+\hlkwc{ylab}\hlstd{=}\hlstr{"Ocupación"}\hlstd{,} \hlkwc{beside}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{legend.text}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-22} 
+\begin{kframe}\begin{alltt}
+\hlcom{# Proporciones basadas en el total por columna, cada columna suma 1. }
+\hlstd{propColum} \hlkwb{<-} \hlkwd{prop.table}\hlstd{(tablaCont,} \hlnum{2}\hlstd{); propColum}
+\end{alltt}
+\begin{verbatim}
+##             Ocupación
+## Estado.Civil Desocupado Estudia Trabaja
+##   Acompañado      0.333   0.167   0.167
+##   Casado          0.500   0.333   0.333
+##   Soltero         0.167   0.500   0.500
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Total por columna se indica en 2 }
+\hlkwd{barplot}\hlstd{(propColum,} \hlkwc{main}\hlstd{=}\hlstr{"Gráfico de barras (Ocupación, Estado)"}\hlstd{,}
+\hlkwc{xlab}\hlstd{=}\hlstr{"Ocupación\textbackslash{}n"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Estado civil"}\hlstd{,} \hlkwc{beside}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{legend.text}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-1-23} 
+\begin{kframe}\begin{alltt}
+\hlcom{#Realizar la prueba o contraste Chi-cuadrado de independencia }
+\hlstd{prueba} \hlkwb{<-} \hlkwd{chisq.test}\hlstd{(tablaCont); prueba}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in chisq.test(tablaCont): Chi-squared approximation may be incorrect}}\begin{verbatim}
+## 
+## 	Pearson's Chi-squared test
+## 
+## data:  tablaCont
+## X-squared = 2, df = 4, p-value = 0.7
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Frecuencias absolutas esperadas para la prueba Chi-cuadrada }
+\hlcom{# fij = fi./No. column}
+\hlstd{prueba}\hlopt{$}\hlstd{expected}
+\end{alltt}
+\begin{verbatim}
+##             Ocupación
+## Estado.Civil Desocupado Estudia Trabaja
+##   Acompañado       1.33    1.33    1.33
+##   Casado           2.33    2.33    2.33
+##   Soltero          2.33    2.33    2.33
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\end{document}
